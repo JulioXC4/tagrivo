@@ -26,6 +26,9 @@ if (!originalVerification.equals(deployedVerification))
   failures.push('Google verification file must be copied byte-for-byte');
 if (originalVerification.toString('utf8') !== `google-site-verification: ${verificationName}`)
   failures.push('Google verification file has an unexpected payload');
+const redirects = await readFile(path.join(root, '_redirects'), 'utf8');
+if (!redirects.split(/\r?\n/).includes(`/${verificationName} /${verificationName.slice(0, -5)} 200`))
+  failures.push('Google verification URL must bypass the Pages HTML-extension redirect');
 const titles = new Set();
 const descriptions = new Set();
 const canonicals = new Set();

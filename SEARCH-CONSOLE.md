@@ -14,6 +14,8 @@ Después de confirmar el despliegue, abre personalmente [Google Search Console](
 
 Conserva el archivo en futuros despliegues porque Google puede comprobarlo de nuevo. No añadas una variable de etiqueta HTML para completar este método. El build comprueba el contenido esperado y que la copia publicada sea idéntica, byte por byte. La cabecera global de noindex sigue aplicándose; no se habilita sitemap ni analítica para verificar la propiedad.
 
+Cloudflare Pages redirige por defecto las URL `.html` a su equivalente sin extensión. `public/_redirects` contiene una única regla de proxy interno con estado 200 para servir este archivo desde la URL exacta de Google. No cambia otras rutas ni modifica el archivo. La comprobación pública debe hacerse sin seguir redirecciones y comparar los bytes con el original. Véanse [el comportamiento de Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/) y [las reglas de proxy interno](https://developers.cloudflare.com/pages/configuration/redirects/#proxying).
+
 ## Alternativa disponible: etiqueta HTML
 
 1. Abre [Google Search Console](https://search.google.com/search-console/welcome) e inicia sesión personalmente. Añade una propiedad de **prefijo de URL** con `https://tagrivo.pages.dev/`, incluido HTTPS. No elijas la propiedad de dominio `pages.dev`.
