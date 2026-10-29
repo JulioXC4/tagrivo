@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { printers } from '../../data/printers';
+---
+
+<Base
+  title="Thermal Label Printers — The Considered Shortlist"
+  description="Explore Rollo, MUNBYN and Brother shipping label printers by seller setup, verified specifications, media format and practical limitations."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Printers</span>
+      </nav>
+      <h1>
+        A considered <em>shortlist.</em>
+      </h1>
+      <p>
+        Different workspaces call for different printers. Explore sourced specifications, practical
+        strengths, and honest limitations.
+      </p>
+    </header>
+    <div class="product-grid" style="margin-top:0;padding-bottom:50px">
+      {printers.map((printer) => (
+        <ProductCard printer={printer} />
+      ))}
+    </div>
+    <p class="small-note" style="padding-bottom:35px">
+      Research-based selection, not hands-on testing. No paid placement.{' '}
+      <a href="/methodology/">Read our methodology.</a>
+    </p>
+  </div>
+</Base>

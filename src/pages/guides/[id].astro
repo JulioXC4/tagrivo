@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import Icon from '../../components/Icon.astro';
+export async function getStaticPaths() {
+  return (await getCollection('guides')).map((guide) => ({
+    params: { id: guide.id },
+    props: { guide },
+  }));
+}
+const { guide } = Astro.props;
+const { Content, headings } = await render(guide);
+const date = guide.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: guide.data.title,
+  description: guide.data.description,
+  datePublished: guide.data.date.toISOString(),
+  dateModified: guide.data.date.toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'Tagrivo Editorial',
+    url: new URL('/about/', Astro.site).href,
+  },
+  publisher: { '@type': 'Organization', name: 'Tagrivo', url: Astro.site?.href },
+  mainEntityOfPage: new URL(`/guides/${guide.id}/`, Astro.site).href,
+  image: new URL('/images/editorial-hero.webp', Astro.site).href,
+  inLanguage: 'en-US',
+};
+---
+
+<Base
+  title={guide.data.title}
+  description={guide.data.description}
+  schema={schema}
+  ogType="article"
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/guides/">Buying guides</a>
+        <span aria-hidden="true">/</span>
+        <span>{guide.data.category}</span>
+      </nav>
+      <h1>{guide.data.title}</h1>
+      <p>{guide.data.description}</p>
+      <div class="article-meta">
+        <span>By Tagrivo Editorial</span>
+        <time datetime={guide.data.date.toISOString()}>{date}</time>
+        <span>{guide.data.readingTime} min read</span>
+      </div>
+    </header>
+    <div class="article-layout">
+      <article>
+        <div class="prose">
+          <Content />
+        </div>
+        <div class="helper" style="margin-top:45px">
+          Our guidance is based on manufacturer documentation and explicit editorial reasoning. We
+          do not claim hands-on testing.{' '}
+          <a href="/methodology/" class="text-link">
+            How we research
+          </a>
+          .
+        </div>
+      </article>
+      <aside class="article-aside">
+        <h2>In this guide</h2>
+        <nav aria-label="Table of contents">
+          {headings
+            .filter((h) => h.depth === 2)
+            .map((h) => (
+              <a href={`#${h.slug}`}>{h.text}</a>
+            ))}
+        </nav>
+        <div class="aside-promo">
+          <h2>Make it personal.</h2>
+          <p>Your platform, your devices, your weekly orders.</p>
+          <a href="/printer-finder/" class="text-link">
+            Find my printer <Icon name="arrow" size={16} />
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Base>

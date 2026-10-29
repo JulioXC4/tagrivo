@@ -1,0 +1,80 @@
+---
+import Editorial from '../layouts/Editorial.astro';
+import { printers } from '../data/printers';
+import { amazonLink } from '../lib/affiliate';
+const active = printers.some((p) =>
+  amazonLink(p.asin, import.meta.env.PUBLIC_AMAZON_ASSOCIATE_TAG),
+);
+---
+
+<Editorial
+  title="How Tagrivo is supported."
+  description="A clear explanation of affiliate links, editorial independence, and what a purchase through a link can mean."
+>
+  <p>
+    <strong>Last updated: October 28, 2026.</strong>
+  </p>
+  <p>
+    Tagrivo is intended to be supported by affiliate commissions. When you follow an identified
+    affiliate link and make a qualifying purchase, we may earn a commission. Tagrivo does not add a
+    fee to your purchase.
+  </p>
+  {active ? (
+    <p>
+      <strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+    </p>
+  ) : (
+    <p>
+      <strong>No Amazon affiliate purchase links are active in this edition.</strong> Product links
+      currently direct you to manufacturer information. We do not imply membership in an affiliate
+      program before it is configured.
+    </p>
+  )}
+  <h2>How to recognize an affiliate link</h2>
+  <p>
+    When enabled, Amazon purchase links carry an adjacent commission disclosure. Those links are
+    marked as sponsored in the page markup. A link to a manufacturer's specifications or support
+    documentation is provided as evidence and is not an affiliate purchase link in this edition.
+  </p>
+  <h2>What commissions do not buy</h2>
+  <p>
+    Payment does not determine whether a model is compatible with your device, make it meet a
+    budget, or remove a limitation from an analysis. The Finder's eligibility rules use product
+    facts and your answers, not affiliate commissions.
+  </p>
+  <p>
+    We do not offer paid placement in the initial shortlist. We do not invent reviews, testimonials,
+    or hands-on testing. See our <a href="/methodology/">editorial methodology</a> for the
+    boundaries of the current research.
+  </p>
+  <h2>Prices, availability, and other websites</h2>
+  <p>
+    Retailer prices and availability can change. A dated manufacturer price is identified as such.
+    Calculator defaults are illustrative estimates. Always confirm the exact model, total price,
+    delivery terms, and return policy at the destination website before buying.
+  </p>
+  <p>
+    Third-party sites operate under their own privacy practices and terms. An affiliate link may
+    allow a retailer to attribute a qualifying purchase to a referral.
+  </p>
+  <h2>Further information</h2>
+  <p>
+    The disclosure approach follows the principles described in the{' '}
+    <a
+      href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      FTC's endorsement guidance
+    </a>
+    . Amazon participation, if activated, is subject to the{' '}
+    <a
+      href="https://affiliate-program.amazon.com/help/operating/agreement"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Amazon Associates Operating Agreement
+    </a>
+    .
+  </p>
+</Editorial>

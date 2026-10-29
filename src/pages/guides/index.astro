@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection } from 'astro:content';
+const guides = (await getCollection('guides')).sort(
+  (a, b) =>
+    Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title),
+);
+---
+
+<Base
+  title="Label Printer Buying Guides"
+  description="Practical, original guidance on 4 × 6 printers, USB versus Wi-Fi, media costs and marketplace shipping-label workflows."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Buying guides</span>
+      </nav>
+      <h1>
+        Good questions.
+        <br />
+        <em>Clearer answers.</em>
+      </h1>
+      <p>
+        Practical guidance for the decisions between your first order and your next shipping
+        upgrade.
+      </p>
+    </header>
+    <label class="field" style="max-width:440px;margin-bottom:38px">
+      Find a guide
+      <input
+        id="guide-search"
+        type="search"
+        placeholder="Try compatibility, costs, or Etsy"
+        aria-controls="guide-list"
+      />
+    </label>
+    <p id="guide-search-status" class="small-note" role="status" aria-live="polite"></p>
+    <div id="guide-list" class="guide-index">
+      {guides.map((guide, index) => (
+        <article
+          class={index === 0 ? 'feature-guide guide-entry' : 'guide-entry'}
+          data-search={`${guide.data.title} ${guide.data.description} ${guide.data.category}`.toLowerCase()}
+        >
+          {index === 0 && (
+            <a href={`/guides/${guide.id}/`}>
+              <img
+                class="guide-photo"
+                src="/images/products/munbyn-itpp941.jpg"
+                alt="MUNBYN ITPP941 USB label printer, manufacturer photo"
+                width="1000"
+                height="1000"
+                style="object-fit:contain"
+                loading="lazy"
+              />
+            </a>
+          )}
+          <p class="product-fit">
+            {guide.data.category} · {guide.data.readingTime} min read
+          </p>
+          <h2 style="font-size:36px;margin-bottom:18px">
+            <a href={`/guides/${guide.id}/`}>{guide.data.title}</a>
+          </h2>
+          <p style="font-size:14px;color:var(--muted)">{guide.data.description}</p>
+          <a href={`/guides/${guide.id}/`} class="text-link">
+            Read the guide <Icon name="arrow" size={17} />
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+  <script>
+    const search = document.querySelector<HTMLInputElement>('#guide-search');
+    const entries = document.querySelectorAll<HTMLElement>('.guide-entry');
+    const status = document.querySelector('#guide-search-status');
+    search?.addEventListener('input', () => {
+      const query = search.value.trim().toLowerCase();
+      let count = 0;
+      entries.forEach((entry) => {
+        const match = !query || entry.dataset.search?.includes(query);
+        entry.hidden = !match;
+        if (match) count++;
+      });
+      if (status)
+        status.textContent = query
+          ? `${count} ${count === 1 ? 'guide' : 'guides'} found${count ? '.' : '. Try a broader search.'}`
+          : '';
+    });
+  </script>
+</Base>

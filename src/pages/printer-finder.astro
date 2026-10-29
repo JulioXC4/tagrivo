@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Finder from '../components/Finder';
+import Icon from '../components/Icon.astro';
+---
+
+<Base
+  title="Printer Finder — Find Your Label Printer"
+  description="Answer five practical questions about your setup, order volume, connectivity and budget. Get a transparent, source-backed printer shortlist."
+>
+  <div class="wrap">
+    <header class="page-heading finder-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Printer Finder</span>
+      </nav>
+      <h1>
+        Find your fit.
+        <br />
+        <em>Understand the why.</em>
+      </h1>
+      <p>
+        Five questions about the way you ship. A considered shortlist, with the evidence and
+        trade-offs in plain sight.
+      </p>
+    </header>
+    <div class="tool-layout">
+      <div>
+        <Finder client:load />
+        <noscript>
+          <p>
+            Enable JavaScript to use the five-step Finder, or{' '}
+            <a href="/printers/">explore all printers</a> using the source-backed product pages.
+          </p>
+        </noscript>
+      </div>
+      <aside class="tool-aside">
+        <h2>Your setup comes first.</h2>
+        <ol>
+          <li>Your selling platform</li>
+          <li>Your operating system</li>
+          <li>Your weekly order volume</li>
+          <li>Your preferred connection</li>
+          <li>Your hardware budget</li>
+        </ol>
+        <p>
+          We check documented compatibility before suggesting a match. We don’t assign invented
+          performance scores or claim to have tested these models.
+        </p>
+        <a href="/methodology/" class="text-link">
+          How recommendations work <Icon name="arrow" size={17} />
+        </a>
+      </aside>
+    </div>
+  </div>
+</Base>

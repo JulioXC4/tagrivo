@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import Compare from '../components/Compare';
+---
+
+<Base
+  title="Compare Thermal Label Printers"
+  description="Compare Rollo Wireless, MUNBYN ITPP941 USB and Brother QL-1110NWB. See sourced specifications, supported devices and practical trade-offs side by side."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Compare printers</span>
+      </nav>
+      <h1>
+        The details, <em>side by side.</em>
+      </h1>
+      <p>
+        Two or three printers. The specifications that matter. A clearer view of what fits your
+        setup.
+      </p>
+    </header>
+    <div style="padding-bottom:72px">
+      <Compare client:load />
+      <noscript>
+        <p>
+          The initial comparison below is readable without JavaScript. Enable JavaScript to change
+          printers or filter differences. <a href="/printers/">Browse all product details.</a>
+        </p>
+      </noscript>
+    </div>
+  </div>
+</Base>

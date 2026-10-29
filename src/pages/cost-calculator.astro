@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Calculator from '../components/Calculator';
+---
+
+<Base
+  title="Label Printing Cost Calculator"
+  description="Estimate label printing costs from your order volume, printer purchase price, label stock and waste rate. See transparent one- to five-year cost projections."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Printing cost calculator</span>
+      </nav>
+      <h1>
+        Look beyond <em>the price tag.</em>
+      </h1>
+      <p>
+        A more useful estimate starts with your order volume and the labels you actually buy. Change
+        the assumptions. See the difference.
+      </p>
+    </header>
+    <Calculator client:load />
+    <noscript>
+      <p>
+        Enable JavaScript to update the estimate. The{' '}
+        <a href="/guides/printing-costs/">printing cost guide</a> explains the formula.
+      </p>
+    </noscript>
+  </div>
+</Base>

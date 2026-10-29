@@ -1,0 +1,181 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FinderInvite from '../components/FinderInvite.astro';
+import { printers } from '../data/printers';
+---
+
+<Base>
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">
+          <span>
+            Print <em>smarter.</em>
+          </span>
+          <span>Ship better.</span>
+        </h1>
+        <p>
+          Find the right label printer for your business.
+          <br class="hidden sm:block" /> Clear comparisons. Practical guidance. No guesswork.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/printer-finder/">
+            Find my printer <Icon name="arrow" />
+          </a>
+          <a class="text-link" href="/guides/">
+            Explore the guides <Icon name="arrow" size={18} />
+          </a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img
+          class="hero-image"
+          src="/images/editorial-hero.webp"
+          alt="A white label ribbon, forest-green plinth, and kraft shipping boxes in natural light; original editorial artwork"
+          width="1000"
+          height="1250"
+          fetchpriority="high"
+          loading="eager"
+        />
+      </div>
+    </section>
+  </div>
+  <section class="finder-band" aria-labelledby="finder-home-title">
+    <div class="finder-home wrap">
+      <div>
+        <h2 id="finder-home-title">Find your printer in five simple steps.</h2>
+        <p>
+          Tell us how you sell, what you print from, and what you want to spend. Get a source-backed
+          shortlist, with the trade-offs explained.
+        </p>
+        <p class="steps-text">Platform · Device · Volume · Connection · Budget</p>
+      </div>
+      <FinderInvite />
+    </div>
+  </section>
+  <div class="wrap">
+    <section class="principles" aria-labelledby="principles-title">
+      <h2 id="principles-title">Your next printer, with fewer unknowns.</h2>
+      <div class="principles-grid">
+        <div>
+          <h3>Compatibility first</h3>
+          <p>
+            Make sure a printer works with your selling platform and operating system before you
+            buy.
+          </p>
+        </div>
+        <div>
+          <h3>Understand the real cost</h3>
+          <p>Look beyond the price tag. Factor in labels, waste, and your expected order volume.</p>
+        </div>
+        <div>
+          <h3>Know the trade-offs</h3>
+          <p>
+            Every printer involves compromises. We help you weigh what matters for your business.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="shortlist-title">
+      <div class="section-heading">
+        <h2 id="shortlist-title">Three printers. Different priorities.</h2>
+        <a href="/compare/" class="text-link">
+          Compare the details <Icon name="arrow" size={18} />
+        </a>
+      </div>
+      <p class="section-intro">
+        A considered shortlist for real shipping setups. Start with how you work, then look at what
+        each printer does well—and where it asks you to compromise.
+      </p>
+      <div class="product-grid">
+        {printers.map((printer) => (
+          <ProductCard printer={printer} />
+        ))}
+      </div>
+      <p class="small-note catalog-note">
+        Selected from manufacturer documentation, not hands-on testing. Specifications checked
+        October 28, 2026. Product photographs: respective manufacturers.{' '}
+        <a href="/methodology/">See our selection criteria.</a>
+      </p>
+    </section>
+  </div>
+  <div class="wrap">
+    <section class="section" style="border-top:0" aria-labelledby="guides-title">
+      <div class="section-heading">
+        <h2 id="guides-title">Start with the questions that matter.</h2>
+        <a href="/guides/" class="text-link">
+          All buying guides <Icon name="arrow" size={18} />
+        </a>
+      </div>
+      <div class="guides-grid">
+        <article class="feature-guide">
+          <a
+            href="/guides/choose-label-printer/"
+            aria-label="Read: How to choose a 4 × 6 label printer"
+          >
+            <img
+              src="/images/products/munbyn-itpp941.jpg"
+              alt="MUNBYN ITPP941 USB thermal printer, photographed by the manufacturer"
+              width="1000"
+              height="1000"
+              class="guide-photo"
+              loading="lazy"
+              style="object-fit:contain;"
+            />
+          </a>
+          <h3>
+            <a href="/guides/choose-label-printer/">How to choose a 4 × 6 label printer</a>
+          </h3>
+          <p>
+            A practical guide to the features that affect your setup, running costs, and day-to-day
+            shipping.
+          </p>
+          <a href="/guides/choose-label-printer/" class="text-link">
+            Read the guide <Icon name="arrow" size={17} />
+          </a>
+          <span class="read-meta">Buying guide · 7 min read</span>
+        </article>
+        <div class="guide-side">
+          <article>
+            <h3>
+              <a href="/guides/usb-wifi-bluetooth/">USB, Wi-Fi, or Bluetooth?</a>
+            </h3>
+            <p>
+              A clear breakdown of the connections, with the trade-offs for different workspaces and
+              devices.
+            </p>
+            <a href="/guides/usb-wifi-bluetooth/" class="text-link">
+              Find your connection <Icon name="arrow" size={17} />
+            </a>
+            <span class="read-meta">Compatibility · 5 min read</span>
+          </article>
+          <article>
+            <h3>
+              <a href="/guides/printing-costs/">What a shipping label really costs</a>
+            </h3>
+            <p>
+              A plain-English look at the costs beyond the printer, so you can plan with confidence.
+            </p>
+            <a href="/guides/printing-costs/" class="text-link">
+              Understand the numbers <Icon name="arrow" size={17} />
+            </a>
+            <span class="read-meta">Costs explained · 6 min read</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="methodology-band">
+    <div class="methodology-content wrap">
+      <div>
+        <Icon name="shield" size={36} />
+        <h2>A clear recommendation starts with clear evidence.</h2>
+      </div>
+      <a href="/methodology/" class="text-link">
+        Our editorial methodology <Icon name="arrow" size={18} />
+      </a>
+    </div>
+  </section>
+</Base>
