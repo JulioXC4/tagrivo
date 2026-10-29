@@ -1,12 +1,24 @@
 # Verificar Tagrivo en Google Search Console
 
-Propiedad: **https://tagrivo.pages.dev/**. Método preparado: **etiqueta HTML**. La verificación de propiedad no activa la indexación. Mantener `SITE_INDEXING=disabled` y Privacy provisional durante este procedimiento.
+Propiedad: **https://tagrivo.pages.dev/**. Método actual: **archivo HTML de Google**. La verificación de propiedad no activa la indexación. Mantener `SITE_INDEXING=disabled` y Privacy provisional durante este procedimiento.
 
-## Pasos que realizas en tu cuenta
+## Archivo HTML proporcionado por el propietario
+
+El archivo original `google7bb345f95d638147.html` se conserva en `public/` sin modificar su nombre ni contenido. Astro lo copia directamente a la raíz del build. Su URL pública es [google7bb345f95d638147.html](https://tagrivo.pages.dev/google7bb345f95d638147.html) y debe responder HTTP 200 con el texto exacto:
+
+```text
+google-site-verification: google7bb345f95d638147.html
+```
+
+Después de confirmar el despliegue, abre personalmente [Google Search Console](https://search.google.com/search-console/welcome), selecciona la propiedad de **prefijo de URL** `https://tagrivo.pages.dev/`, conserva el método **Archivo HTML** usado para descargar este archivo y pulsa **Verificar**. La publicación del archivo prepara la comprobación técnica; solo el resultado en tu cuenta confirma la propiedad. No se necesitan credenciales de Google en este proyecto.
+
+Conserva el archivo en futuros despliegues porque Google puede comprobarlo de nuevo. No añadas una variable de etiqueta HTML para completar este método. El build comprueba el contenido esperado y que la copia publicada sea idéntica, byte por byte. La cabecera global de noindex sigue aplicándose; no se habilita sitemap ni analítica para verificar la propiedad.
+
+## Alternativa disponible: etiqueta HTML
 
 1. Abre [Google Search Console](https://search.google.com/search-console/welcome) e inicia sesión personalmente. Añade una propiedad de **prefijo de URL** con `https://tagrivo.pages.dev/`, incluido HTTPS. No elijas la propiedad de dominio `pages.dev`.
 2. En los métodos disponibles, abre **Etiqueta HTML**. Google mostrará una etiqueta con `name="google-site-verification"` y un valor `content` específico de tu cuenta/propiedad.
-3. Copia **solo el valor de content**, sin comillas ni el resto de la etiqueta. No se necesita contraseña, código de acceso, cookie de sesión ni credencial de API. El token de verificación aún no se ha proporcionado; no se ha inventado uno.
+3. Copia **solo el valor de content**, sin comillas ni el resto de la etiqueta. No se necesita contraseña, código de acceso, cookie de sesión ni credencial de API. Esta alternativa no es necesaria para el archivo HTML ya proporcionado; no se ha inventado un token de etiqueta.
 4. En Cloudflare, abre el proyecto Pages **tagrivo**, entra en su configuración de variables y selecciona el entorno **Production**. Añade `PUBLIC_GOOGLE_SITE_VERIFICATION` con ese valor auténtico como texto. Conserva `PUBLIC_SITE_URL=https://tagrivo.pages.dev` y `SITE_INDEXING=disabled`. No actives analítica para completar esta verificación.
 5. Vuelve a desplegar Production mediante el flujo actual. Astro genera el meta tag en el head del HTML; la variable sin recompilar no modifica la página publicada.
 6. Abre `https://tagrivo.pages.dev/` y consulta el código fuente. Busca `google-site-verification` y confirma que content coincide con el token de Google. No basta con introducirlo en un archivo local.

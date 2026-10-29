@@ -15,8 +15,17 @@ async function files(dir) {
   ).flat();
 }
 const all = await files(root);
-const htmlFiles = all.filter((f) => f.endsWith('.html'));
+const verificationName = 'google7bb345f95d638147.html';
+const verificationFile = path.join(root, verificationName);
+// Google's ownership file is an exact payload, not an editorial HTML route.
+const htmlFiles = all.filter((f) => f.endsWith('.html') && f !== verificationFile);
 const failures = [];
+const originalVerification = await readFile(path.resolve('public', verificationName));
+const deployedVerification = await readFile(verificationFile);
+if (!originalVerification.equals(deployedVerification))
+  failures.push('Google verification file must be copied byte-for-byte');
+if (originalVerification.toString('utf8') !== `google-site-verification: ${verificationName}`)
+  failures.push('Google verification file has an unexpected payload');
 const titles = new Set();
 const descriptions = new Set();
 const canonicals = new Set();
@@ -164,5 +173,5 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(
-  `Verified ${htmlFiles.length} prerendered HTML routes, local links/assets, unique metadata, h1, JSON-LD, canonical origin, indexing policy, robots, affiliate attributes and deployment artifacts.`,
+  `Verified ${htmlFiles.length} prerendered HTML routes, exact Google ownership file, local links/assets, unique metadata, h1, JSON-LD, canonical origin, indexing policy, robots, affiliate attributes and deployment artifacts.`,
 );
