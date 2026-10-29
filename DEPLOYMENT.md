@@ -2,6 +2,8 @@
 
 Estado preparado el 29 de octubre de 2026. Astro estático + Tailwind + React Islands; se conserva la implementación y la identidad aprobadas. Repositorio: https://github.com/JulioXC4/tagrivo.
 
+Primera URL asignada y publicada: **https://tagrivo.pages.dev/**. El proyecto Pages se llama `tagrivo`, conectado a `main`. La prueba permanece sin indexación. No se ha comprado ni configurado un dominio propio.
+
 ## Configuración de Cloudflare Pages
 
 En Cloudflare, abre **Workers & Pages → Create application → Continue to Pages → Import an existing Git repository**. Usa la integración Git desde el inicio; no elijas Direct Upload, Workers, una plantilla ni un servicio de pago.
@@ -55,6 +57,8 @@ Selecciona solo los archivos que correspondan al cambio. Para documentación o a
 La verificación automática se ejecuta en Cloudflare para evitar builds duplicados en GitHub Actions. El workflow de GitHub queda disponible manualmente (`workflow_dispatch`, permiso de lectura y timeout de diez minutos); no es necesario ejecutarlo para desplegar. No incluye credenciales ni una segunda ruta de publicación. No se han contratado servicios ni activado recursos de pago. El plan Free documenta 500 builds/mes: consulta sus límites antes de aumentar frecuencia o alcance.
 
 ## Verificación de la primera URL
+
+Con el origen estable real configurado y el build publicado, ejecuta `npm run check:deployment -- URL_REAL` desde el proyecto. Comprueba páginas principales, assets, canonical, noindex en HTML/cabeceras, robots y que las rutas privadas y el sitemap de prueba devuelvan 404. Esta comprobación no sustituye los flujos interactivos en navegador.
 
 1. Abre home, Finder, comparación, calculadora, una guía y una ficha de producto.
 2. Completa el Finder; prueba un caso sin coincidencias. Verifica cálculo y descarga CSV.

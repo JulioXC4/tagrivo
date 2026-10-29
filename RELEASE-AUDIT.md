@@ -2,6 +2,12 @@
 
 Fecha de revisión: 29 de octubre de 2026. Alcance: preparación de Astro estático para Cloudflare Pages con GitHub; sin cambios visuales ni reconstrucción de funcionalidades.
 
+## Primera publicación realizada
+
+Repositorio `JulioXC4/tagrivo`, rama `main`, proyecto Pages `tagrivo`. Primera publicación completada con confirmación expresa del usuario: **https://tagrivo.pages.dev/**. Astro, `npm run verify`, salida `dist`, Node 24 y `SITE_INDEXING=disabled`. Acceso GitHub autorizado personalmente por el usuario. El origen estable `PUBLIC_SITE_URL=https://tagrivo.pages.dev` se configuró después de que Cloudflare asignara la URL.
+
+Verificación local final: **17 pruebas, 0 errores/advertencias/hints de Astro/TypeScript, 19 páginas**. Se probaron también los builds simulados de Preview (siempre noindex) y de producción con indexación explícita (sitemap correcto); la salida final local vuelve a noindex. La respuesta pública inicial confirmó 9 páginas HTTP 200, 7 recursos accesibles, noindex en HTML y HTTP y 404 para rutas privadas/sitemap. El primer canonical apuntaba al hash del despliegue: se fijó la variable estable para corregirlo en la actualización automática. El comando `npm run check:deployment -- https://tagrivo.pages.dev` permite repetir esa comprobación completa tras cada publicación de prueba.
+
 ## Configuración y publicación
 
 - Se mantiene `output: static`, rutas con `/` final, contenido prerenderizado y React Islands solo para herramientas.
@@ -42,6 +48,6 @@ El comprobador automático hizo peticiones a los **12 enlaces externos únicos**
 
 ## Pendientes para validar producción
 
-Autorizar personalmente el acceso de Cloudflare a **solo** el repositorio Tagrivo; confirmar la URL Pages realmente asignada y comprobar cabeceras/rutas en el servicio; resolver derechos fotográficos, contacto del operador, precios actuales y soporte de versiones exactas; registrar afiliación real antes de activar Amazon. Mantener noindex hasta completar esa validación. No se certifican Core Web Vitals de campo ni conformidad WCAG completa a partir de un build local.
+Resolver derechos fotográficos, contacto del operador, precios actuales y soporte de versiones exactas; registrar afiliación real antes de activar Amazon. Mantener noindex hasta completar esa validación. No se certifican Core Web Vitals de campo ni conformidad WCAG completa a partir de un build local.
 
 Consulta [DEPLOYMENT.md](DEPLOYMENT.md) para los pasos, variables, despliegues automáticos y rollback.
