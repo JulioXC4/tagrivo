@@ -3,7 +3,13 @@ import { ArrowRightIcon as ArrowRight } from '@phosphor-icons/react/dist/csr/Arr
 import { CheckIcon as Check } from '@phosphor-icons/react/dist/csr/Check';
 import { CopyIcon as Copy } from '@phosphor-icons/react/dist/csr/Copy';
 import { PrinterIcon as PrintIcon } from '@phosphor-icons/react/dist/csr/Printer';
-import { printers, systemNames, connectionNames, type Printer } from '../data/printers';
+import {
+  printers,
+  systemNames,
+  getConnectionLabels,
+  catalogCheckedLabel,
+  type Printer,
+} from '../data/printers';
 import { calculateCosts } from '../lib/costs';
 
 const rows: { label: string; get: (p: Printer) => string }[] = [
@@ -12,12 +18,10 @@ const rows: { label: string; get: (p: Printer) => string }[] = [
   { label: 'Rated max. speed', get: (p) => `${p.speed} mm/s` },
   {
     label: 'Connections',
-    get: (p) =>
-      p.connections.map((c) => connectionNames[c]).join(' · ') +
-      (p.id === 'brother-ql1110nwb' ? ' · Ethernet' : ''),
+    get: (p) => getConnectionLabels(p).join(' · '),
   },
   { label: 'Documented devices', get: (p) => p.systems.map((s) => systemNames[s]).join(' · ') },
-  { label: 'Label / print width', get: (p) => p.width },
+  { label: 'Width (manufacturer definition)', get: (p) => p.width },
   { label: 'Label media', get: (p) => p.media },
   { label: 'Automatic cutter', get: (p) => (p.cutter ? 'Yes' : 'No · manual tear-off') },
   { label: 'Hardware price', get: (p) => p.priceNote },
@@ -177,8 +181,8 @@ export default function Compare() {
       >
         <table className="comparison-table">
           <caption className="sr-only">
-            Manufacturer specifications checked October 28, 2026. Rated speeds are not our measured
-            results.
+            Manufacturer specifications checked {catalogCheckedLabel}. Rated speeds are not our
+            measured results.
           </caption>
           <thead>
             <tr>

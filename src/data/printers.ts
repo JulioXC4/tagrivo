@@ -12,10 +12,12 @@ export interface Printer {
   speed: number;
   width: string;
   connections: Exclude<Connection, 'any'>[];
+  ethernet: boolean;
   systems: OperatingSystem[];
   media: string;
   cutter: boolean;
   price: number | null;
+  priceChecked: string | null;
   priceNote: string;
   strengths: string[];
   limitations: string[];
@@ -38,13 +40,16 @@ export const printers: Printer[] = [
       'A compact Wi-Fi option for sellers who switch between a computer and a phone. Standard direct-thermal media keeps your label choices open.',
     dpi: 203,
     speed: 150,
-    width: '1.57–4.1 in',
+    width: 'Label width: 1.57–4.1 in (media range)',
     connections: ['usb', 'wifi'],
+    ethernet: false,
     systems: ['windows', 'mac', 'ios', 'android', 'chrome'],
     media: 'Generic direct-thermal rolls or fanfold',
     cutter: false,
-    price: null,
-    priceNote: 'Check current manufacturer pricing.',
+    price: 279.99,
+    priceChecked: '2026-10-29',
+    priceNote:
+      'Manufacturer page showed $279.99 on October 29, 2026. A dated US reference, not a live offer; confirm tax, delivery and availability.',
     strengths: [
       'Wi-Fi and Apple AirPrint',
       'USB fallback for a wired workstation',
@@ -56,7 +61,7 @@ export const printers: Printer[] = [
       'Labels feed externally; allow desk space behind the printer',
     ],
     setup:
-      'Initial wireless setup uses the Rollo mobile app. Your device and printer need access to the same Wi-Fi network. On Android, the standard mobile flow is limited to 4 × 6 labels.',
+      'App-assisted setup uses Bluetooth to join Wi-Fi; Rollo also documents setup without a phone. Devices must share the network. Standard Android phone printing is limited to 4 × 6. The Rollo Windows driver does not support ARM-based PCs; confirm an appropriate workflow before buying.',
     sources: [
       {
         label: 'Rollo product specifications',
@@ -69,7 +74,7 @@ export const printers: Printer[] = [
     ],
     imageSource:
       'https://rollo-main.b-cdn.net/wp-content/uploads/2021/11/rollo-wireless-label-printer-product-image-1-1-600x600.webp',
-    checked: '2026-10-28',
+    checked: '2026-10-29',
   },
   {
     id: 'munbyn-itpp941',
@@ -82,12 +87,14 @@ export const printers: Printer[] = [
       'A straightforward USB model for a fixed packing desk. Choose this exact wired variant if you want a computer connection without wireless setup.',
     dpi: 203,
     speed: 150,
-    width: 'Up to 4.25 in print width',
+    width: 'Maximum print area: 108 mm (about 4.25 in)',
     connections: ['usb'],
+    ethernet: false,
     systems: ['windows', 'mac', 'chrome'],
     media: 'Generic direct-thermal rolls or fanfold',
     cutter: false,
     price: null,
+    priceChecked: null,
     priceNote: 'Current price is unverified; check the exact USB variant.',
     strengths: [
       'Direct USB connection',
@@ -116,7 +123,7 @@ export const printers: Printer[] = [
       },
     ],
     imageSource: 'https://pos.munbyn.com/wp-content/uploads/2024/02/ITPP941-1.jpg',
-    checked: '2026-10-28',
+    checked: '2026-10-29',
   },
   {
     id: 'brother-ql1110nwb',
@@ -129,12 +136,14 @@ export const printers: Printer[] = [
       'A 300 dpi printer with an automatic cutter and multiple connection options. Its DK-roll system needs a different consumables calculation from generic fanfold models.',
     dpi: 300,
     speed: 110,
-    width: '4 in maximum print width',
+    width: 'Maximum print area: 101.6 mm (4 in)',
     connections: ['usb', 'wifi', 'bluetooth'],
+    ethernet: true,
     systems: ['windows', 'mac', 'ios', 'android'],
     media: 'Brother DK die-cut or continuous rolls',
     cutter: true,
     price: 334.99,
+    priceChecked: '2026-10-28',
     priceNote:
       'Manufacturer listed $334.99 on October 28, 2026. A dated reference, not a current offer.',
     strengths: [
@@ -152,7 +161,7 @@ export const printers: Printer[] = [
     sources: [
       {
         label: 'Brother product page and dated list price',
-        url: 'https://www.brother-usa.com/products/ql1110nwb',
+        url: 'https://www.brother-usa.com/p/desktop-label-printers/QL1110NWB',
       },
       {
         label: 'Brother user guide: specifications',
@@ -169,7 +178,7 @@ export const printers: Printer[] = [
     ],
     imageSource:
       'https://assets.brother.com/transform/9f4046a8-6b49-47d9-9023-3c78fa532d38/3931_QL1110NWB_front_featuredimagery_0-png?io=transform%3Afit%2Cwidth%3A680',
-    checked: '2026-10-28',
+    checked: '2026-10-29',
   },
 ];
 
@@ -186,3 +195,24 @@ export const connectionNames: Record<Connection, string> = {
   bluetooth: 'Bluetooth',
   any: 'No preference',
 };
+
+export function getConnectionLabels(printer: Printer): string[] {
+  return [
+    ...printer.connections.map((connection) => connectionNames[connection]),
+    ...(printer.ethernet ? ['Ethernet'] : []),
+  ];
+}
+
+export function formatResearchDate(date: string): string {
+  return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+}
+
+// Never claim the whole catalog is newer than its least recently reviewed entry.
+export const catalogCheckedLabel = formatResearchDate(
+  printers.map((printer) => printer.checked).sort()[0],
+);

@@ -3,7 +3,11 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FinderInvite from '../components/FinderInvite.astro';
-import { printers } from '../data/printers';
+import { printers, catalogCheckedLabel } from '../data/printers';
+import { getCollection } from 'astro:content';
+const readingTimes = Object.fromEntries(
+  (await getCollection('guides')).map((guide) => [guide.id, guide.data.readingTime]),
+);
 ---
 
 <Base>
@@ -96,7 +100,7 @@ import { printers } from '../data/printers';
       </div>
       <p class="small-note catalog-note">
         Selected from manufacturer documentation, not hands-on testing. Specifications checked
-        October 28, 2026. Product photographs: respective manufacturers.{' '}
+        {catalogCheckedLabel}. Product photographs: respective manufacturers.{' '}
         <a href="/methodology/">See our selection criteria.</a>
       </p>
     </section>
@@ -135,7 +139,9 @@ import { printers } from '../data/printers';
           <a href="/guides/choose-label-printer/" class="text-link">
             Read the guide <Icon name="arrow" size={17} />
           </a>
-          <span class="read-meta">Buying guide · 7 min read</span>
+          <span class="read-meta">
+            Buying guide · {readingTimes['choose-label-printer']} min read
+          </span>
         </article>
         <div class="guide-side">
           <article>
@@ -149,7 +155,9 @@ import { printers } from '../data/printers';
             <a href="/guides/usb-wifi-bluetooth/" class="text-link">
               Find your connection <Icon name="arrow" size={17} />
             </a>
-            <span class="read-meta">Compatibility · 5 min read</span>
+            <span class="read-meta">
+              Compatibility · {readingTimes['usb-wifi-bluetooth']} min read
+            </span>
           </article>
           <article>
             <h3>
@@ -161,7 +169,9 @@ import { printers } from '../data/printers';
             <a href="/guides/printing-costs/" class="text-link">
               Understand the numbers <Icon name="arrow" size={17} />
             </a>
-            <span class="read-meta">Costs explained · 6 min read</span>
+            <span class="read-meta">
+              Costs explained · {readingTimes['printing-costs']} min read
+            </span>
           </article>
         </div>
       </div>

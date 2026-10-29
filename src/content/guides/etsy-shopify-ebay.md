@@ -3,7 +3,9 @@ title: A practical label workflow for Etsy, Shopify, and eBay
 description: Follow the label from your marketplace to the print dialog, and prevent common page-size and scaling problems.
 category: Shipping workflow
 date: 2026-10-28
-readingTime: 5
+updated: 2026-10-29
+seoTitle: 'Etsy, Shopify & eBay: 4 × 6 Shipping Label Workflows'
+readingTime: 4
 ---
 
 The printer is one part of a shipping workflow. Your marketplace or shipping provider produces the label file; your device and application send it to the hardware. Understanding those separate steps helps you avoid buying the wrong connection for the job.
@@ -13,6 +15,22 @@ The printer is one part of a shipping workflow. Your marketplace or shipping pro
 Before purchasing a printer, map your normal process: where you buy postage, where you download the label, which device holds that file, and which application prints it.
 
 Check the current label-format options in your marketplace account. The exact labels and menus can change. Aim for a 4 × 6 shipping-label file when using a matching printer and stock. Do not assume that a screenshot or a full-page document will print at the correct scale automatically.
+
+## Etsy: confirm the label format and print route
+
+[Etsy's label-printing instructions](https://help.etsy.com/hc/en-us/articles/360001968348-How-to-Download-and-Print-a-Shipping-Label) currently describe 4 × 6 formatting for **USPS shipping labels**. Confirm the available format for another carrier or service instead of assuming every Etsy label uses it. Match the actual file to the paper setting rather than enlarging a screenshot.
+
+For Rollo specifically, its [Etsy workflow guidance](https://support.rollo.com/support/solutions/articles/29000051037-print-etsy-shipping-labels-to-your-rollo-browser-and-etsy-app-limitations-) directs printing through a computer web browser and describes Etsy-app limitations. An iPhone-compatible printer does not establish that the Etsy app will expose the same shipping-label print path. Confirm that route before selecting a printer for a phone-only shop.
+
+## Shopify: supported models and PDF printing are different checks
+
+The [Shopify-supported printer table](https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/shipping-labels/label-printers/supported-printers) names exact models. It includes **Brother QL-1110NWB** and a **Rollo X1038** entry. X1038 is not the Wireless X1040 in Tagrivo's catalog.
+
+Treat a model appearing on that table, a manufacturer saying it can print Shopify labels, and your computer printing a downloaded PDF as three distinct pieces of evidence. For a supported-model starting point in our current shortlist, examine [Brother's documented setup](/printers/brother-ql1110nwb/); for another model, verify the intended computer or mobile route rather than transferring support from a brand name.
+
+## eBay: select the service's label format
+
+[eBay's printing instructions](https://www.ebay.com/help/selling/shipping-items/labels-packaging-tips/buying-printing-shipping-labels?id=4157) include a 4 × 6 option. Check the label type and carrier/service before printing; do not assume an eBay standard-envelope label and a parcel label have identical formatting requirements. Confirm the downloaded page dimensions before changing printer hardware.
 
 ## Check three sizes
 
@@ -40,4 +58,6 @@ For a shared packing station, decide who manages driver changes and stock replac
 
 ## Sources and scope
 
-This article explains a general PDF-printing workflow rather than claiming a current marketplace-specific menu sequence. Model-specific setup information is available from [Rollo](https://support.rollo.com/support/solutions/articles/29000039959), [MUNBYN](https://support.munbyn.com/hc/en-us/articles/6092502480787-Printer-Drivers-SDK-Download), and [Brother](https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=lpql1110nwbeus), checked October 28, 2026.
+Platform sources linked in the sections above were reviewed October 29, 2026. We have not logged into seller accounts or physically printed their labels. Model-specific instructions remain available from [Rollo](https://support.rollo.com/support/solutions/articles/29000039959), [MUNBYN](https://support.munbyn.com/hc/en-us/articles/6092502480787-Printer-Drivers-SDK-Download), and [Brother](https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=lpql1110nwbeus).
+
+[Compare the exact models](/compare/) and [estimate printing costs](/cost-calculator/) only after confirming that the label can reach your chosen device and printer.

@@ -18,6 +18,8 @@ const routes = [
   '/guides/choose-label-printer/',
   '/printers/rollo-wireless/',
   '/privacy/',
+  '/about/',
+  '/contact/',
   '/affiliate-disclosure/',
 ];
 async function get(route) {

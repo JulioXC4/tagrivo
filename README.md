@@ -45,11 +45,11 @@ React hydrates only the interactive tools. The home Finder invitation is a nativ
 
 ## Product research and recommendations
 
-The initial catalog covers Rollo Wireless X1040, MUNBYN ITPP941 **USB / 203 dpi**, and Brother QL-1110NWB. Source documentation was checked on October 28, 2026. Read the public methodology for the precise recommendation rules. This is document research, not hands-on testing.
+The initial catalog covers Rollo Wireless X1040, MUNBYN ITPP941 **USB / 203 dpi**, and Brother QL-1110NWB. Source documentation was reviewed on October 29, 2026. Read the public methodology for the precise recommendation rules. This is document research, not hands-on testing.
 
 Rollo's Bluetooth-assisted setup is not treated as direct Bluetooth label printing. Mobile USB and unverified Mac/mobile Bluetooth combinations are excluded. OS categories do not promise compatibility with every release. ChromeOS extension requirements and Brother's NWB/NWBc distinctions remain explicit.
 
-Only Brother had a verified dated hardware price in this research pass ($334.99). The Finder excludes that model when the reference exceeds the cap, and clearly flags unknown-price models as needing a price check. It does not invent a price to complete a recommendation. Volume changes batch/media guidance, not an unsupported durability rating.
+Dated US manufacturer references are Rollo $279.99 (October 29, 2026) and Brother $334.99 (October 28, 2026). These are not live offers. MUNBYN's exact USB variant still has no verified price. The Finder excludes a known reference above the cap and flags unknown prices. Windows ARM restrictions, carrier-specific formats and exact platform-supported model names must be checked independently of a general OS or marketplace category. Volume changes batch/media guidance, not an unsupported durability rating.
 
 Calculator defaults are illustrative assumptions. It models one label per order, 52 weeks per year, whole-label rounding after accounting for waste, and a one-time hardware purchase. Consumption is valued proportionally; whole-pack outlay may be higher. It excludes postage, tax, repairs, energy, subscriptions, financing and labor.
 
@@ -63,7 +63,7 @@ Calculator defaults are illustrative assumptions. It models one label per order,
 
 ### Add an article
 
-Create a Markdown file under `src/content/guides/` with title, description, category, date, readingTime and optional featured flag. The file name becomes its URL. Use `##` headings for the automatic table of contents. Cite manufacturer evidence, distinguish opinion from facts, and do not add test claims unless actual test evidence exists.
+Create a Markdown file under `src/content/guides/` with title, description, category, date, readingTime and optional featured flag. Use `updated` for the actual revision date and optional `seoTitle` for a specific search title. Keep the original publication date. The file name becomes its URL. Use `##` headings for the automatic table of contents. Cite manufacturer evidence, distinguish opinion from facts, and do not add test claims unless actual test evidence exists.
 
 ## Amazon Associates
 
@@ -85,10 +85,16 @@ Indexing is disabled by default with HTML metadata and an HTTP header generated 
 
 ## Before public launch
 
-- Confirm the production domain and operator contact details; add a real corrections/privacy contact to About and Privacy. No address or email was invented.
+- Tagrivo is the public name of the independent editorial project, not a claim of incorporation. Legal operator/data-controller details and a dedicated public contact address remain pending. About, Contact and the provisional privacy notice state this without publishing invented names, addresses or emails. Complete and review these details before enabling indexing.
 - Review the supplied privacy and disclosure copy against the actual operator, jurisdiction, hosting and data practices. The current edition has no accounts, analytics, ad pixels or submission forms.
 - Confirm publication rights for manufacturer photographs. Public availability is not a blanket image license; replace with your own/authorized photos if needed. Sources are documented in `ASSET-SOURCES.md`.
 - Recheck specifications, OS releases, exact retailer variants, availability, and the dated hardware price.
 - Activate affiliate links only after enrollment and proper product mapping.
 
 The application stores only a theme preference (`tagrivo-theme`) in local storage. Finder answers and calculator inputs stay in memory; selected platform/printer IDs may appear in shareable URLs. There are no third-party font requests or image hotlinks.
+
+## Google readiness and measurement
+
+`PUBLIC_GOOGLE_SITE_VERIFICATION` optionally renders an actual HTML verification token supplied by the owner for a Search Console URL-prefix property. Set only the token in Cloudflare's Production environment and rebuild; do not paste a whole meta tag or invent an ID. Verification does not remove noindex. Keep `SITE_INDEXING=disabled` until editorial, contact and photograph permissions are resolved. No Search Console account, ownership verification or indexing request is performed by the source code.
+
+Analytics remains inactive. Manufacturer/affiliate CTAs expose `data-link-kind` and `data-printer-id` as future measurement selectors; these attributes do not collect or send data. Choose and configure a real analytics destination, review privacy/consent requirements and verify events before claiming click tracking works. Cloudflare Web Analytics currently does not support custom events; GA4 enhanced measurement can record outbound link clicks but requires actual account setup. Do not enable two beacons for the same property or send Finder inputs as event parameters.

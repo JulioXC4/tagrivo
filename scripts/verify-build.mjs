@@ -33,12 +33,28 @@ for (const file of htmlFiles) {
   if (title) titles.add(title);
   if (description) descriptions.add(description);
   if ((html.match(/<h1[\s>]/g) || []).length !== 1) failures.push(`${file}: expected one h1`);
+  for (const anchor of html.matchAll(/href="#([^"\s]+)"/g)) {
+    if (!html.includes(`id="${decodeURIComponent(anchor[1])}"`))
+      failures.push(`${file}: broken section link #${anchor[1]}`);
+  }
   for (const match of html.matchAll(
     /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
   )) {
     try {
       const data = JSON.parse(match[1]);
       if (!data['@context'] || !data['@type']) failures.push(`${file}: incomplete structured data`);
+      if (
+        data['@type'] === 'Article' &&
+        (!data.author ||
+          !data.datePublished ||
+          !data.dateModified ||
+          new Date(data.dateModified) < new Date(data.datePublished))
+      )
+        failures.push(`${file}: incomplete or inconsistent article dates/author`);
+      if (data['@type'] === 'Product' && (data.review || data.aggregateRating || data.offers))
+        failures.push(
+          `${file}: initial research catalog must not imply verified reviews or live offers`,
+        );
     } catch {
       failures.push(`${file}: invalid structured-data JSON`);
     }

@@ -3,7 +3,9 @@ title: How to choose a 4 × 6 label printer
 description: Start with your devices and label workflow. Then compare connectivity, media costs, and the trade-offs that affect your shipping desk.
 category: Buying guide
 date: 2026-10-28
-readingTime: 7
+updated: 2026-10-29
+seoTitle: '4 × 6 Thermal Label Printers for Small US Sellers'
+readingTime: 4
 featured: true
 ---
 
@@ -24,6 +26,7 @@ If your workflow begins with full-page documents, check how you will extract the
 A dedicated Windows or Mac packing station can be well suited to USB. If you move between a laptop and a phone, a documented Wi-Fi workflow may matter more than raw print speed.
 
 - **Windows or macOS:** verify the exact OS release on the manufacturer's support page and whether a driver is needed.
+- **Windows on ARM:** check processor architecture separately from the Windows version. [Rollo's current setup documentation](https://support.rollo.com/support/solutions/articles/29000039959) states that its Windows driver does not support ARM-based computers. A generic-driver workaround is not equivalent to verified full manufacturer-driver support.
 - **iPhone or iPad:** look for documented AirPrint or a suitable manufacturer-app workflow. A Bluetooth logo alone is insufficient.
 - **Android:** confirm how your shipping PDF reaches the printer. App support and label-size limits can differ.
 - **ChromeOS:** check whether printing uses a network connection or a Chrome extension and whether your device permits that extension.
@@ -62,9 +65,9 @@ These are use-case starting points, not universal winners. [Compare all three](/
 
 ## Sources and verification
 
-Specifications checked October 28, 2026:
+Specifications and setup caveats reviewed October 29, 2026:
 
 - [Rollo Wireless product page](https://www.rollo.com/product/rollo-wireless-printer/)
 - [MUNBYN ITPP941 USB specifications](https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/)
-- [Brother QL-1110NWB product page](https://www.brother-usa.com/products/ql1110nwb)
+- [Brother QL-1110NWB product page](https://www.brother-usa.com/p/desktop-label-printers/QL1110NWB)
 - [Brother current support and model variants](https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=lpql1110nwbeus)

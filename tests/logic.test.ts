@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { recommend, type FinderAnswers } from '../src/lib/recommend.ts';
 import { calculateCosts } from '../src/lib/costs.ts';
 import { amazonLink } from '../src/lib/affiliate.ts';
+import { printers, getConnectionLabels } from '../src/data/printers.ts';
 const baseline: FinderAnswers = {
   platform: 'Etsy',
   os: 'windows',
@@ -114,4 +115,33 @@ test('affiliate URL requires a real configured tag and valid ASIN', () => {
     amazonLink('B012345678', 'example-20'),
     'https://www.amazon.com/dp/B012345678?tag=example-20',
   );
+});
+
+test('dated Rollo price excludes it from a lower cap while unknown MUNBYN pricing stays conditional', () => {
+  const result = recommend({ ...baseline, connection: 'wifi', budget: 200 });
+  assert.equal(result.matches.length, 0);
+  assert.ok(
+    result.excluded.some(
+      (printer) => printer.name === 'Rollo Wireless' && printer.reason.includes('279.99'),
+    ),
+  );
+  const usb = recommend({ ...baseline, connection: 'usb', budget: 200 });
+  assert.equal(usb.matches[0].printer.id, 'munbyn-itpp941');
+  assert.ok(usb.matches[0].cautions.some((text) => text.includes('price is unverified')));
+});
+
+test('the catalog supplies Ethernet consistently and retains Windows ARM caveats in recommendations', () => {
+  const brother = printers.find((printer) => printer.id === 'brother-ql1110nwb')!;
+  assert.ok(getConnectionLabels(brother).includes('Ethernet'));
+  const rollo = recommend(baseline).matches.find((match) => match.printer.id === 'rollo-wireless')!;
+  assert.ok(rollo.cautions.some((text) => text.includes('ARM')));
+  assert.ok(rollo.cautions.some((text) => text.includes('October 29, 2026')));
+});
+
+test('platform notes distinguish carrier restrictions and exact Shopify model support', () => {
+  assert.match(recommend(baseline).platformNote, /USPS/);
+  const shopify = recommend({ ...baseline, platform: 'Shopify' }).platformNote;
+  assert.match(shopify, /X1038/);
+  assert.match(shopify, /X1040/);
+  assert.ok(printers.every((printer) => printer.price === null || printer.priceChecked));
 });

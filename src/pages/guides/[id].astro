@@ -10,7 +10,8 @@ export async function getStaticPaths() {
 }
 const { guide } = Astro.props;
 const { Content, headings } = await render(guide);
-const date = guide.data.date.toLocaleDateString('en-US', {
+const reviewed = guide.data.updated || guide.data.date;
+const date = reviewed.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -22,7 +23,7 @@ const schema = {
   headline: guide.data.title,
   description: guide.data.description,
   datePublished: guide.data.date.toISOString(),
-  dateModified: guide.data.date.toISOString(),
+  dateModified: reviewed.toISOString(),
   author: {
     '@type': 'Organization',
     name: 'Tagrivo Editorial',
@@ -36,7 +37,7 @@ const schema = {
 ---
 
 <Base
-  title={guide.data.title}
+  title={guide.data.seoTitle || guide.data.title}
   description={guide.data.description}
   schema={schema}
   ogType="article"
@@ -54,7 +55,10 @@ const schema = {
       <p>{guide.data.description}</p>
       <div class="article-meta">
         <span>By Tagrivo Editorial</span>
-        <time datetime={guide.data.date.toISOString()}>{date}</time>
+        <time datetime={reviewed.toISOString()}>
+          {guide.data.updated ? 'Updated ' : ''}
+          {date}
+        </time>
         <span>{guide.data.readingTime} min read</span>
       </div>
     </header>

@@ -1,5 +1,6 @@
 ---
 import Editorial from '../layouts/Editorial.astro';
+import { catalogCheckedLabel } from '../data/printers';
 ---
 
 <Editorial
@@ -17,9 +18,9 @@ import Editorial from '../layouts/Editorial.astro';
     key specifications, source URLs, and a last-checked date.
   </p>
   <p>
-    The current catalog was checked on October 28, 2026. Documentation can change. Driver
-    availability and supported OS releases must be checked again before purchase. Manufacturer-rated
-    speeds are not independently measured results.
+    The current catalog was checked on {catalogCheckedLabel}. Price references have their own dates.
+    Documentation can change. Driver availability and supported OS releases must be checked again
+    before purchase. Manufacturer-rated speeds are not independently measured results.
   </p>
   <h2>How the shortlist is selected</h2>
   <p>

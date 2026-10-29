@@ -3,7 +3,9 @@ title: USB, Wi-Fi, or Bluetooth?
 description: Wireless is not a single feature. Choose the connection that matches your device, application, and packing setup.
 category: Compatibility
 date: 2026-10-28
-readingTime: 5
+updated: 2026-10-29
+seoTitle: 'USB vs Wi-Fi vs Bluetooth Shipping Label Printers'
+readingTime: 3
 ---
 
 The connection label on a product page tells only part of the story. A printer can include Bluetooth for setup while printing over Wi-Fi. Another can support mobile printing only through a particular app.
@@ -14,7 +16,7 @@ The right choice starts with the device and application that will send your ship
 
 USB can suit a dedicated computer on a packing desk. The printer connects directly to that computer, with no wireless network involved in the print path.
 
-Check the driver, operating-system release, connector, and cable. A USB port does not establish that a model supports direct printing from a phone. A shared USB printer may also depend on the connected computer remaining on.
+Check the driver, operating-system release, processor architecture, connector, and cable. Rollo's setup documentation specifically warns about its Windows ARM driver restriction. A USB port does not establish that a model supports direct printing from a phone. A shared USB printer may also depend on the connected computer remaining on.
 
 The [MUNBYN ITPP941 USB](/printers/munbyn-itpp941/) entry here is the wired 203 dpi variant. Its current manufacturer download table lists Windows and Mac drivers plus a Chrome extension. This should not be confused with the 941 Bluetooth or AirPrint models.
 
@@ -49,7 +51,7 @@ If your internet connection fails, network printing and buying postage are separ
 
 ## Sources and verification
 
-Checked October 28, 2026:
+Reviewed October 29, 2026:
 
 - [Rollo wireless setup](https://support.rollo.com/support/solutions/articles/29000039959)
 - [MUNBYN current driver table](https://support.munbyn.com/hc/en-us/articles/6092502480787-Printer-Drivers-SDK-Download)

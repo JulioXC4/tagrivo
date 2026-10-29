@@ -1,5 +1,5 @@
 ---
-import { printers, type Printer } from '../data/printers';
+import { printers, getConnectionLabels, type Printer } from '../data/printers';
 import Icon from './Icon.astro';
 interface Props {
   printer: Printer;
@@ -37,11 +37,7 @@ const alternative = printers.find((printer) => printer.id !== p.id)!;
       </div>
       <div>
         <dt>Connection</dt>
-        <dd>
-          {p.connections
-            .map((c) => ({ usb: 'USB', wifi: 'Wi-Fi', bluetooth: 'Bluetooth' })[c])
-            .join(' · ')}
-        </dd>
+        <dd>{getConnectionLabels(p).join(' · ')}</dd>
       </div>
       <div class="media-spec">
         <dt>Label stock</dt>

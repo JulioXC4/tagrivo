@@ -3,7 +3,8 @@ title: Rollo Wireless vs. Brother QL-1110NWB
 description: 'Two different approaches to shipping labels: open media and wireless flexibility, or 300 dpi with a cutter and DK rolls.'
 category: Model comparison
 date: 2026-10-28
-readingTime: 5
+updated: 2026-10-29
+readingTime: 2
 ---
 
 Both printers can belong on a shipping desk, but the decision is more useful when framed around workflow than a single “best” label. This is a specification-based comparison, not a hands-on review.
@@ -30,7 +31,7 @@ They also introduce different considerations: price compatible DK rolls by usabl
 
 We have not measured scan reliability, setup time, long-term failure rates, or customer support responsiveness. Resolution alone cannot establish any of those outcomes.
 
-We also do not have verified live prices for both products. Brother's official page listed $334.99 when checked October 28, 2026; this is a dated reference, not an offer. Get current quotes before comparing ownership cost.
+Neither figure here is a live offer: Rollo's US manufacturer page showed $279.99 when reviewed October 29, 2026; Brother's $334.99 reference dates to October 28, 2026. Obtain current totals, including tax and delivery, before comparing ownership cost. Also check your processor: Rollo documents a Windows ARM driver restriction.
 
 ## Make the comparison your own
 
@@ -38,9 +39,9 @@ Open the [side-by-side comparison](/compare/?printers=rollo-wireless,brother-ql1
 
 ## Sources and verification
 
-Checked October 28, 2026:
+Specifications and setup evidence reviewed October 29, 2026; price-reference dates are stated separately above:
 
 - [Rollo Wireless specifications](https://www.rollo.com/product/rollo-wireless-printer/)
 - [Rollo setup requirements](https://support.rollo.com/support/solutions/articles/29000039959)
-- [Brother QL-1110NWB specifications](https://www.brother-usa.com/products/ql1110nwb)
+- [Brother QL-1110NWB specifications](https://www.brother-usa.com/p/desktop-label-printers/QL1110NWB)
 - [Brother user guide](https://download.brother.com/welcome/docp100364/ql-1110nwb_use_ug_03.pdf)

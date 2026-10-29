@@ -2,6 +2,7 @@ import {
   printers,
   systemNames,
   connectionNames,
+  getConnectionLabels,
   type OperatingSystem,
   type Connection,
 } from '../data/printers.ts';
@@ -36,7 +37,7 @@ export function recommend(answers: FinderAnswers) {
       const reasons = [
         `The manufacturer documents a ${systemNames[answers.os]} workflow.`,
         answers.connection === 'any'
-          ? `Offers ${printer.connections.map((c) => connectionNames[c]).join(' and ')}.`
+          ? `Offers ${getConnectionLabels(printer).join(', ')}.`
           : `Supports your preferred ${connectionNames[answers.connection]} connection.`,
       ];
       const cautions = [printer.setup];
@@ -46,7 +47,7 @@ export function recommend(answers: FinderAnswers) {
         );
       else
         cautions.push(
-          `The $${printer.price} reference fits your budget, but it was checked on October 28, 2026. Confirm today's offer.`,
+          `The $${printer.price} dated reference is within your cap. ${printer.priceNote}`,
         );
       if (answers.volume >= 250) {
         reasons.push(
@@ -70,9 +71,15 @@ export function recommend(answers: FinderAnswers) {
       return [{ printer, reasons, cautions, connectionExtras, batchMedia }];
     })
     .sort((a, b) => a.connectionExtras - b.connectionExtras || b.batchMedia - a.batchMedia);
+  const platformGuidance: Record<string, string> = {
+    Etsy: 'Etsy currently describes 4 × 6 formatting for USPS labels; confirm the format for your carrier and service. Rollo recommends a computer-browser route and documents Etsy-app limitations. Printer compatibility does not establish that every Etsy label or app route works.',
+    Shopify:
+      'Shopify distinguishes its supported models from a general PDF workflow. Its list names Brother QL-1110NWB and Rollo X1038; the latter is a different model from our Wireless X1040. Confirm the exact device and app rather than inferring official support from a brand name.',
+    eBay: 'eBay documents a 4 × 6 label format in its label-printing workflow. Check the carrier/service format, PDF size and printer settings; do not assume every eBay label type has identical requirements.',
+  };
   return {
     matches,
     excluded,
-    platformNote: `For ${answers.platform}, download a correctly sized 4 × 6 PDF label and use a supported print workflow. Platform choice changes setup guidance, not the hardware ranking; no native marketplace integration is assumed.`,
+    platformNote: `${platformGuidance[answers.platform] || 'Obtain a correctly sized shipping-label PDF and confirm that your device and application can print it.'} Platform choice changes guidance, not the hardware ranking. See our platform workflow guide for official sources.`,
   };
 }

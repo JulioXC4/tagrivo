@@ -1,7 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
-import { printers, systemNames, connectionNames } from '../../data/printers';
+import {
+  printers,
+  systemNames,
+  getConnectionLabels,
+  formatResearchDate,
+} from '../../data/printers';
 import { amazonLink } from '../../lib/affiliate';
 export function getStaticPaths() {
   return printers.map((printer) => ({ params: { id: printer.id }, props: { printer } }));
@@ -62,7 +67,7 @@ const schema = {
         <h1>{p.name}</h1>
         <p>{p.description}</p>
         <p class="small-note">
-          {p.model} · Manufacturer specifications checked October 28, 2026.
+          {p.model} · Manufacturer specifications checked {formatResearchDate(p.checked)}.
           <br />
           Research-based analysis. We have not hands-on tested this printer.
         </p>
@@ -77,10 +82,7 @@ const schema = {
           </div>
           <div>
             <dt>Connections</dt>
-            <dd>
-              {p.connections.map((c) => connectionNames[c]).join(' · ')}
-              {p.id === 'brother-ql1110nwb' ? ' · Ethernet' : ''}
-            </dd>
+            <dd>{getConnectionLabels(p).join(' · ')}</dd>
           </div>
           <div>
             <dt>Media</dt>
@@ -94,11 +96,20 @@ const schema = {
               class="button"
               target="_blank"
               rel="sponsored nofollow noopener noreferrer"
+              data-link-kind="affiliate"
+              data-printer-id={p.id}
             >
-              View on Amazon <Icon name="external" size={18} />
+              View on Amazon (paid link) <Icon name="external" size={18} />
             </a>
           ) : (
-            <a href={p.sources[0].url} class="button" target="_blank" rel="noopener noreferrer">
+            <a
+              href={p.sources[0].url}
+              class="button"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-link-kind="manufacturer"
+              data-printer-id={p.id}
+            >
               Visit the manufacturer <Icon name="external" size={18} />
             </a>
           )}

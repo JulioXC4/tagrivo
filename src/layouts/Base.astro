@@ -12,7 +12,7 @@ interface Props {
   ogType?: 'website' | 'article';
 }
 const {
-  title = 'Thermal Label Printer Reviews & Comparisons',
+  title = 'Thermal Label Printer Buying Guides & Comparisons',
   description = 'Find the right label printer for your small business. Compare features, compatibility and long-term printing costs.',
   image = '/images/editorial-hero.webp',
   noindex = false,
@@ -22,6 +22,11 @@ const {
 const site = Astro.site!;
 const preventIndexing = noindex || !import.meta.env.SITE_INDEXABLE;
 const canonical = new URL(Astro.url.pathname, site);
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+if (googleVerification && !/^[A-Za-z0-9_-]{10,200}$/.test(googleVerification))
+  throw new Error(
+    'PUBLIC_GOOGLE_SITE_VERIFICATION must contain only the genuine HTML verification token, not a whole meta tag.',
+  );
 const navigation = [
   ['Printer Finder', '/printer-finder/'],
   ['Compare', '/compare/'],
@@ -37,6 +42,7 @@ const navigation = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tagrivo — {title}</title>
     <meta name="description" content={description} />
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
@@ -154,6 +160,7 @@ const navigation = [
         </p>
         <nav aria-label="Footer">
           <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="/methodology/">Editorial methodology</a>
           <a href="/affiliate-disclosure/">Affiliate disclosure</a>
           <a href="/privacy/">Privacy</a>

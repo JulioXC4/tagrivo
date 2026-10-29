@@ -148,14 +148,14 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
           Confirm the exact model, OS release, and print app before buying.
         </div>
         <p className="small-note" style={{ marginTop: 20 }}>
-          {platformNote}
+          {platformNote} <a href="/guides/etsy-shopify-ebay/">Read the platform workflow guide.</a>
         </p>
         {!matches.length ? (
           <div className="empty-result">
             <h3>No verified match in this catalog.</h3>
             <p>
-              We won’t substitute an incompatible printer. Try Wi-Fi for mobile printing, change
-              your budget, or review the excluded models below.
+              We won’t substitute an incompatible printer. Review the reasons below before changing
+              your connection or budget. A different setup may expand the shortlist.
             </p>
             <button className="button" onClick={() => setDone(false)}>
               Adjust my answers <ArrowLeft size={18} />

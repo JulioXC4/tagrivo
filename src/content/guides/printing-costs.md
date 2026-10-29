@@ -3,7 +3,9 @@ title: What a shipping label really costs
 description: Separate postage from printing, price your exact label stock, and build a useful estimate for the way your business ships.
 category: Costs explained
 date: 2026-10-28
-readingTime: 6
+updated: 2026-10-29
+seoTitle: 'Shipping Label Printing Costs: Hardware, Media & Waste'
+readingTime: 4
 ---
 
 The cost to print a shipping label is different from the cost to send the package. Postage pays for transport. Printing pays for the hardware, media, and other resources used to put the address and barcode on the parcel.
@@ -44,7 +46,7 @@ Direct-thermal printing avoids ink cartridges and toner, but it is not “free p
 
 ## Know what the estimate leaves out
 
-Our calculator excludes postage, taxes, electricity, repairs, financing, subscription services, and staff time. Those exclusions keep the comparison understandable, but they can matter to your business.
+Our calculator excludes postage, taxes, electricity, repairs, financing, subscription services, and staff time. Those exclusions keep the comparison understandable, but they can matter to your business. Include delivery in a media quote if you want it represented; the tool does not add delivery automatically.
 
 If a label workflow saves packing time, measure that in your own operation rather than adopting a claimed universal saving. A larger business may care more about handling interruptions than a few cents of media cost.
 
@@ -60,4 +62,4 @@ Then return to the practical question: does the printer support the devices and 
 
 ## Sources and verification
 
-The arithmetic and examples above are Tagrivo's explicitly stated planning model. Media-format facts were checked October 28, 2026 against [Rollo](https://www.rollo.com/product/rollo-wireless-printer/), [MUNBYN](https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/), and [Brother](https://www.brother-usa.com/products/ql1110nwb). No live consumable prices are represented.
+The arithmetic and examples above are Tagrivo's explicitly stated planning model, reviewed October 29, 2026 against the calculator implementation. Media-format facts use [Rollo](https://www.rollo.com/product/rollo-wireless-printer/), [MUNBYN](https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/), and [Brother](https://www.brother-usa.com/p/desktop-label-printers/QL1110NWB). No live consumable prices are represented.
