@@ -36,6 +36,12 @@ For multiple years, the hardware purchase occurs once. The average cost per orde
 
 Our [cost calculator](/cost-calculator/) uses 52 weeks per year, one shipping label per order, and your selected period. It values consumed labels proportionally; the checkout total for buying whole packs can be higher.
 
+## Separate consumption from the cash you need
+
+Continue the hypothetical $20-for-500 example with 1,000 orders and 3% waste. The 1,031 consumed labels have a proportional cost of $41.24. But buying whole packs requires three packs, or $60 upfront, leaving 469 labels for later. These are arithmetic examples, not current retailer quotes.
+
+The calculator reports consumption, which helps compare equal periods. Your purchasing budget also needs enough cash for the packs you must actually order. Compare both when a supplier has a minimum order or when two printers use different roll formats. Do not interpret unused labels as a second hardware charge or assume they are wasted automatically.
+
 ## Compare the right consumables
 
 The Rollo Wireless and MUNBYN USB models in our catalog use generic direct-thermal stock. Brother's QL-1110NWB uses DK-format media. Do not give every printer the same label price unless those quotes actually reflect compatible stock.
@@ -57,6 +63,8 @@ The calculator is a planning tool, not a prediction of what a retailer will char
 Run at least two scenarios: a normal week and a busy week. Use the actual media quote for each printer. If you are unsure about waste, compare a low and higher rate. You will see which assumption changes the decision most.
 
 Then return to the practical question: does the printer support the devices and print workflow you need? A lower estimated cost cannot repair an incompatible setup.
+
+Our [Rollo Wireless versus MUNBYN USB comparison](/guides/rollo-wireless-vs-munbyn-itpp941-usb/) applies that principle without claiming an unverified MUNBYN price or universal savings from USB.
 
 [Calculate your own estimate](/cost-calculator/) or [compare the printer specifications](/compare/).
 

@@ -89,7 +89,7 @@ Cloudflare publica **solo `dist`**, no la raíz ni `public` directamente. La sal
 
 - Confirma derechos de publicación de las tres fotografías comerciales; sus enlaces de origen y créditos no constituyen una licencia. Se conserva la fotografía aprobada, pero el permiso sigue pendiente.
 - Las especificaciones tienen fuentes y fecha; no se presentan como pruebas físicas. El detalle exacto de variante y versión del sistema operativo debe confirmarse antes de comprar. La documentación de Rollo indica una limitación de su driver para Windows ARM.
-- Los precios no son ofertas en vivo. El catálogo conserva referencias de Rollo ($279.99, 29 de octubre de 2026) y Brother ($334.99, 28 de octubre de 2026); MUNBYN sigue sin precio verificado para la variante USB exacta. Una cifra fechada no se convierte automáticamente en una oferta actual del recomendador.
+- Los precios no son ofertas en vivo. El catálogo conserva referencias de Rollo ($279.99) y Brother ($334.99) del 29 de octubre de 2026; la página Brother marcaba falta de stock en esa consulta. MUNBYN sigue sin precio verificado para la variante USB exacta. Una cifra fechada no se convierte automáticamente en una oferta actual del recomendador.
 - No hay enlaces de compra Amazon activos. Solo se activarán tras afiliación real, tag auténtico y ASIN verificado por variante. La declaración y `rel="sponsored nofollow noopener noreferrer"` ya están preparados.
 - Antes de indexar, confirma el origen canónico, el responsable legal y un contacto real, revisa prácticas de privacidad y resuelve los permisos editoriales. El origen actual pages.dev no exige comprar un dominio. No actives analítica, píxeles ni formularios sin revisar de nuevo esa declaración.
 

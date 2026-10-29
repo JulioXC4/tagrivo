@@ -1,5 +1,6 @@
 ---
 import Editorial from '../layouts/Editorial.astro';
+import { analytics } from '../config/integrations';
 ---
 
 <Editorial
@@ -12,15 +13,16 @@ import Editorial from '../layouts/Editorial.astro';
   <p class="helper">
     <strong>Provisional notice for a preview edition.</strong> This page describes the current
     implementation; it is not presented as a finalized legal privacy policy. Tagrivo is the
-    editorial brand. The legal operator/data controller, an appropriate public contact channel and
-    the applicable policy details are pending definition and review. Search indexing remains
+    editorial brand, developed as a project of JC Labs, a personal brand for digital projects. JC
+    Labs is not presented as a legally incorporated company. The legal operator/data controller and
+    the applicable policy details remain pending definition and review. Search indexing remains
     disabled.
   </p>
   <h2>The information you enter</h2>
   <p>
     The Printer Finder and cost calculator run in your browser. This edition has no account system,
-    database, submission form, advertising pixel, or analytics integration. Finder answers and
-    calculator inputs are not submitted to a Tagrivo server by these tools.
+    database, submission form, or advertising pixel. Finder answers and calculator inputs are not
+    submitted to a Tagrivo server by these tools.
   </p>
   <p>
     Closing or refreshing a tool normally resets its inputs. The selected platform can be included
@@ -34,7 +36,45 @@ import Editorial from '../layouts/Editorial.astro';
     <strong>tagrivo-theme</strong>. This is not an advertising identifier. You can remove it through
     your browser's site-data controls. If local storage is unavailable, the site still works.
   </p>
-  <p>We do not set advertising or analytics cookies in this edition.</p>
+  <p>We do not set advertising cookies in this edition.</p>
+  <h2>Optional analytics</h2>
+  {analytics.enabled ? (
+    <>
+      <p>
+        Google Analytics is optional and loads only after you allow it. It records page visits and
+        clicks on identified product links. Our events omit query strings, fragments, referrer
+        values and tool answers. Product-click events include only the public printer ID, link type
+        and destination hostname. Google receives technical request information and can use
+        analytics cookies after permission; this is not anonymous or cookie-free measurement.
+      </p>
+      <p>
+        Your choice is stored on this device for up to 30 days. This implementation disables Google
+        advertising signals and personalization, respects Do Not Track and Global Privacy Control,
+        and does not load the Google tag when you decline. Use{' '}
+        <a href="#analytics-preferences" data-analytics-settings>
+          Analytics preferences
+        </a>{' '}
+        to change your choice. Declining after permission removes this integration's host cookies
+        and reloads the page to unload it. In-flight requests or data already received cannot be
+        undone here.
+      </p>
+      <p>
+        Google processes data under its{' '}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          privacy policy
+        </a>
+        . The operator must supply the applicable legal basis, retention, rights and required legal
+        details before presenting this notice as final.
+      </p>
+    </>
+  ) : (
+    <p>
+      Optional analytics is disabled. The prepared integration does not load Google Analytics or set
+      analytics cookies in this edition. Activating it requires a real measurement destination,
+      operator review of the applicable privacy policy and a reader's permission. Required legal
+      details remain pending; no tracking has been switched on to prepare this page.
+    </p>
+  )}
   <h2>Fonts, images, and downloaded estimates</h2>
   <p>
     Site fonts and displayed images are served as site assets rather than loaded from an external
@@ -62,6 +102,19 @@ import Editorial from '../layouts/Editorial.astro';
     local tools. Affiliate links, if enabled, can support referral attribution; see our{' '}
     <a href="/affiliate-disclosure/">affiliate disclosure</a>.
   </p>
+  <h2>Contact and email messages</h2>
+  <p>
+    For privacy enquiries or editorial correspondence, email{' '}
+    <a href="mailto:hello.jclabs@gmail.com">hello.jclabs@gmail.com</a>. If you email us, your sender
+    address, message and any attachments are received through the Gmail mailbox to review and
+    respond to your request. The website has no message-submission form. Avoid sending shipping
+    labels, customer addresses, credentials or other unnecessary private information.
+  </p>
+  <p>
+    This public contact address does not replace the legal operator/data-controller information
+    still to be supplied. The applicable legal basis, retention and rights procedure for
+    correspondence remain part of the pending policy review.
+  </p>
   <h2>Changes to this policy</h2>
   <p>
     If this site adds data collection, analytics, forms, or advertising, the policy needs to
@@ -69,8 +122,8 @@ import Editorial from '../layouts/Editorial.astro';
     this edition.
   </p>
   <p>
-    See <a href="/contact/">contact and corrections</a> for the status of the public contact
-    channel. No personal name, address or unverified email is supplied as a substitute for the
-    pending operator information.
+    See <a href="/contact/">contact and corrections</a> for editorial guidance. No personal name,
+    postal address or company-registration details have been supplied as a substitute for the
+    pending legal information.
   </p>
 </Editorial>

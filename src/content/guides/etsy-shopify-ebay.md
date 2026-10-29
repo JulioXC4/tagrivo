@@ -22,11 +22,15 @@ Check the current label-format options in your marketplace account. The exact la
 
 For Rollo specifically, its [Etsy workflow guidance](https://support.rollo.com/support/solutions/articles/29000051037-print-etsy-shipping-labels-to-your-rollo-browser-and-etsy-app-limitations-) directs printing through a computer web browser and describes Etsy-app limitations. An iPhone-compatible printer does not establish that the Etsy app will expose the same shipping-label print path. Confirm that route before selecting a printer for a phone-only shop.
 
+If a label prints too small or loses an edge, use the [Etsy sizing checklist](/guides/etsy-4x6-label-size/) before replacing hardware. The source PDF, print-dialog paper size and physical stock are separate checks.
+
 ## Shopify: supported models and PDF printing are different checks
 
 The [Shopify-supported printer table](https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/shipping-labels/label-printers/supported-printers) names exact models. It includes **Brother QL-1110NWB** and a **Rollo X1038** entry. X1038 is not the Wireless X1040 in Tagrivo's catalog.
 
 Treat a model appearing on that table, a manufacturer saying it can print Shopify labels, and your computer printing a downloaded PDF as three distinct pieces of evidence. For a supported-model starting point in our current shortlist, examine [Brother's documented setup](/printers/brother-ql1110nwb/); for another model, verify the intended computer or mobile route rather than transferring support from a brand name.
+
+The [Shopify model guide](/guides/shopify-label-printer-models/) develops that distinction for the current shortlist without presenting every manufacturer as officially supported.
 
 ## eBay: select the service's label format
 

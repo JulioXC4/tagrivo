@@ -143,9 +143,9 @@ export const printers: Printer[] = [
     media: 'Brother DK die-cut or continuous rolls',
     cutter: true,
     price: 334.99,
-    priceChecked: '2026-10-28',
+    priceChecked: '2026-10-29',
     priceNote:
-      'Manufacturer listed $334.99 on October 28, 2026. A dated reference, not a current offer.',
+      'Manufacturer page showed $334.99 and marked this model out of stock on October 29, 2026. A dated US reference, not a live offer; confirm variant, availability, tax and delivery.',
     strengths: [
       '300 dpi resolution',
       'Automatic cutter',
@@ -155,6 +155,7 @@ export const printers: Printer[] = [
       'Uses DK-format media; compare the exact cost per label',
       'AirPrint uses the network, not Bluetooth',
       'Check current OS support and distinguish NWB from NWBc variants',
+      'Automatic Crop is documented for Windows only',
     ],
     setup:
       'Check the current Brother support matrix for your OS release. AirPrint requires a wired or wireless network connection. Mobile printing is app- and label-format-dependent; a Bluetooth interface alone does not guarantee printing from every app.',
@@ -174,6 +175,10 @@ export const printers: Printer[] = [
       {
         label: 'Current operating-system support',
         url: 'https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=lpql1110nwbeus',
+      },
+      {
+        label: 'Brother supported OS and NWB/NWBc exceptions',
+        url: 'https://support.brother.com/g/b/oslist.aspx?c=us&lang=en&prod=lpql1110nwbeus',
       },
     ],
     imageSource:

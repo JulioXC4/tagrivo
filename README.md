@@ -49,7 +49,7 @@ The initial catalog covers Rollo Wireless X1040, MUNBYN ITPP941 **USB / 203 dpi*
 
 Rollo's Bluetooth-assisted setup is not treated as direct Bluetooth label printing. Mobile USB and unverified Mac/mobile Bluetooth combinations are excluded. OS categories do not promise compatibility with every release. ChromeOS extension requirements and Brother's NWB/NWBc distinctions remain explicit.
 
-Dated US manufacturer references are Rollo $279.99 (October 29, 2026) and Brother $334.99 (October 28, 2026). These are not live offers. MUNBYN's exact USB variant still has no verified price. The Finder excludes a known reference above the cap and flags unknown prices. Windows ARM restrictions, carrier-specific formats and exact platform-supported model names must be checked independently of a general OS or marketplace category. Volume changes batch/media guidance, not an unsupported durability rating.
+Dated US manufacturer references are Rollo $279.99 and Brother $334.99 (October 29, 2026). Brother's page marked the model out of stock at that check. These are not live offers. MUNBYN's exact USB variant still has no verified price. The Finder excludes a known reference above the cap and flags unknown prices. Windows ARM restrictions, carrier-specific formats and exact platform-supported model names must be checked independently of a general OS or marketplace category. Volume changes batch/media guidance, not an unsupported durability rating.
 
 Calculator defaults are illustrative assumptions. It models one label per order, 52 weeks per year, whole-label rounding after accounting for waste, and a one-time hardware purchase. Consumption is valued proportionally; whole-pack outlay may be higher. It excludes postage, tax, repairs, energy, subscriptions, financing and labor.
 
@@ -85,16 +85,20 @@ Indexing is disabled by default with HTML metadata and an HTTP header generated 
 
 ## Before public launch
 
-- Tagrivo is the public name of the independent editorial project, not a claim of incorporation. Legal operator/data-controller details and a dedicated public contact address remain pending. About, Contact and the provisional privacy notice state this without publishing invented names, addresses or emails. Complete and review these details before enabling indexing.
+- Tagrivo is an independent editorial project developed under JC Labs, the creator's personal brand for digital projects. The authorized public contact is `hello.jclabs@gmail.com`. Neither brand is presented as an incorporated company. Legal operator/data-controller details and policy review remain pending; complete them before enabling indexing.
 - Review the supplied privacy and disclosure copy against the actual operator, jurisdiction, hosting and data practices. The current edition has no accounts, analytics, ad pixels or submission forms.
 - Confirm publication rights for manufacturer photographs. Public availability is not a blanket image license; replace with your own/authorized photos if needed. Sources are documented in `ASSET-SOURCES.md`.
 - Recheck specifications, OS releases, exact retailer variants, availability, and the dated hardware price.
 - Activate affiliate links only after enrollment and proper product mapping.
 
-The application stores only a theme preference (`tagrivo-theme`) in local storage. Finder answers and calculator inputs stay in memory; selected platform/printer IDs may appear in shareable URLs. There are no third-party font requests or image hotlinks.
+With optional analytics disabled, the application stores only a theme preference (`tagrivo-theme`) in local storage. Finder answers and calculator inputs stay in memory; selected platform/printer IDs may appear in shareable URLs. There are no third-party font requests or image hotlinks.
 
 ## Google readiness and measurement
 
 `PUBLIC_GOOGLE_SITE_VERIFICATION` optionally renders an actual HTML verification token supplied by the owner for a Search Console URL-prefix property. Set only the token in Cloudflare's Production environment and rebuild; do not paste a whole meta tag or invent an ID. Verification does not remove noindex. Keep `SITE_INDEXING=disabled` until editorial, contact and photograph permissions are resolved. No Search Console account, ownership verification or indexing request is performed by the source code.
 
-Analytics remains inactive. Manufacturer/affiliate CTAs expose `data-link-kind` and `data-printer-id` as future measurement selectors; these attributes do not collect or send data. Choose and configure a real analytics destination, review privacy/consent requirements and verify events before claiming click tracking works. Cloudflare Web Analytics currently does not support custom events; GA4 enhanced measurement can record outbound link clicks but requires actual account setup. Do not enable two beacons for the same property or send Finder inputs as event parameters.
+Follow [SEARCH-CONSOLE.md](SEARCH-CONSOLE.md) to verify the exact `https://tagrivo.pages.dev/` URL-prefix property personally using the prepared HTML-tag method, without sharing Google credentials.
+
+Analytics remains inactive. An optional GA4 adapter uses manufacturer/affiliate CTAs marked with `data-link-kind` and `data-printer-id`. To activate later, supply a genuine `PUBLIC_GA4_MEASUREMENT_ID`, complete policy review and explicitly set both `PUBLIC_ANALYTICS_POLICY_APPROVED=true` and `PUBLIC_ANALYTICS_ENABLED=true`. No Google tag loads before reader consent. DNT/GPC prevent measurement; page events omit query strings/referrers and product events contain only public model/type/hostname. No tool answers are sent. Test actual reception before claiming tracking works. See [MEASUREMENT.md](MEASUREMENT.md).
+
+Ten guides are maintained in the content collection; see [CONTENT-AUDIT.md](CONTENT-AUDIT.md) for intent, sources and scope. Follow the two-group [launch checklist](LAUNCH-CHECKLIST.md) before enabling indexing. [MONETIZATION-PERU.md](MONETIZATION-PERU.md) records the manual account, tax, payment and product-mapping requirements for Amazon.com Associates from Peru. No analytics account, legal identity or affiliate ID was invented.

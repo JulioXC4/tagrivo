@@ -2,9 +2,8 @@
 import Editorial from '../layouts/Editorial.astro';
 import { printers } from '../data/printers';
 import { amazonLink } from '../lib/affiliate';
-const active = printers.some((p) =>
-  amazonLink(p.asin, import.meta.env.PUBLIC_AMAZON_ASSOCIATE_TAG),
-);
+import { amazonAssociateTag } from '../config/integrations';
+const active = printers.some((p) => amazonLink(p.asin, amazonAssociateTag));
 ---
 
 <Editorial
@@ -12,7 +11,7 @@ const active = printers.some((p) =>
   description="A clear explanation of affiliate links, editorial independence, and what a purchase through a link can mean."
 >
   <p>
-    <strong>Last updated: October 28, 2026.</strong>
+    <strong>Last updated: October 29, 2026.</strong>
   </p>
   <p>
     Tagrivo is intended to be supported by affiliate commissions. When you follow an identified
@@ -76,5 +75,9 @@ const active = printers.some((p) =>
       Amazon Associates Operating Agreement
     </a>
     .
+  </p>
+  <p>
+    For questions about a commercial link or this disclosure, email{' '}
+    <a href="mailto:hello.jclabs@gmail.com">hello.jclabs@gmail.com</a>.
   </p>
 </Editorial>

@@ -32,6 +32,16 @@ Brother's [US website terms](https://www.brother-usa.com/terms-of-use) expressly
 
 Record the licensor, exact asset/model, date, permitted uses, territory, required credit and the actual permission document when resolved. No manufacturer has been contacted by this project.
 
+### Options while permissions remain unresolved
+
+The three product photographs remain pending; no newly licensed exact-model replacement was verified during this review. Do not label an arbitrary stock printer as X1040, ITPP941 USB or QL-1110NWB. Keep the existing assets only with the operator's awareness of this unresolved status, and resolve rights for the already-public preview as well as before indexing.
+
+Preferred alternatives are owner-created photographs of the exact physical models with documented photographer permission, or a written manufacturer/media-kit license covering Tagrivo's editorial and future affiliate use. If neither is available, propose an original editorial still life or code-native connection diagram, clearly captioned as an illustration rather than a product photograph. The existing original editorial hero is available for generic editorial use; it does not identify any commercial model. No AI replica or unrelated stock photo should fill a product-identification slot.
+
+Permission request draft (not sent): “Tagrivo is an independent editorial publication at https://tagrivo.pages.dev/. May we republish the specified product image for model [exact model] in buying guides and comparisons, including future affiliate-supported pages? Please confirm the licensor, permitted territory/duration, resizing/cropping rights, attribution requirements and any restrictions.” Replace the bracket with the actual asset/model, and retain the response. Do not infer permission from a lack of reply.
+
+Manual browser review on October 29 confirmed access to Rollo's product page, MUNBYN's driver table and Shopify's supported-model list despite earlier HTTP 403 results from the automated checker. Access to those pages does not establish image-republication rights.
+
 ## Typography and icons
 
 - DM Serif Display and DM Sans via Fontsource; their license files ship in the packages.

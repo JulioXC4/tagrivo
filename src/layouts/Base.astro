@@ -3,6 +3,8 @@ import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import displayFont from '@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2?url';
 import bodyFont from '@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2?url';
+import { analytics } from '../config/integrations';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 interface Props {
   title?: string;
   description?: string;
@@ -164,12 +166,18 @@ const navigation = [
           <a href="/methodology/">Editorial methodology</a>
           <a href="/affiliate-disclosure/">Affiliate disclosure</a>
           <a href="/privacy/">Privacy</a>
+          {analytics.enabled && (
+            <a href="#analytics-preferences" data-analytics-settings>
+              Analytics preferences
+            </a>
+          )}
         </nav>
       </div>
       <p class="copyright">
         © {new Date().getFullYear()} Tagrivo. Made for small businesses with big plans.
       </p>
     </footer>
+    {analytics.enabled && <AnalyticsConsent />}
     <script>
       const themeButtons = document.querySelectorAll<HTMLButtonElement>('.theme-toggle');
       function updateThemeLabels() {

@@ -1,0 +1,40 @@
+---
+import { analytics } from '../config/integrations';
+import { printers } from '../data/printers';
+const productHosts = Object.fromEntries(
+  printers.map((p) => [p.id, new URL(p.sources[0].url).hostname]),
+);
+---
+
+<section
+  id="analytics-preferences"
+  class="helper wrap"
+  aria-labelledby="analytics-heading"
+  data-measurement-id={analytics.measurementId}
+  data-product-hosts={JSON.stringify(productHosts)}
+  hidden
+>
+  <h2 id="analytics-heading" tabindex="-1" style="font-size:24px">
+    Optional analytics
+  </h2>
+  <p>
+    With your permission, Google Analytics measures page visits and product-link clicks. We omit URL
+    parameters and tool answers from these events. Google still receives technical request
+    information. Declining keeps these analytics off. Read the{' '}
+    <a href="/privacy/">privacy notice</a>.
+  </p>
+  <div class="hero-actions">
+    <button type="button" class="button" data-analytics-accept>
+      Allow analytics
+    </button>
+    <button type="button" class="button" data-analytics-reject>
+      Decline analytics
+    </button>
+  </div>
+  <p role="status" aria-live="polite" data-analytics-status></p>
+</section>
+
+<script>
+  import { initAnalytics } from '../scripts/analytics';
+  initAnalytics();
+</script>

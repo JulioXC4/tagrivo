@@ -49,6 +49,8 @@ If your internet connection fails, network printing and buying postage are separ
 
 [Compare the connection options](/compare/) or [check your setup in the Finder](/printer-finder/).
 
+For the next check, use the [Mac/Windows driver and CPU guide](/guides/mac-windows-label-printer-compatibility/) or [iPhone/Android print-route guide](/guides/iphone-android-shipping-labels/). Those articles address the device; this guide addresses the connection. Neither a cable nor a radio interface substitutes for supported software.
+
 ## Sources and verification
 
 Reviewed October 29, 2026:

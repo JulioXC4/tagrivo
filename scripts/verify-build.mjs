@@ -1,6 +1,8 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { deployment } from './deployment-env.mjs';
+import { resolveAnalyticsConfig } from '../src/lib/analytics.ts';
+const analytics = resolveAnalyticsConfig(process.env);
 const root = path.resolve('dist');
 async function files(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -17,6 +19,8 @@ const htmlFiles = all.filter((f) => f.endsWith('.html'));
 const failures = [];
 const titles = new Set();
 const descriptions = new Set();
+const canonicals = new Set();
+const articleBodies = new Set();
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
@@ -24,6 +28,24 @@ for (const file of htmlFiles) {
   const canonical = html.match(/rel="canonical"\s+href="([^"]*)"/)?.[1];
   if (!canonical || new URL(canonical).origin !== deployment.site)
     failures.push(`${file}: incorrect deployment canonical`);
+  if (canonical) {
+    const relative = path.relative(root, file).replaceAll('\\', '/');
+    const expectedPath =
+      relative === 'index.html'
+        ? '/'
+        : relative === '404.html'
+          ? '/404/'
+          : `/${relative.replace(/index\.html$/, '')}`;
+    const url = new URL(canonical);
+    if (url.pathname !== expectedPath || url.search || url.hash)
+      failures.push(`${file}: canonical must identify this route without query/fragment`);
+    if (canonicals.has(canonical)) failures.push(`${file}: duplicate canonical`);
+    canonicals.add(canonical);
+  }
+  if (!analytics.enabled && html.includes('id="analytics-preferences"'))
+    failures.push(`${file}: analytics controls must be absent while integration is disabled`);
+  if (/src="https:\/\/www\.googletagmanager\.com/.test(html))
+    failures.push(`${file}: Google tag must not load before browser consent`);
   if (!deployment.indexable && !html.includes('content="noindex, nofollow"'))
     failures.push(`${file}: preview must be noindex`);
   if (/tagrivo\.com/.test(html) && !deployment.site.includes('tagrivo.com'))
@@ -51,6 +73,16 @@ for (const file of htmlFiles) {
           new Date(data.dateModified) < new Date(data.datePublished))
       )
         failures.push(`${file}: incomplete or inconsistent article dates/author`);
+      if (data['@type'] === 'Article') {
+        const body = html
+          .match(/<div class="prose">([\s\S]*?)<\/div>/)?.[1]
+          ?.replace(/<[^>]+>/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (!body || articleBodies.has(body))
+          failures.push(`${file}: missing or duplicated article body`);
+        if (body) articleBodies.add(body);
+      }
       if (data['@type'] === 'Product' && (data.review || data.aggregateRating || data.offers))
         failures.push(
           `${file}: initial research catalog must not imply verified reviews or live offers`,
@@ -100,6 +132,11 @@ if (!deployment.indexable) {
   if (headers.includes('X-Robots-Tag: noindex')) failures.push('Production unexpectedly noindex');
   if (!robots.includes(`${deployment.site}/sitemap-index.xml`))
     failures.push('Incorrect sitemap origin');
+  const sitemap = await readFile(path.join(root, 'sitemap-0.xml'), 'utf8');
+  for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+    if (!canonicals.has(match[1]) || /\/404(?:\.html|\/)?$/.test(match[1]))
+      failures.push(`Sitemap includes a noncanonical or error page: ${match[1]}`);
+  }
 }
 for (const file of all) {
   const relative = path.relative(root, file).replaceAll('\\', '/');

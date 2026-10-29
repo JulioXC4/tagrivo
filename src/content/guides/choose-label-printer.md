@@ -63,6 +63,8 @@ The [printing cost calculator](/cost-calculator/) combines a hardware quote with
 
 These are use-case starting points, not universal winners. [Compare all three](/compare/) and read the setup caveats before deciding.
 
+Before ordering, keep the exact SKU, OS/CPU, connection, print application and compatible-label quote together. Read our [Mac and Windows compatibility checklist](/guides/mac-windows-label-printer-compatibility/) or [phone-printing guide](/guides/iphone-android-shipping-labels/) for the device you will actually use. A brand name alone is not a purchase specification.
+
 ## Sources and verification
 
 Specifications and setup caveats reviewed October 29, 2026:

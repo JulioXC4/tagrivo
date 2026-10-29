@@ -8,11 +8,12 @@ import {
   formatResearchDate,
 } from '../../data/printers';
 import { amazonLink } from '../../lib/affiliate';
+import { amazonAssociateTag } from '../../config/integrations';
 export function getStaticPaths() {
   return printers.map((printer) => ({ params: { id: printer.id }, props: { printer } }));
 }
 const { printer: p } = Astro.props;
-const affiliate = amazonLink(p.asin, import.meta.env.PUBLIC_AMAZON_ASSOCIATE_TAG);
+const affiliate = amazonLink(p.asin, amazonAssociateTag);
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
