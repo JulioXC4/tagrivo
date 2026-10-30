@@ -28,7 +28,7 @@ Five-step Finder; two/three-printer comparison; cost calculator; sourced product
 
 ## Brand Commitments
 
-The user selected the first green Editorial Premium concept and explicitly requested implementation without new proposals. Preserve elegant serif typography, white surfaces, deep pine, generous whitespace, and “Print smarter. Ship better.” The October 29, 2026 image update replaces manufacturer photographs with original, clearly disclosed conceptual illustrations of printing workflows. Never present them as pictures of the actual named models. Preserve the existing functional tools and verified product data.
+The user selected the first green Editorial Premium concept and explicitly requested implementation without new proposals. Preserve elegant serif typography, white surfaces, deep pine, generous whitespace, and “Print smarter. Ship better.” The revised October 29, 2026 image brief rejects abstract sculptures and uses recognizable AI editorial studio renders based on each manufacturer's reference photograph. Disclose the generation and possible visual differences; never call them official photographs or rights-cleared merely because they were generated. Preserve existing tools and verified product data.
 
 ## Evidence on Hand
 

@@ -167,7 +167,7 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
               <div>
                 <img src={p.image} alt={p.imageAlt} width="220" height="220" />
                 <p className="small-note editorial-image-caption">
-                  Editorial illustration · not the actual product.
+                  Editorial render based on manufacturer references.
                 </p>
               </div>
               <div>

@@ -8,9 +8,27 @@ The user selected the first green Editorial Premium concept in the original desi
 
 `public/images/editorial-hero.webp` was generated with the built-in Image Generator from the selected reference. It is a generic editorial still life, not a commercial printer. The generation prompt and original raster remain in the local, Git-ignored `design-assets/` folder. Only the optimized WebP is published.
 
-## Current product-area illustrations — October 29, 2026
+## Current product studio renders — October 29, 2026
 
-At the owner's request, the three manufacturer photographs have been replaced by original AI-generated editorial category illustrations made with the built-in Image Generator. No manufacturer photographs or real-product references were supplied to the generator. The illustrations are deliberately abstract architectural paper/ceramic sculptures with blank ribbons, no logos, model numbers, barcodes or copied hardware controls. They do not depict the actual named products or establish their appearance or functionality.
+The owner rejected the abstract series and requested much closer product recognition. The current three visuals are AI-generated editorial studio renders made with the built-in Image Generator, each using its corresponding manufacturer photograph as a visual reference. They preserve the general silhouette, proportions, material contrast and front paper path, with fresh front-left perspective, studio lighting, blank paper and no manufacturer lettering. They are generated interpretations, not official photographs or exact hardware documentation.
+
+| Published file                                                   | Reference                                           | Studio treatment                                            |
+| ---------------------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------- |
+| `public/images/products/editorial-rollo-wireless-render.webp`    | Retained Rollo Wireless photograph listed below     | Broad white body, dark label outlet, restrained violet trim |
+| `public/images/products/editorial-munbyn-itpp941-render.webp`    | Retained MUNBYN ITPP941 photograph listed below     | Black lid, compact white body, blank outgoing label         |
+| `public/images/products/editorial-brother-ql1110nwb-render.webp` | Retained Brother QL-1110NWB photograph listed below | Curved dark cover, light gray base and front control row    |
+
+All three are 1000 × 1000 WebP files, converted with FFmpeg at quality 86. Original generated PNGs and the exact prompt set remain in the ignored `design-assets/editorial-renders-2026-10-29/` folder. The built-in generator received only the respective product reference; no abstract image was used as a reference. One coherent neutral studio direction was generated and selected, rather than multiple design alternatives.
+
+Cards and thumbnails say “Editorial render based on manufacturer references.” Product details, methodology, alt text and social-image alt metadata explicitly identify AI generation and possible visual differences. Real product facts and recommendations remain independent of the rendering. Product JSON-LD continues to omit `image` to avoid treating generated interpretation as exact product evidence.
+
+The original manufacturer files remain outside `public/`. The superseded abstract assets are also removed from the current build. Exact 302 rules route both sets of former image URLs to the corresponding new render, avoiding Cloudflare's retained-asset behavior. Older Git history and immutable deployments are not purged.
+
+**Rights status remains pending review.** Transforming a manufacturer reference with AI is not, by itself, proof of a republication license, copyright clearance or freedom from other rights. No written authorization was supplied and no manufacturer was contacted. The new images are not documented as rights-cleared merely because their composition, lighting or branding differs. Keep noindex and the remaining launch review in place.
+
+## Superseded abstract series — historical record
+
+The first replacement used original AI-generated editorial category illustrations without manufacturer references: abstract architectural paper/ceramic sculptures with blank ribbons. The owner rejected this direction. The following records describe that superseded series, not the current visuals.
 
 | Published file                                             | Editorial concept                                          | Used alongside, not depicting |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ----------------------------- |

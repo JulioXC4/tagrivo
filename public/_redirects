@@ -1,6 +1,10 @@
 # Serve Google's exact .html verification URL without Pages' extension redirect.
 /google7bb345f95d638147.html /google7bb345f95d638147 200
 # Override Pages asset retention for the retired manufacturer-photo URLs.
-/images/products/rollo-wireless.webp /images/products/editorial-wireless-workspace.webp 302
-/images/products/munbyn-itpp941.jpg /images/products/editorial-wired-workspace.webp 302
-/images/products/brother-ql1110nwb.webp /images/products/editorial-network-workspace.webp 302
+/images/products/rollo-wireless.webp /images/products/editorial-rollo-wireless-render.webp 302
+/images/products/munbyn-itpp941.jpg /images/products/editorial-munbyn-itpp941-render.webp 302
+/images/products/brother-ql1110nwb.webp /images/products/editorial-brother-ql1110nwb-render.webp 302
+# Retire the superseded abstract illustrations without retained assets resurfacing.
+/images/products/editorial-wireless-workspace.webp /images/products/editorial-rollo-wireless-render.webp 302
+/images/products/editorial-wired-workspace.webp /images/products/editorial-munbyn-itpp941-render.webp 302
+/images/products/editorial-network-workspace.webp /images/products/editorial-brother-ql1110nwb-render.webp 302

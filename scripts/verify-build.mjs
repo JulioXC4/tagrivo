@@ -16,9 +16,9 @@ async function files(dir) {
 }
 const all = await files(root);
 const expectedProductArt = [
-  'editorial-wireless-workspace.webp',
-  'editorial-wired-workspace.webp',
-  'editorial-network-workspace.webp',
+  'editorial-rollo-wireless-render.webp',
+  'editorial-munbyn-itpp941-render.webp',
+  'editorial-brother-ql1110nwb-render.webp',
 ];
 const verificationName = 'google7bb345f95d638147.html';
 const verificationFile = path.join(root, verificationName);
@@ -30,7 +30,7 @@ if (
   productArt.length !== expectedProductArt.length ||
   productArt.some((file) => !expectedProductArt.includes(file))
 )
-  failures.push('Product assets must contain only the three original editorial illustrations');
+  failures.push('Product assets must contain only the three current editorial studio renders');
 const originalVerification = await readFile(path.resolve('public', verificationName));
 const deployedVerification = await readFile(verificationFile);
 if (!originalVerification.equals(deployedVerification))
@@ -39,12 +39,17 @@ if (originalVerification.toString('utf8') !== `google-site-verification: ${verif
   failures.push('Google verification file has an unexpected payload');
 const redirects = await readFile(path.join(root, '_redirects'), 'utf8');
 const retiredPhotoRedirects = [
-  '/images/products/rollo-wireless.webp /images/products/editorial-wireless-workspace.webp 302',
-  '/images/products/munbyn-itpp941.jpg /images/products/editorial-wired-workspace.webp 302',
-  '/images/products/brother-ql1110nwb.webp /images/products/editorial-network-workspace.webp 302',
+  '/images/products/rollo-wireless.webp /images/products/editorial-rollo-wireless-render.webp 302',
+  '/images/products/munbyn-itpp941.jpg /images/products/editorial-munbyn-itpp941-render.webp 302',
+  '/images/products/brother-ql1110nwb.webp /images/products/editorial-brother-ql1110nwb-render.webp 302',
+  '/images/products/editorial-wireless-workspace.webp /images/products/editorial-rollo-wireless-render.webp 302',
+  '/images/products/editorial-wired-workspace.webp /images/products/editorial-munbyn-itpp941-render.webp 302',
+  '/images/products/editorial-network-workspace.webp /images/products/editorial-brother-ql1110nwb-render.webp 302',
 ];
 if (retiredPhotoRedirects.some((rule) => !redirects.split(/\r?\n/).includes(rule)))
-  failures.push('Retired photo URLs must redirect to editorial art to override Pages asset retention');
+  failures.push(
+    'Retired photo URLs must redirect to editorial art to override Pages asset retention',
+  );
 if (
   !redirects.split(/\r?\n/).includes(`/${verificationName} /${verificationName.slice(0, -5)} 200`)
 )
@@ -61,10 +66,12 @@ for (const file of htmlFiles) {
     )
   )
     failures.push(`${file}: retired manufacturer photograph referenced`);
+  if (/images\/products\/editorial-(?:wireless|wired|network)-workspace\.webp/.test(html))
+    failures.push(`${file}: superseded abstract illustration referenced`);
   const productVisuals = [...html.matchAll(/<img\b[^>]*src="\/images\/products\/[^>]*>/g)];
   if (
-    productVisuals.some(([tag]) => !/alt="[^"]*editorial illustration[^"]*"/i.test(tag)) ||
-    (productVisuals.length && !/Editorial illustration/i.test(html))
+    productVisuals.some(([tag]) => !/alt="[^"]*AI-generated editorial render[^"]*"/i.test(tag)) ||
+    (productVisuals.length && !/Editorial render/i.test(html))
   )
     failures.push(
       `${file}: editorial product imagery needs honest alt text and a visible disclosure`,
@@ -75,7 +82,7 @@ for (const file of htmlFiles) {
   ) {
     if (
       !/property="og:image" content="[^"]*\/images\/products\/editorial-/.test(html) ||
-      !/property="og:image:alt" content="[^"]*editorial illustration/i.test(html)
+      !/property="og:image:alt" content="[^"]*AI-generated editorial render/i.test(html)
     )
       failures.push(`${file}: product Open Graph must identify original editorial art`);
   }
@@ -144,7 +151,9 @@ for (const file of htmlFiles) {
           `${file}: initial research catalog must not imply verified reviews or live offers`,
         );
       if (data['@type'] === 'Product' && data.image)
-        failures.push(`${file}: conceptual art must not be declared as an actual Product image`);
+        failures.push(
+          `${file}: generated editorial art must not be declared as an exact Product image`,
+        );
     } catch {
       failures.push(`${file}: invalid structured-data JSON`);
     }

@@ -34,9 +34,9 @@ export const printers: Printer[] = [
     brand: 'Rollo',
     name: 'Rollo Wireless',
     model: 'X1040',
-    image: '/images/products/editorial-wireless-workspace.webp',
+    image: '/images/products/editorial-rollo-wireless-render.webp',
     imageAlt:
-      'Original editorial illustration of an abstract wireless printing workflow; not the Rollo X1040 or its actual appearance.',
+      'AI-generated editorial render of Rollo Wireless X1040, based on manufacturer reference imagery; details may vary.',
     fit: 'For a flexible, wireless workspace',
     description:
       'A compact Wi-Fi option for sellers who switch between a computer and a phone. Standard direct-thermal media keeps your label choices open.',
@@ -81,9 +81,9 @@ export const printers: Printer[] = [
     brand: 'MUNBYN',
     name: 'MUNBYN ITPP941',
     model: 'USB · 203 dpi version',
-    image: '/images/products/editorial-wired-workspace.webp',
+    image: '/images/products/editorial-munbyn-itpp941-render.webp',
     imageAlt:
-      'Original editorial illustration of an abstract wired printing workflow; not the MUNBYN ITPP941 or its actual appearance.',
+      'AI-generated editorial render of MUNBYN ITPP941, based on manufacturer reference imagery; details may vary.',
     fit: 'For a dedicated desktop setup',
     description:
       'A straightforward USB model for a fixed packing desk. Choose this exact wired variant if you want a computer connection without wireless setup.',
@@ -131,9 +131,9 @@ export const printers: Printer[] = [
     brand: 'Brother',
     name: 'Brother QL-1110NWB',
     model: 'Network label printer',
-    image: '/images/products/editorial-network-workspace.webp',
+    image: '/images/products/editorial-brother-ql1110nwb-render.webp',
     imageAlt:
-      'Original editorial illustration of an abstract network printing workflow; not the Brother QL-1110NWB or its actual appearance.',
+      'AI-generated editorial render of Brother QL-1110NWB, based on manufacturer reference imagery; details may vary.',
     fit: 'For networking and finer detail',
     description:
       'A 300 dpi printer with an automatic cutter and multiple connection options. Its DK-roll system needs a different consumables calculation from generic fanfold models.',
