@@ -32,6 +32,7 @@ const rows: { label: string; get: (p: Printer) => string }[] = [
   { label: 'Main trade-off', get: (p) => p.limitations[0] },
 ];
 export default function Compare() {
+  const [ready, setReady] = useState(false);
   const [ids, setIds] = useState(['rollo-wireless', 'munbyn-itpp941', '']);
   const [differences, setDifferences] = useState(false);
   const [copyState, setCopyState] = useState('Copy comparison link');
@@ -40,6 +41,7 @@ export default function Compare() {
   const [waste, setWaste] = useState(3);
   const [quotes, setQuotes] = useState<Record<string, { hardware: string; label: string }>>({});
   useEffect(() => {
+    setReady(true);
     const requested = [
       ...new Set(
         (new URLSearchParams(location.search).get('printers') || '')
@@ -103,7 +105,7 @@ export default function Compare() {
       : 'Check your planning inputs';
   }
   return (
-    <section aria-label="Interactive printer comparison">
+    <section aria-label="Interactive printer comparison" data-compare-ready={ready}>
       <div className="compare-controls">
         {ids.map((id, index) => (
           <label className="field" key={index}>
@@ -111,6 +113,7 @@ export default function Compare() {
             <select
               className="compare-select"
               value={id}
+              disabled={!ready}
               onChange={(e) => select(index, e.currentTarget.value)}
             >
               {index === 2 ? <option value="">Add a third printer</option> : null}
@@ -130,6 +133,7 @@ export default function Compare() {
       <div className="compare-actions" style={{ marginTop: 0, marginBottom: 22 }}>
         <button
           className="plain-button"
+          disabled={!ready}
           aria-expanded={showCosts}
           aria-controls="comparison-cost-settings"
           onClick={() => {
@@ -174,6 +178,7 @@ export default function Compare() {
       <label className="comparison-options">
         <input
           type="checkbox"
+          disabled={!ready}
           checked={differences}
           onChange={(e) => {
             announceToolUse('comparison_used');
@@ -304,12 +309,18 @@ export default function Compare() {
         </table>
       </div>
       <div className="compare-actions">
-        <button className="button secondary" aria-label={copyState} onClick={copy}>
+        <button
+          className="button secondary"
+          aria-label={copyState}
+          onClick={copy}
+          disabled={!ready}
+        >
           {copyState === 'Link copied' ? <Check size={18} /> : <Copy size={18} />}
           <span role="status">{copyState}</span>
         </button>
         <button
           className="plain-button"
+          disabled={!ready}
           onClick={() => {
             announceToolUse('comparison_used');
             window.print();
