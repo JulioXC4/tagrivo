@@ -38,6 +38,13 @@ if (!originalVerification.equals(deployedVerification))
 if (originalVerification.toString('utf8') !== `google-site-verification: ${verificationName}`)
   failures.push('Google verification file has an unexpected payload');
 const redirects = await readFile(path.join(root, '_redirects'), 'utf8');
+const retiredPhotoRedirects = [
+  '/images/products/rollo-wireless.webp /images/products/editorial-wireless-workspace.webp 302',
+  '/images/products/munbyn-itpp941.jpg /images/products/editorial-wired-workspace.webp 302',
+  '/images/products/brother-ql1110nwb.webp /images/products/editorial-network-workspace.webp 302',
+];
+if (retiredPhotoRedirects.some((rule) => !redirects.split(/\r?\n/).includes(rule)))
+  failures.push('Retired photo URLs must redirect to editorial art to override Pages asset retention');
 if (
   !redirects.split(/\r?\n/).includes(`/${verificationName} /${verificationName.slice(0, -5)} 200`)
 )

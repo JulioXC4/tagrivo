@@ -24,6 +24,8 @@ Cards, listings, Finder, comparison and product details disclose the illustrativ
 
 The former photograph files are removed from `public/` and the current Git tree. Local archival copies remain outside the build in the ignored directory above; older Git commits/deployments may still contain the previous assets. The current build verifies an allowlist of the three editorial files and rejects former product-photo paths. No permission requests or affiliate applications were sent. Noindex and the provisional privacy notice remain in place; remaining legal/editorial launch conditions are separate.
 
+Cloudflare Pages initially continued serving the former URLs through its asset-retention behavior after deletion from the build. Three exact 302 rules in `public/_redirects` override those retained paths with the corresponding new editorial assets on the stable domain. These are routing safeguards, not continued copies of the old photographs. Historical immutable deployments and Git history are not purged by this replacement.
+
 ## Retired manufacturer photographs — historical provenance
 
 Retrieved October 28, 2026 and retired October 29, 2026. The following records describe the former assets, not images currently published by the site. No Amazon imagery was scraped or downloaded. These sources identify provenance, not a republication license.
