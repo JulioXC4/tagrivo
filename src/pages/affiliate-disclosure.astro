@@ -1,9 +1,5 @@
 ---
 import Editorial from '../layouts/Editorial.astro';
-import { printers } from '../data/printers';
-import { amazonLink } from '../lib/affiliate';
-import { amazonAssociateTag } from '../config/integrations';
-const active = printers.some((p) => amazonLink(p.asin, amazonAssociateTag));
 ---
 
 <Editorial
@@ -14,25 +10,21 @@ const active = printers.some((p) => amazonLink(p.asin, amazonAssociateTag));
     <strong>Last updated: October 29, 2026.</strong>
   </p>
   <p>
-    Tagrivo is intended to be supported by affiliate commissions. When you follow an identified
-    affiliate link and make a qualifying purchase, we may earn a commission. Tagrivo does not add a
-    fee to your purchase.
+    Tagrivo is supported in part by affiliate commissions. When you follow an identified affiliate
+    link and make a qualifying purchase, we may earn a commission. Tagrivo does not add a fee to
+    your purchase.
   </p>
-  {active ? (
-    <p>
-      <strong>As an Amazon Associate I earn from qualifying purchases.</strong>
-    </p>
-  ) : (
-    <p>
-      <strong>No Amazon affiliate purchase links are active in this edition.</strong> Product links
-      currently direct you to manufacturer information. We do not imply membership in an affiliate
-      program before it is configured.
-    </p>
-  )}
+  <p>
+    <strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+  </p>
+  <p>
+    Participation remains subject to Amazon's program requirements and review. These links do not
+    mean that Amazon endorses Tagrivo or has granted final approval of this website.
+  </p>
   <h2>How to recognize an affiliate link</h2>
   <p>
-    When enabled, Amazon purchase links carry an adjacent commission disclosure. Those links are
-    marked as sponsored in the page markup. A link to a manufacturer's specifications or support
+    Amazon purchase links are labeled <strong>Paid link</strong> beside the link text. Those links
+    are marked as sponsored in the page markup. A link to a manufacturer's specifications or support
     documentation is provided as evidence and is not an affiliate purchase link in this edition.
   </p>
   <h2>What commissions do not buy</h2>
@@ -66,7 +58,7 @@ const active = printers.some((p) => amazonLink(p.asin, amazonAssociateTag));
     >
       FTC's endorsement guidance
     </a>
-    . Amazon participation, if activated, is subject to the{' '}
+    . Amazon participation is subject to the{' '}
     <a
       href="https://affiliate-program.amazon.com/help/operating/agreement"
       target="_blank"

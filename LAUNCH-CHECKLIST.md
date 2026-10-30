@@ -2,6 +2,8 @@
 
 Preparado el 29 de octubre de 2026 (America/Lima). **Noindex se conserva.** Estas mejoras están preparadas en el proyecto; este trabajo no autoriza por sí mismo retirar noindex, activar medición ni presentar Privacy como definitiva. La marca pública es Tagrivo, proyecto editorial independiente; no se inventa una entidad legal.
 
+**Actualización de afiliación:** el titular autorizó un lanzamiento indexable condicionado a no tener bloqueos importantes. Se integró su Store ID real `tagrivo-20` con tres ASIN verificados documentalmente y declaraciones visibles; el alta y las entrevistas fiscales fueron confirmadas por él. **El gate legal sigue abierto:** no se ha autorizado publicar identidad y dirección del responsable natural, exigidas por la normativa consultada. Por eso no se cambia `SITE_INDEXING=disabled`, no se genera sitemap público y Privacy sigue provisional. País, finalidad del correo y regla de 12 meses ya están definidos. Ver [PRIVACY-OPERATIONS.md](PRIVACY-OPERATIONS.md) y [MONETIZATION-PERU.md](MONETIZATION-PERU.md).
+
 ## 1. Completado automáticamente
 
 - [x] Desarrolladas las cinco guías del plan: Mac/Windows/ARM, iPhone/Android, tamaño de etiquetas Etsy, modelos Shopify y Rollo Wireless frente a ITPP941 USB.
@@ -14,7 +16,7 @@ Preparado el 29 de octubre de 2026 (America/Lima). **Noindex se conserva.** Esta
 - [x] Meta opcional de Search Console preparada para un token auténtico.
 - [x] Integrado el correo real facilitado por el responsable, `hello.jclabs@gmail.com`, en Contact, About, Privacy, metodología y disclosure. JC Labs figura como marca personal detrás del proyecto, sin presentarla como sociedad constituida.
 - [x] Integración GA4 opcional preparada, apagada por defecto y con consentimiento previo. No se ha conectado una propiedad real ni se ha activado seguimiento. Ver [MEASUREMENT.md](MEASUREMENT.md).
-- [x] Amazon centralizado en `src/config/integrations.ts` a partir de `PUBLIC_AMAZON_ASSOCIATE_TAG`; ASIN por modelo exacto en el catálogo. Sin ambos datos válidos, no sale un enlace Amazon. Avisos y atributos de patrocinio ya preparados.
+- [x] Amazon centralizado en `src/data/amazon.ts` y `src/config/integrations.ts`: tag real y tres identidades verificadas, gate por producto y CTA común en Astro/React. Enlaces visibles con Paid link y atributos de patrocinio. Precios, disponibilidad y reseñas Amazon no se muestran ni se consultan mediante scraping.
 - [x] Fotografías oficiales y serie abstracta retiradas del build. La shortlist usa renders editoriales generados desde referencias de los modelos, con aviso de IA y posibles diferencias. Procedencia documentada en [ASSET-SOURCES.md](ASSET-SOURCES.md).
 
 El build y las pruebas se ejecutan antes de la entrega; su resultado concreto se indica en el resumen de QA. Un JSON-LD válido no garantiza resultados enriquecidos, ni una detección de duplicados exactos certifica originalidad en toda la web.
@@ -30,7 +32,9 @@ Verificación de esta edición: **25 pruebas aprobadas, TypeScript/Astro sin err
 - [ ] Revisar los derechos de las referencias y las variaciones editoriales generadas antes de autorizar el lanzamiento indexable. Generar una versión de estudio no acredita por sí solo licencia o autorización. Las fotos originales permanecen fuera del build; no se han solicitado permisos.
 - [ ] Aprobar las diez guías y las limitaciones de producto. Confirmar precio/SKU exacto de MUNBYN USB y los flujos que se quieran describir como probados; de lo contrario conservar las cautelas documentales.
 
-### B. Verificar Search Console, sin retirar todavía noindex
+### B. Search Console ya verificado por el titular; conservar prueba y noindex
+
+El titular confirma la propiedad verificada. El archivo original `google7bb345f95d638147.html` se conserva byte por byte en la raíz; no hace falta repetir el alta ni compartir credenciales. Los pasos siguientes se conservan como alternativa de recuperación; no ejecutarlos si la propiedad ya está verificada.
 
 1. En tu cuenta de Google, abre [Search Console](https://search.google.com/search-console/welcome) y crea una propiedad de **prefijo de URL** `https://tagrivo.pages.dev/`. No uses una propiedad DNS para el dominio padre `pages.dev`, que no controlas.
 2. Elige verificación por etiqueta HTML. Copia únicamente el token real a `PUBLIC_GOOGLE_SITE_VERIFICATION` de Cloudflare Pages **Production**; no una contraseña, JSON de cuenta de servicio ni el meta tag completo.
@@ -55,7 +59,7 @@ Procedimiento paso a paso y comprobación del HTML publicado: [SEARCH-CONSOLE.md
 ### D. Medición y monetización, cuando proceda
 
 - [ ] Crear una propiedad/stream GA4 real, revisar privacidad y seguir [MEASUREMENT.md](MEASUREMENT.md), incluidos consentimiento, rechazo, revocación, DNT/GPC y recepción efectiva de eventos. Se puede lanzar SEO sin activar GA4; no es requisito para que Google indexe.
-- [ ] Completar el alta de Amazon.com Associates y sus datos personales/fiscales/de cobro directamente en Amazon, siguiendo [MONETIZATION-PERU.md](MONETIZATION-PERU.md). No compartirlos en el chat ni en el repositorio.
-- [ ] Facilitar tag auténtico y ASIN exactos solo cuando estén disponibles; comprobar avisos adyacentes y enlaces reales antes de activar compra.
+- [x] Alta y entrevistas fiscales confirmadas por el titular; tag auténtico y tres ASIN verificados documentalmente integrados, con avisos y atributos seguros. No se afirma aprobación final de Amazon.
+- [ ] Completar método de cobro, confirmar el sitio declarado y seguir el plazo de revisión desde la cuenta, según [MONETIZATION-PERU.md](MONETIZATION-PERU.md). No compartir datos privados en el chat ni en el repositorio.
 
 Ni GA4 ni la afiliación son condiciones técnicas para recibir tráfico orgánico. Primero derechos, información real y contenido aprobado; después indexación autorizada y seguimiento con datos reales.

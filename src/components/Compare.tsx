@@ -11,6 +11,7 @@ import {
   type Printer,
 } from '../data/printers';
 import { calculateCosts } from '../lib/costs';
+import AmazonCTA from './AmazonCTA';
 
 const rows: { label: string; get: (p: Printer) => string }[] = [
   { label: 'Printing method', get: () => 'Direct thermal · black only' },
@@ -203,6 +204,7 @@ export default function Compare() {
                   <a className="text-link" href={`/printers/${p.id}/`}>
                     View analysis <ArrowRight size={15} />
                   </a>
+                  <AmazonCTA printerId={p.id} />
                 </th>
               ))}
             </tr>

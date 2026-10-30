@@ -12,17 +12,17 @@ En Cloudflare, abre **Workers & Pages → Create application → Continue to Pag
 2. Selecciona `tagrivo` y entra en la configuración del build.
 3. Configura lo siguiente:
 
-| Campo                | Valor                                                 |
-| -------------------- | ----------------------------------------------------- |
-| Rama de producción   | `main`                                                |
-| Framework            | Astro                                                 |
-| Directorio raíz      | raíz del repositorio; déjalo vacío                    |
-| Comando de build     | `npm run verify`                                      |
-| Directorio de salida | `dist`                                                |
-| Node                 | `NODE_VERSION=24` (también está en `.nvmrc`)          |
-| Indexación           | `SITE_INDEXING=disabled`                              |
-| Dominio inicial      | deja `PUBLIC_SITE_URL` sin definir en el primer build |
-| Amazon               | deja `PUBLIC_AMAZON_ASSOCIATE_TAG` sin definir        |
+| Campo                | Valor                                                                           |
+| -------------------- | ------------------------------------------------------------------------------- |
+| Rama de producción   | `main`                                                                          |
+| Framework            | Astro                                                                           |
+| Directorio raíz      | raíz del repositorio; déjalo vacío                                              |
+| Comando de build     | `npm run verify`                                                                |
+| Directorio de salida | `dist`                                                                          |
+| Node                 | `NODE_VERSION=24` (también está en `.nvmrc`)                                    |
+| Indexación           | `SITE_INDEXING=disabled`                                                        |
+| Dominio inicial      | deja `PUBLIC_SITE_URL` sin definir en el primer build                           |
+| Amazon               | `PUBLIC_AMAZON_ASSOCIATE_TAG=tagrivo-20` (opcional; coincide con el ID central) |
 
 4. Usa esos valores tanto en **Production** como en **Preview**. No definas manualmente `CF_PAGES`, `CF_PAGES_URL`, `CF_PAGES_BRANCH` ni `CF_PAGES_COMMIT_SHA`: los proporciona Cloudflare.
 5. Guarda y despliega usando el plan gratuito. Pages instala las dependencias del lockfile, ejecuta la auditoría, pruebas, TypeScript, build y verificación de salida. Un fallo detiene la publicación.
@@ -87,11 +87,11 @@ Cloudflare publica **solo `dist`**, no la raíz ni `public` directamente. La sal
 
 ## Revisión comercial pendiente
 
-- Confirma derechos de publicación de las tres fotografías comerciales; sus enlaces de origen y créditos no constituyen una licencia. Se conserva la fotografía aprobada, pero el permiso sigue pendiente.
+- Las fotografías comerciales fueron retiradas del build y sustituidas por los renders editoriales aprobados, identificados como IA y no como reproducciones exactas. No se afirma que generar una variación otorgue una licencia sobre referencias ajenas; conservar la revisión editorial de derechos documentada en ASSET-SOURCES.md.
 - Las especificaciones tienen fuentes y fecha; no se presentan como pruebas físicas. El detalle exacto de variante y versión del sistema operativo debe confirmarse antes de comprar. La documentación de Rollo indica una limitación de su driver para Windows ARM.
 - Los precios no son ofertas en vivo. El catálogo conserva referencias de Rollo ($279.99) y Brother ($334.99) del 29 de octubre de 2026; la página Brother marcaba falta de stock en esa consulta. MUNBYN sigue sin precio verificado para la variante USB exacta. Una cifra fechada no se convierte automáticamente en una oferta actual del recomendador.
-- No hay enlaces de compra Amazon activos. Solo se activarán tras afiliación real, tag auténtico y ASIN verificado por variante. La declaración y `rel="sponsored nofollow noopener noreferrer"` ya están preparados.
-- Antes de indexar, confirma el origen canónico, el responsable legal y un contacto real, revisa prácticas de privacidad y resuelve los permisos editoriales. El origen actual pages.dev no exige comprar un dominio. No actives analítica, píxeles ni formularios sin revisar de nuevo esa declaración.
+- Tres identidades Amazon verificadas documentalmente están configuradas en `src/data/amazon.ts` con el Store ID real `tagrivo-20`. CTA común con Paid link, declaración exacta de Amazon y `rel="sponsored nofollow noopener noreferrer"`. No se muestran precios/reseñas Amazon ni se hacen peticiones automáticas de afiliación. Ver MONETIZATION-PERU.md.
+- Antes de indexar, resolver la identidad y dirección exigibles del responsable natural y finalizar Privacy conforme a PRIVACY-OPERATIONS.md. País, correo y retención ya definidos. El build rechaza indexación si Privacy conserva su aviso provisional. SITE_INDEXING sigue disabled; GA4 sigue apagado. El origen pages.dev no exige comprar un dominio.
 
 ## Fuentes oficiales de despliegue
 

@@ -3,6 +3,7 @@ import { ArrowRightIcon as ArrowRight } from '@phosphor-icons/react/dist/csr/Arr
 import { ArrowLeftIcon as ArrowLeft } from '@phosphor-icons/react/dist/csr/ArrowLeft';
 import { ArrowCounterClockwiseIcon as ArrowCounterClockwise } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise';
 import { recommend, type FinderAnswers } from '../lib/recommend';
+import AmazonCTA from './AmazonCTA';
 import {
   systemNames,
   connectionNames,
@@ -206,6 +207,7 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
                     {eligibleIds.length > 1 ? 'Compare my matches' : 'Compare all models'}
                   </a>
                 </div>
+                <AmazonCTA printerId={p.id} />
               </div>
             </article>
           ))

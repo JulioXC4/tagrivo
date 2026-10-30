@@ -2161,6 +2161,42 @@ input::placeholder {
 .product-actions .text-link {
   font-size: 14px;
 }
+.amazon-cta {
+  margin-top: 10px;
+  min-width: 0;
+}
+.amazon-cta .text-link {
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.amazon-cta .paid-link {
+  font-size: 14px;
+  font-weight: 400;
+}
+.hero-actions > .amazon-cta {
+  margin-top: 0;
+}
+.guide-commercial {
+  margin-top: 36px;
+}
+.guide-commercial h2 {
+  margin-bottom: 12px;
+}
+.guide-commercial ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+.guide-commercial li + li {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+.guide-commercial .amazon-cta {
+  margin-top: 0;
+}
 .finder-heading h1 {
   font-size: clamp(46px, 5vw, 72px);
 }

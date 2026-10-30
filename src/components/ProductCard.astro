@@ -1,6 +1,7 @@
 ---
 import { printers, getConnectionLabels, type Printer } from '../data/printers';
 import Icon from './Icon.astro';
+import AmazonCTA from './AmazonCTA';
 interface Props {
   printer: Printer;
 }
@@ -62,5 +63,6 @@ const alternative = printers.find((printer) => printer.id !== p.id)!;
         Compare <Icon name="external" size={17} />
       </a>
     </div>
+    <AmazonCTA printerId={p.id} />
   </div>
 </article>

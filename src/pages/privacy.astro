@@ -13,10 +13,11 @@ import { analytics } from '../config/integrations';
   <p class="helper">
     <strong>Provisional notice for a preview edition.</strong> This page describes the current
     implementation; it is not presented as a finalized legal privacy policy. Tagrivo is the
-    editorial brand, developed as a project of JC Labs, a personal brand for digital projects. JC
-    Labs is not presented as a legally incorporated company. The legal operator/data controller and
-    the applicable policy details remain pending definition and review. Search indexing remains
-    disabled.
+    editorial brand, administered by an individual in Peru under JC Labs, a personal brand for
+    digital projects. Neither name represents an incorporated company. The audience is primarily in
+    the United States. Required legal identity and address information for the person responsible
+    for data processing has not been supplied for publication. This notice therefore remains
+    provisional and search indexing remains disabled.
   </p>
   <h2>The information you enter</h2>
   <p>
@@ -36,7 +37,10 @@ import { analytics } from '../config/integrations';
     <strong>tagrivo-theme</strong>. This is not an advertising identifier. You can remove it through
     your browser's site-data controls. If local storage is unavailable, the site still works.
   </p>
-  <p>We do not set advertising cookies in this edition.</p>
+  <p>
+    The application does not set advertising cookies or load Amazon tracking scripts. Opening an
+    ordinary affiliate link takes you to Amazon, where its own practices apply.
+  </p>
   <h2>Optional analytics</h2>
   {analytics.enabled ? (
     <>
@@ -86,21 +90,39 @@ import { analytics } from '../config/integrations';
     Serving a website requires requests that can include an IP address, requested URL, browser
     information, and timestamps. The hosting provider may process request logs for delivery,
     security, and reliability under its own policies. This application does not expose or maintain a
-    separate user database.
+    separate user database. A static Astro build does not eliminate the hosting provider's
+    processing of technical requests. We do not claim that visiting this site involves no personal
+    data processing.
   </p>
   <p>
     Tagrivo is hosted on Cloudflare Pages. Consult{' '}
     <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
       Cloudflare's privacy policy
     </a>{' '}
-    for provider-level information.
+    for provider-level information. Cloudflare can process traffic and security information and make
+    service statistics or logs available under the account's settings. Provider retention and
+    dashboard settings have not been independently verified for this edition; the 12-month email
+    rule below is not a claim about Cloudflare logs. Search Console, already verified for this
+    property, supplies search-performance reports; verification does not install an analytics tag.
   </p>
   <h2>Manufacturer and retailer links</h2>
   <p>
     When you follow a link to another website, that site receives a request from your browser and
     applies its own policies. Its cookies, accounts, or purchase records are outside this site's
-    local tools. Affiliate links, if enabled, can support referral attribution; see our{' '}
+    local tools. Amazon affiliate links include a public tracking ID that can support referral
+    attribution. We do not embed Amazon images, advertising pixels or purchase widgets. See our{' '}
     <a href="/affiliate-disclosure/">affiliate disclosure</a>.
+  </p>
+  <p>
+    Amazon handles information after you visit it under its{' '}
+    <a
+      href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      privacy notice
+    </a>
+    . Its cookies and purchase records are not controlled by the Finder or calculator.
   </p>
   <h2>Contact and email messages</h2>
   <p>
@@ -108,12 +130,48 @@ import { analytics } from '../config/integrations';
     <a href="mailto:hello.jclabs@gmail.com">hello.jclabs@gmail.com</a>. If you email us, your sender
     address, message and any attachments are received through the Gmail mailbox to review and
     respond to your request. The website has no message-submission form. Avoid sending shipping
-    labels, customer addresses, credentials or other unnecessary private information.
+    labels, customer addresses, credentials or other unnecessary private information. Providing
+    correspondence is optional; without a way to reply, we may be unable to answer. We use messages
+    only to answer enquiries, assess corrections and handle communications related to Tagrivo. We do
+    not sell personal data or use those enquiries for advertising without permission.
+  </p>
+  <h2 id="email-retention">Email retention and your rights</h2>
+  <p>
+    The correspondence retention rule is <strong>12 months from the last communication</strong>,
+    unless an applicable legal obligation requires a longer period or a deletion request calls for
+    earlier review. The operator's procedure is a monthly manual review of Tagrivo correspondence
+    and associated attachments. Deletion is not automated, and this notice does not claim that a
+    first mailbox review has already been completed. Any legally required exception must be limited
+    to the necessary records and documented.
   </p>
   <p>
-    This public contact address does not replace the legal operator/data-controller information
-    still to be supplied. The applicable legal basis, retention and rights procedure for
-    correspondence remain part of the pending policy review.
+    Google processes the mailbox under its{' '}
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+      privacy policy
+    </a>
+    . Gmail and Cloudflare can process information internationally, including outside Peru. The
+    operator must still verify the applicable provider arrangements, international-transfer
+    safeguards and any personal-data-bank registration obligation before finalizing this notice.
+    Deleting a message from the mailbox does not promise immediate erasure from provider backups.
+  </p>
+  <p>
+    To ask about your information or request access, correction, deletion or opposition to its use,
+    write to <a href="mailto:hello.jclabs@gmail.com">hello.jclabs@gmail.com</a> with the subject
+    “Tagrivo privacy request.” Identify the correspondence and action requested. We may need
+    proportionate identity verification before disclosing or deleting information; do not send an
+    identity document with an initial enquiry. Requests are handled manually. Applicable rights,
+    including portability where required, are subject to Peru's Law No. 29733 and its regulation.
+    You can also consult the{' '}
+    <a href="https://www.gob.pe/anpd" target="_blank" rel="noopener noreferrer">
+      Peruvian data protection authority
+    </a>
+    .
+  </p>
+  <p>
+    The public contact address and personal-brand names do not replace the responsible person's
+    required legal identity and address. The final information notice, lawful grounds and any
+    required consent or registration must be resolved before this is presented as a final policy. No
+    personal name, home address or identification number is invented or published here.
   </p>
   <h2>Changes to this policy</h2>
   <p>
@@ -122,8 +180,6 @@ import { analytics } from '../config/integrations';
     this edition.
   </p>
   <p>
-    See <a href="/contact/">contact and corrections</a> for editorial guidance. No personal name,
-    postal address or company-registration details have been supplied as a substitute for the
-    pending legal information.
+    See <a href="/contact/">contact and corrections</a> for editorial guidance.
   </p>
 </Editorial>

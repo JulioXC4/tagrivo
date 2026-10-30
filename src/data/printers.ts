@@ -25,7 +25,6 @@ export interface Printer {
   setup: string;
   sources: { label: string; url: string }[];
   checked: string;
-  asin?: string;
 }
 
 export const printers: Printer[] = [

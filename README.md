@@ -33,7 +33,7 @@ npm run preview
 | `src/components/Calculator.tsx`     | Cost assumptions, calculation, CSV export                                                    |
 | `src/lib/recommend.ts`              | Explicit eligibility and preference rules                                                    |
 | `src/lib/costs.ts`                  | Pure cost calculation with invalid-input protection                                          |
-| `src/lib/affiliate.ts`              | Affiliate URLs only when both tag and actual ASIN exist                                      |
+| `src/lib/affiliate.ts`              | Verified catalog identities, registered Store ID and direct sponsored URLs                   |
 | `src/layouts/`                      | Metadata, global navigation, theme and editorial layout                                      |
 | `src/styles/global.css`             | Approved design tokens, responsive and print styles                                          |
 | `public/images/products/`           | Reference-based AI editorial studio renders with explicit disclosure                         |
@@ -41,7 +41,7 @@ npm run preview
 | `design-assets/`                    | Hero original and exact generation prompt/provenance                                         |
 | `tests/logic.test.ts`               | Meaningful compatibility, budget, media-cost and affiliate tests                             |
 
-React hydrates only the interactive tools. The home Finder invitation is a native HTML radio form, so it works before JavaScript loads and the home page needs no React runtime. Editorial navigation and theme use a small Astro script. Fonts are self-hosted Latin subsets of DM Serif Display and DM Sans. Product imagery is never generated as a stand-in for real hardware.
+React hydrates only the interactive tools. The home Finder invitation is a native HTML radio form, so it works before JavaScript loads and the home page needs no React runtime. The shared Amazon CTA is server rendered on editorial pages without hydration. Editorial navigation and theme use a small Astro script. Fonts are self-hosted Latin subsets of DM Serif Display and DM Sans. Product visuals are disclosed AI editorial renders, not official photographs or exact hardware evidence.
 
 ## Product research and recommendations
 
@@ -67,9 +67,9 @@ Create a Markdown file under `src/content/guides/` with title, description, cate
 
 ## Amazon Associates
 
-No affiliate identifier or product ASIN was provided, so no Amazon purchase link is emitted. Manufacturer information links work independently.
+The owner supplied registered US Store ID `tagrivo-20`. The three exact listing identities, variants, documentary check dates and sources are centralized in `src/data/amazon.ts`. `PUBLIC_AMAZON_ASSOCIATE_TAG` is optional and must match that registered ID if set; a stale different ID fails the build. Manufacturer evidence links remain available independently.
 
-After actual program enrollment, set `PUBLIC_AMAZON_ASSOCIATE_TAG` and add the verified Amazon ASIN to each appropriate catalog entry. Rebuild. Links receive `rel="sponsored nofollow noopener noreferrer"`; the product page displays the required Associate sentence next to the purchase area, and the disclosure page switches to active-participation wording. Never use made-up ASINs or copy Amazon images/prices. Review [Amazon's agreement](https://affiliate-program.amazon.com/help/operating/agreement) and [disclosure requirements](https://affiliate-program.amazon.com/help/node/topic/GPXFHVYZMTGPUMPE) when activating the program.
+`AmazonCTA.tsx` supplies direct links with visible Paid link disclosure and `rel="sponsored nofollow noopener noreferrer"` on cards, product pages, Finder results, Compare and five relevant guides. The exact Amazon Associate sentence appears in the footer and editorial disclosures. A listing marked unverified does not produce a purchase link. No Amazon price, image, review or API integration is used. Automated link checks deliberately never request Amazon destinations. See [MONETIZATION-PERU.md](MONETIZATION-PERU.md) for identity evidence and the owner's remaining account steps, and [PRIVACY-OPERATIONS.md](PRIVACY-OPERATIONS.md) for privacy and retention. Registration is not final program approval; Privacy remains provisional and indexing stays disabled until its legal launch gate is resolved.
 
 ## Cloudflare Pages
 

@@ -2,7 +2,10 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { deployment } from './deployment-env.mjs';
 import { resolveAnalyticsConfig } from '../src/lib/analytics.ts';
+import { amazonLinkFor, resolveAmazonStoreId } from '../src/lib/affiliate.ts';
+import { amazonListings, guideAmazonProducts } from '../src/data/amazon.ts';
 const analytics = resolveAnalyticsConfig(process.env);
+const amazonTag = resolveAmazonStoreId(process.env.PUBLIC_AMAZON_ASSOCIATE_TAG);
 const root = path.resolve('dist');
 async function files(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -60,6 +63,22 @@ const canonicals = new Set();
 const articleBodies = new Set();
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
+  const relativePage = path.relative(root, file).replaceAll('\\', '/');
+  const guideId = relativePage.match(/^guides\/([^/]+)\/index\.html$/)?.[1];
+  const productId = relativePage.match(/^printers\/([^/]+)\/index\.html$/)?.[1];
+  const placementIds =
+    relativePage === 'index.html' || relativePage === 'printers/index.html'
+      ? Object.keys(amazonListings)
+      : productId
+        ? [productId]
+        : relativePage === 'compare/index.html'
+          ? ['rollo-wireless', 'munbyn-itpp941']
+          : guideId
+            ? guideAmazonProducts[guideId] || []
+            : [];
+  const expectedPaidLinks = placementIds.filter((id) => amazonLinkFor(id, amazonTag)).length;
+  if ([...html.matchAll(/<a\b[^>]*data-link-kind="affiliate"/g)].length !== expectedPaidLinks)
+    failures.push(`${relativePage}: missing or unexpected commercial placement`);
   if (
     /images\/products\/(?:rollo-wireless\.webp|munbyn-itpp941\.jpg|brother-ql1110nwb\.webp)/.test(
       html,
@@ -111,6 +130,20 @@ for (const file of htmlFiles) {
     failures.push(`${file}: Google tag must not load before browser consent`);
   if (!deployment.indexable && !html.includes('content="noindex, nofollow"'))
     failures.push(`${file}: preview must be noindex`);
+  if (
+    deployment.indexable &&
+    path.basename(file) !== '404.html' &&
+    /content="[^"]*noindex/.test(html)
+  )
+    failures.push(`${file}: an approved production page must not be noindex`);
+  if (
+    deployment.indexable &&
+    file.endsWith(`${path.sep}privacy${path.sep}index.html`) &&
+    /Provisional notice/i.test(html)
+  )
+    failures.push(
+      'Privacy is still provisional: resolve the legal launch gate before enabling indexing',
+    );
   if (/tagrivo\.com/.test(html) && !deployment.site.includes('tagrivo.com'))
     failures.push(`${file}: unconfirmed legacy domain`);
   if (title && titles.has(title)) failures.push(`${file}: duplicate title`);
@@ -175,11 +208,26 @@ for (const file of htmlFiles) {
       failures.push(`${path.relative(root, file)}: missing ${link}`);
     }
   }
-  if (
-    /https:\/\/www\.amazon\.com\/dp\//.test(html) &&
-    !html.includes('rel="sponsored nofollow noopener noreferrer"')
-  )
-    failures.push(`${file}: undisclosed affiliate`);
+  for (const match of html.matchAll(
+    /<a\b[^>]*href="https:\/\/www\.amazon\.com\/dp\/[^>]*>[\s\S]*?<\/a>/g,
+  )) {
+    const anchor = match[0];
+    const href = anchor.match(/href="([^"]+)"/)?.[1]?.replaceAll('&amp;', '&');
+    const printerId = anchor.match(/data-printer-id="([^"]+)"/)?.[1];
+    const rel = anchor.match(/rel="([^"]+)"/)?.[1]?.split(/\s+/) || [];
+    if (
+      !printerId ||
+      href !== amazonLinkFor(printerId, amazonTag) ||
+      !['sponsored', 'noopener', 'noreferrer'].every((value) => rel.includes(value)) ||
+      !anchor.includes('target="_blank"') ||
+      !anchor.includes('data-link-kind="affiliate"') ||
+      !/Paid link/.test(anchor) ||
+      !html.includes('As an Amazon Associate I earn from qualifying purchases.')
+    )
+      failures.push(
+        `${file}: commercial link identity, attribution, disclosure or safe attributes invalid`,
+      );
+  }
 }
 for (const file of [
   'robots.txt',
@@ -200,6 +248,8 @@ if (!deployment.indexable) {
   if (!robots.includes(`${deployment.site}/sitemap-index.xml`))
     failures.push('Incorrect sitemap origin');
   const sitemap = await readFile(path.join(root, 'sitemap-0.xml'), 'utf8');
+  if ([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].length !== canonicals.size - 1)
+    failures.push('Production sitemap must cover every canonical editorial page except 404');
   for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
     if (!canonicals.has(match[1]) || /\/404(?:\.html|\/)?$/.test(match[1]))
       failures.push(`Sitemap includes a noncanonical or error page: ${match[1]}`);

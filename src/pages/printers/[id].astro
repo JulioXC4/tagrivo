@@ -7,13 +7,15 @@ import {
   getConnectionLabels,
   formatResearchDate,
 } from '../../data/printers';
-import { amazonLink } from '../../lib/affiliate';
+import { amazonLinkFor } from '../../lib/affiliate';
 import { amazonAssociateTag } from '../../config/integrations';
+import { amazonListings } from '../../data/amazon';
+import AmazonCTA from '../../components/AmazonCTA';
 export function getStaticPaths() {
   return printers.map((printer) => ({ params: { id: printer.id }, props: { printer } }));
 }
 const { printer: p } = Astro.props;
-const affiliate = amazonLink(p.asin, amazonAssociateTag);
+const affiliate = amazonLinkFor(p.id, amazonAssociateTag);
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -90,16 +92,7 @@ const schema = {
         </dl>
         <div class="hero-actions">
           {affiliate ? (
-            <a
-              href={affiliate}
-              class="button"
-              target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
-              data-link-kind="affiliate"
-              data-printer-id={p.id}
-            >
-              View on Amazon (paid link) <Icon name="external" size={18} />
-            </a>
+            <AmazonCTA printerId={p.id} prominent />
           ) : (
             <a
               href={p.sources[0].url}
@@ -124,6 +117,9 @@ const schema = {
         </p>
         {affiliate && (
           <p class="small-note">
+            Amazon listing: {amazonListings[p.id].variant}. Confirm the selected model and offer at
+            Amazon.
+            <br />
             As an Amazon Associate I earn from qualifying purchases.{' '}
             <a href="/affiliate-disclosure/">About affiliate links</a>.
           </p>

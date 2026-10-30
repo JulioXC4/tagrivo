@@ -2,6 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
 import Icon from '../../components/Icon.astro';
+import AmazonCTA from '../../components/AmazonCTA';
+import { printers } from '../../data/printers';
+import { guideAmazonProducts } from '../../data/amazon';
+import { amazonLinkFor } from '../../lib/affiliate';
+import { amazonAssociateTag } from '../../config/integrations';
 export async function getStaticPaths() {
   return (await getCollection('guides')).map((guide) => ({
     params: { id: guide.id },
@@ -9,6 +14,9 @@ export async function getStaticPaths() {
   }));
 }
 const { guide } = Astro.props;
+const linkedPrinters = (guideAmazonProducts[guide.id] || []).flatMap((id) =>
+  printers.filter((p) => p.id === id && amazonLinkFor(id, amazonAssociateTag)),
+);
 const { Content, headings } = await render(guide);
 const reviewed = guide.data.updated || guide.data.date;
 const date = reviewed.toLocaleDateString('en-US', {
@@ -67,6 +75,26 @@ const schema = {
         <div class="prose">
           <Content />
         </div>
+        {linkedPrinters.length > 0 && (
+          <section class="helper guide-commercial" aria-labelledby="models-to-check">
+            <h2 id="models-to-check">Check the exact models</h2>
+            <p>
+              If the documented trade-offs fit your setup, check these listings. Paid links may earn
+              us a commission. Confirm the variant, seller, price and return terms at Amazon; the
+              links do not imply live availability or platform certification.
+            </p>
+            <ul>
+              {linkedPrinters.map((p) => (
+                <li>
+                  <a href={`/printers/${p.id}/`}>
+                    {p.name} — {p.model}
+                  </a>
+                  <AmazonCTA printerId={p.id} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
         <div class="helper" style="margin-top:45px">
           Our guidance is based on manufacturer documentation and explicit editorial reasoning. We
           do not claim hands-on testing.{' '}
