@@ -439,7 +439,7 @@ h4 {
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .product-card:hover .product-image img {
-  transform: scale(1.045);
+  transform: scale(1.02);
 }
 .product-copy {
   padding: 25px 0 0;
@@ -454,7 +454,7 @@ h4 {
   font-size: 31px;
   margin-bottom: 14px;
 }
-.product-card p:not(.product-fit) {
+.product-card p:not(.product-fit, .editorial-image-caption) {
   font-size: 14px;
   color: var(--muted);
   line-height: 1.8;
@@ -1418,7 +1418,7 @@ h4 {
   .product-card h3 {
     font-size: 25px;
   }
-  .product-card p:not(.product-fit) {
+  .product-card p:not(.product-fit, .editorial-image-caption) {
     font-size: 12px;
   }
   .product-fit {
@@ -1657,7 +1657,7 @@ h4 {
   .product-card h3 {
     font-size: 33px;
   }
-  .product-card p:not(.product-fit) {
+  .product-card p:not(.product-fit, .editorial-image-caption) {
     font-size: 14px;
   }
   .mini-specs {
@@ -2092,12 +2092,12 @@ input::placeholder {
   aspect-ratio: 1.45;
 }
 .product-image img {
-  width: 92%;
-  height: 92%;
+  width: 98%;
+  height: 98%;
 }
 .editorial-image-caption,
 .product-card p.editorial-image-caption {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.65;
   color: var(--muted);
@@ -2108,8 +2108,11 @@ input::placeholder {
   flex: 1;
   flex-direction: column;
 }
-.product-card p:not(.product-fit) {
-  font-size: 15px;
+.product-card p:not(.product-fit, .editorial-image-caption) {
+  font-size: 16px;
+}
+.product-card .product-fit {
+  font-size: 14px;
 }
 .mini-specs {
   display: grid;
@@ -2118,10 +2121,11 @@ input::placeholder {
   margin-bottom: 20px;
 }
 .mini-specs dt {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .mini-specs dd {
-  font-size: 14px;
+  font-size: 15px;
   font-variant-numeric: tabular-nums;
   line-height: 1.6;
 }
@@ -2135,8 +2139,9 @@ input::placeholder {
 }
 .product-card .product-tradeoffs p {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
+  color: var(--ink);
 }
 .product-tradeoffs strong {
   display: block;
@@ -2221,8 +2226,8 @@ input::placeholder {
   .finder-wizard .progress-track {
     margin-bottom: 24px;
   }
-  .product-card p:not(.product-fit) {
-    font-size: 15px;
+  .product-card p:not(.product-fit, .editorial-image-caption) {
+    font-size: 16px;
   }
   .footer-bottom p,
   .footer-bottom nav {

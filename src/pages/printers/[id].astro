@@ -50,13 +50,15 @@ const schema = {
           <img src={p.image} alt={p.imageAlt} width="680" height="680" fetchpriority="high" />
         </div>
         <p class="small-note" style="margin-top:12px">
-          AI-generated editorial render based on manufacturer reference imagery. Visual details may
-          vary; consult the manufacturer for exact appearance. Product specifications verified from
-          official manufacturer sources.{' '}
-          <a href={p.sources[0].url} target="_blank" rel="noopener noreferrer">
-            Manufacturer source
+          AI-generated editorial render based on manufacturer reference imagery. Not an exact
+          reproduction; physical details may vary. Specifications are checked separately against
+          official sources.
+          <br />
+          <a class="text-link" href={p.sources[0].url} target="_blank" rel="noopener noreferrer">
+            {p.id === 'munbyn-itpp941'
+              ? 'View official 941-series photos'
+              : `View official ${p.name} photos`}
           </a>
-          .
         </p>
       </div>
       <div class="detail-copy">
