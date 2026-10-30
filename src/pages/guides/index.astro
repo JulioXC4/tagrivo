@@ -49,14 +49,19 @@ const guides = (await getCollection('guides')).sort(
             <a href={`/guides/${guide.id}/`}>
               <img
                 class="guide-photo"
-                src="/images/products/munbyn-itpp941.jpg"
-                alt="MUNBYN ITPP941 USB label printer, manufacturer photo"
+                src="/images/products/editorial-wired-workspace.webp"
+                alt="Original editorial illustration of a wired printing workflow, not an actual product."
                 width="1000"
                 height="1000"
                 style="object-fit:contain"
                 loading="lazy"
               />
             </a>
+          )}
+          {index === 0 && (
+            <p class="small-note editorial-image-caption">
+              Editorial illustration · not an actual product.
+            </p>
           )}
           <p class="product-fit">
             {guide.data.category} · {guide.data.readingTime} min read

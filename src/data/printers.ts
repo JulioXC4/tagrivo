@@ -6,6 +6,7 @@ export interface Printer {
   name: string;
   model: string;
   image: string;
+  imageAlt: string;
   fit: string;
   description: string;
   dpi: number;
@@ -23,7 +24,6 @@ export interface Printer {
   limitations: string[];
   setup: string;
   sources: { label: string; url: string }[];
-  imageSource: string;
   checked: string;
   asin?: string;
 }
@@ -34,7 +34,9 @@ export const printers: Printer[] = [
     brand: 'Rollo',
     name: 'Rollo Wireless',
     model: 'X1040',
-    image: '/images/products/rollo-wireless.webp',
+    image: '/images/products/editorial-wireless-workspace.webp',
+    imageAlt:
+      'Original editorial illustration of an abstract wireless printing workflow; not the Rollo X1040 or its actual appearance.',
     fit: 'For a flexible, wireless workspace',
     description:
       'A compact Wi-Fi option for sellers who switch between a computer and a phone. Standard direct-thermal media keeps your label choices open.',
@@ -72,8 +74,6 @@ export const printers: Printer[] = [
         url: 'https://support.rollo.com/support/solutions/articles/29000039959',
       },
     ],
-    imageSource:
-      'https://rollo-main.b-cdn.net/wp-content/uploads/2021/11/rollo-wireless-label-printer-product-image-1-1-600x600.webp',
     checked: '2026-10-29',
   },
   {
@@ -81,7 +81,9 @@ export const printers: Printer[] = [
     brand: 'MUNBYN',
     name: 'MUNBYN ITPP941',
     model: 'USB · 203 dpi version',
-    image: '/images/products/munbyn-itpp941.jpg',
+    image: '/images/products/editorial-wired-workspace.webp',
+    imageAlt:
+      'Original editorial illustration of an abstract wired printing workflow; not the MUNBYN ITPP941 or its actual appearance.',
     fit: 'For a dedicated desktop setup',
     description:
       'A straightforward USB model for a fixed packing desk. Choose this exact wired variant if you want a computer connection without wireless setup.',
@@ -122,7 +124,6 @@ export const printers: Printer[] = [
         url: 'https://ca.munbyn.com/blogs/news/choose-label-printers',
       },
     ],
-    imageSource: 'https://pos.munbyn.com/wp-content/uploads/2024/02/ITPP941-1.jpg',
     checked: '2026-10-29',
   },
   {
@@ -130,7 +131,9 @@ export const printers: Printer[] = [
     brand: 'Brother',
     name: 'Brother QL-1110NWB',
     model: 'Network label printer',
-    image: '/images/products/brother-ql1110nwb.webp',
+    image: '/images/products/editorial-network-workspace.webp',
+    imageAlt:
+      'Original editorial illustration of an abstract network printing workflow; not the Brother QL-1110NWB or its actual appearance.',
     fit: 'For networking and finer detail',
     description:
       'A 300 dpi printer with an automatic cutter and multiple connection options. Its DK-roll system needs a different consumables calculation from generic fanfold models.',
@@ -181,8 +184,6 @@ export const printers: Printer[] = [
         url: 'https://support.brother.com/g/b/oslist.aspx?c=us&lang=en&prod=lpql1110nwbeus',
       },
     ],
-    imageSource:
-      'https://assets.brother.com/transform/9f4046a8-6b49-47d9-9023-3c78fa532d38/3931_QL1110NWB_front_featuredimagery_0-png?io=transform%3Afit%2Cwidth%3A680',
     checked: '2026-10-29',
   },
 ];

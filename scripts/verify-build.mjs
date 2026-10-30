@@ -15,11 +15,22 @@ async function files(dir) {
   ).flat();
 }
 const all = await files(root);
+const expectedProductArt = [
+  'editorial-wireless-workspace.webp',
+  'editorial-wired-workspace.webp',
+  'editorial-network-workspace.webp',
+];
 const verificationName = 'google7bb345f95d638147.html';
 const verificationFile = path.join(root, verificationName);
 // Google's ownership file is an exact payload, not an editorial HTML route.
 const htmlFiles = all.filter((f) => f.endsWith('.html') && f !== verificationFile);
 const failures = [];
+const productArt = await readdir(path.join(root, 'images/products'));
+if (
+  productArt.length !== expectedProductArt.length ||
+  productArt.some((file) => !expectedProductArt.includes(file))
+)
+  failures.push('Product assets must contain only the three original editorial illustrations');
 const originalVerification = await readFile(path.resolve('public', verificationName));
 const deployedVerification = await readFile(verificationFile);
 if (!originalVerification.equals(deployedVerification))
@@ -27,7 +38,9 @@ if (!originalVerification.equals(deployedVerification))
 if (originalVerification.toString('utf8') !== `google-site-verification: ${verificationName}`)
   failures.push('Google verification file has an unexpected payload');
 const redirects = await readFile(path.join(root, '_redirects'), 'utf8');
-if (!redirects.split(/\r?\n/).includes(`/${verificationName} /${verificationName.slice(0, -5)} 200`))
+if (
+  !redirects.split(/\r?\n/).includes(`/${verificationName} /${verificationName.slice(0, -5)} 200`)
+)
   failures.push('Google verification URL must bypass the Pages HTML-extension redirect');
 const titles = new Set();
 const descriptions = new Set();
@@ -35,6 +48,30 @@ const canonicals = new Set();
 const articleBodies = new Set();
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
+  if (
+    /images\/products\/(?:rollo-wireless\.webp|munbyn-itpp941\.jpg|brother-ql1110nwb\.webp)/.test(
+      html,
+    )
+  )
+    failures.push(`${file}: retired manufacturer photograph referenced`);
+  const productVisuals = [...html.matchAll(/<img\b[^>]*src="\/images\/products\/[^>]*>/g)];
+  if (
+    productVisuals.some(([tag]) => !/alt="[^"]*editorial illustration[^"]*"/i.test(tag)) ||
+    (productVisuals.length && !/Editorial illustration/i.test(html))
+  )
+    failures.push(
+      `${file}: editorial product imagery needs honest alt text and a visible disclosure`,
+    );
+  if (
+    file.includes(`${path.sep}printers${path.sep}`) &&
+    path.basename(path.dirname(file)) !== 'printers'
+  ) {
+    if (
+      !/property="og:image" content="[^"]*\/images\/products\/editorial-/.test(html) ||
+      !/property="og:image:alt" content="[^"]*editorial illustration/i.test(html)
+    )
+      failures.push(`${file}: product Open Graph must identify original editorial art`);
+  }
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
   const description = html.match(/name="description"\s+content="([^"]*)"/)?.[1];
   const canonical = html.match(/rel="canonical"\s+href="([^"]*)"/)?.[1];
@@ -99,6 +136,8 @@ for (const file of htmlFiles) {
         failures.push(
           `${file}: initial research catalog must not imply verified reviews or live offers`,
         );
+      if (data['@type'] === 'Product' && data.image)
+        failures.push(`${file}: conceptual art must not be declared as an actual Product image`);
     } catch {
       failures.push(`${file}: invalid structured-data JSON`);
     }

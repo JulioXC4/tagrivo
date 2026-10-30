@@ -124,6 +124,8 @@ components:
 
 **Creative North Star: "Editorial Premium"**
 
+**Product imagery update — October 29, 2026.** The owner's latest brief replaces manufacturer photographs with original AI-generated editorial category illustrations. This supersedes the photograph-retention guidance below for the current three assets only. Keep existing white image stages, proportions, typography, hero and themes. Use the new art consistently with visible illustration captions and honest alt text; it must never imply the actual appearance of a named commercial model. See ASSET-SOURCES.md. All other visual rules remain authoritative.
+
 Tagrivo uses the first selected green editorial concept: confident serif headlines, true white space, deep pine accents, and a calm reading rhythm. Its precise promise is **“Print smarter. Ship better.”** The serif supplies character; quiet sans-serif controls make comparison and decision tools approachable.
 
 The finished implementation extends that approved world with a real-printer shortlist, a five-step Finder, comparison, and cost tools. These additions share the same visual language. Open editorial layouts, authentic manufacturer photographs, and visible source notes convey considered guidance. The dedicated forest dark theme preserves this hierarchy through warm text, tonal surfaces, and pale mint actions.

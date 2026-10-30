@@ -36,7 +36,7 @@ npm run preview
 | `src/lib/affiliate.ts`              | Affiliate URLs only when both tag and actual ASIN exist                                      |
 | `src/layouts/`                      | Metadata, global navigation, theme and editorial layout                                      |
 | `src/styles/global.css`             | Approved design tokens, responsive and print styles                                          |
-| `public/images/products/`           | Authentic manufacturer photos                                                                |
+| `public/images/products/`           | Original, clearly disclosed editorial category illustrations                                 |
 | `public/images/editorial-hero.webp` | Original AI editorial image, 1000 × 1250, about 94 KB                                        |
 | `design-assets/`                    | Hero original and exact generation prompt/provenance                                         |
 | `tests/logic.test.ts`               | Meaningful compatibility, budget, media-cost and affiliate tests                             |
@@ -57,7 +57,7 @@ Calculator defaults are illustrative assumptions. It models one label per order,
 
 1. Add a complete typed entry in `src/data/printers.ts`; do not merge facts across model variants.
 2. Verify the exact model's official specifications and current driver matrix. Record sources and check date.
-3. Add an authentic, appropriately licensed photo and document its origin in `ASSET-SOURCES.md`.
+3. Add original editorial artwork with an explicit illustration disclosure, or an appropriately licensed exact-model photograph. Document its origin in `ASSET-SOURCES.md`; never present conceptual art as actual hardware.
 4. Review `recommend.ts` whenever adding a new device or connection behavior. Do not assume the existing rules generalize to a different product family.
 5. Run `npm run verify` and exercise the Finder, comparison and product page.
 
@@ -87,7 +87,7 @@ Indexing is disabled by default with HTML metadata and an HTTP header generated 
 
 - Tagrivo is an independent editorial project developed under JC Labs, the creator's personal brand for digital projects. The authorized public contact is `hello.jclabs@gmail.com`. Neither brand is presented as an incorporated company. Legal operator/data-controller details and policy review remain pending; complete them before enabling indexing.
 - Review the supplied privacy and disclosure copy against the actual operator, jurisdiction, hosting and data practices. The current edition has no accounts, analytics, ad pixels or submission forms.
-- Confirm publication rights for manufacturer photographs. Public availability is not a blanket image license; replace with your own/authorized photos if needed. Sources are documented in `ASSET-SOURCES.md`.
+- The three manufacturer photographs have been retired from the current build in favor of original conceptual illustrations, explicitly labeled as such. Do not restore manufacturer photos without publication rights. Provenance is documented in `ASSET-SOURCES.md`.
 - Recheck specifications, OS releases, exact retailer variants, availability, and the dated hardware price.
 - Activate affiliate links only after enrollment and proper product mapping.
 
@@ -95,7 +95,7 @@ With optional analytics disabled, the application stores only a theme preference
 
 ## Google readiness and measurement
 
-`PUBLIC_GOOGLE_SITE_VERIFICATION` optionally renders an actual HTML verification token supplied by the owner for a Search Console URL-prefix property. Set only the token in Cloudflare's Production environment and rebuild; do not paste a whole meta tag or invent an ID. Verification does not remove noindex. Keep `SITE_INDEXING=disabled` until editorial, contact and photograph permissions are resolved. No Search Console account, ownership verification or indexing request is performed by the source code.
+`PUBLIC_GOOGLE_SITE_VERIFICATION` optionally renders an actual HTML verification token supplied by the owner for a Search Console URL-prefix property. Set only the token in Cloudflare's Production environment and rebuild; do not paste a whole meta tag or invent an ID. Verification does not remove noindex. Keep `SITE_INDEXING=disabled` until the remaining editorial/legal launch conditions and explicit owner approval are resolved. The current product artwork is original conceptual illustration, not reused manufacturer photography. No Search Console account, ownership verification or indexing request is performed by the source code.
 
 Follow [SEARCH-CONSOLE.md](SEARCH-CONSOLE.md) to verify the exact `https://tagrivo.pages.dev/` URL-prefix property personally using the prepared HTML-tag method, without sharing Google credentials.
 

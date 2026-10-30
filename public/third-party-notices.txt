@@ -1,6 +1,6 @@
 Tagrivo — Third-party notices
 
-Fonts, icons and client runtime license notices. This file grants no license to manufacturer product photographs. See ASSET-SOURCES.md in the repository for photograph provenance and unresolved publication permissions.
+Fonts, icons and client runtime license notices. Product-area images are original AI-generated editorial illustrations by Tagrivo, not photographs of the named products or manufacturer endorsements. See ASSET-SOURCES.md in the repository for current artwork provenance and retired photograph records.
 
 
 ===== @fontsource/dm-sans =====

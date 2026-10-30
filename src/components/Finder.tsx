@@ -164,7 +164,12 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
         ) : (
           matches.map(({ printer: p, reasons, cautions }, index) => (
             <article className="result" key={p.id}>
-              <img src={p.image} alt={p.name} width="220" height="220" />
+              <div>
+                <img src={p.image} alt={p.imageAlt} width="220" height="220" />
+                <p className="small-note editorial-image-caption">
+                  Editorial illustration · not the actual product.
+                </p>
+              </div>
               <div>
                 <p className="product-fit">
                   {index === 0 ? 'Start here' : 'Also consider'} · {p.fit}

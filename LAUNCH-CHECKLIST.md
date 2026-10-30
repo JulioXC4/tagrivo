@@ -15,7 +15,7 @@ Preparado el 29 de octubre de 2026 (America/Lima). **Noindex se conserva.** Esta
 - [x] Integrado el correo real facilitado por el responsable, `hello.jclabs@gmail.com`, en Contact, About, Privacy, metodología y disclosure. JC Labs figura como marca personal detrás del proyecto, sin presentarla como sociedad constituida.
 - [x] Integración GA4 opcional preparada, apagada por defecto y con consentimiento previo. No se ha conectado una propiedad real ni se ha activado seguimiento. Ver [MEASUREMENT.md](MEASUREMENT.md).
 - [x] Amazon centralizado en `src/config/integrations.ts` a partir de `PUBLIC_AMAZON_ASSOCIATE_TAG`; ASIN por modelo exacto en el catálogo. Sin ambos datos válidos, no sale un enlace Amazon. Avisos y atributos de patrocinio ya preparados.
-- [x] Derechos fotográficos pendientes identificados, con procedencia y alternativas documentadas en [ASSET-SOURCES.md](ASSET-SOURCES.md). No se fabricaron imágenes de productos ni se añadió material comercial sin licencia.
+- [x] Fotografías oficiales retiradas del build actual y sustituidas por ilustraciones editoriales conceptuales originales, identificadas como tales. No representan los modelos reales. Procedencia y archivos retirados documentados en [ASSET-SOURCES.md](ASSET-SOURCES.md).
 
 El build y las pruebas se ejecutan antes de la entrega; su resultado concreto se indica en el resumen de QA. Un JSON-LD válido no garantiza resultados enriquecidos, ni una detección de duplicados exactos certifica originalidad en toda la web.
 
@@ -27,7 +27,7 @@ Verificación de esta edición: **25 pruebas aprobadas, TypeScript/Astro sin err
 
 - [ ] Definir el responsable legal/del tratamiento y revisar qué información corresponde publicar según las prácticas y jurisdicción aplicables. No presentar Tagrivo como empresa registrada ni rellenar identidad/dirección ficticias.
 - [ ] Revisar Privacy y declaraciones comerciales; sustituir el aviso provisional por el texto aprobado únicamente cuando los datos estén disponibles. Revisar también About y Contact.
-- [ ] Obtener autorización de cada fotografía o aportar material propio/licenciado. Conservar evidencia del permiso. Noindex no concede derechos sobre una imagen ni protege una URL pública.
+- [x] Resolver el uso actual de fotografías comerciales: se eligieron ilustraciones originales de categoría, sin réplicas ni logotipos. Las fotografías retiradas no requieren una solicitud de permiso para seguir fuera del build. Cualquier futura fotografía real necesitará procedencia y derechos documentados.
 - [ ] Aprobar las diez guías y las limitaciones de producto. Confirmar precio/SKU exacto de MUNBYN USB y los flujos que se quieran describir como probados; de lo contrario conservar las cautelas documentales.
 
 ### B. Verificar Search Console, sin retirar todavía noindex

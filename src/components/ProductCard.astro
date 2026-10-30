@@ -15,15 +15,9 @@ const alternative = printers.find((printer) => printer.id !== p.id)!;
     data-model={p.id}
     aria-label={`Explore ${p.name}`}
   >
-    <img
-      src={p.image}
-      alt={`${p.name} ${p.model}, manufacturer product photograph`}
-      width="600"
-      height="600"
-      loading="lazy"
-      decoding="async"
-    />
+    <img src={p.image} alt={p.imageAlt} width="600" height="600" loading="lazy" decoding="async" />
   </a>
+  <p class="small-note editorial-image-caption">Editorial illustration · not the actual product.</p>
   <div class="product-copy">
     <p class="product-fit">{p.fit}</p>
     <h3>

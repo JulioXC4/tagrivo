@@ -193,7 +193,10 @@ export default function Compare() {
               </th>
               {selected.map((p) => (
                 <th scope="col" key={p.id}>
-                  <img src={p.image} alt={p.name} width="190" height="150" />
+                  <img src={p.image} alt={p.imageAlt} width="190" height="150" />
+                  <p className="small-note editorial-image-caption">
+                    Editorial illustration · not the actual product.
+                  </p>
                   <h2>
                     <a href={`/printers/${p.id}/`}>{p.name}</a>
                   </h2>
@@ -304,7 +307,8 @@ export default function Compare() {
       <p className="small-note" style={{ marginTop: 24 }}>
         Resolution and rated speeds describe manufacturer specifications, not a quality score.
         Actual speed depends on settings, media, and print data. OS support is version-dependent.
-        Product images: respective manufacturers.
+        Editorial illustrations by Tagrivo, not photographs of the actual products. Product
+        specifications verified from official manufacturer sources.
       </p>
     </section>
   );
