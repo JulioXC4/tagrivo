@@ -67,10 +67,11 @@ import { legalPolicy } from '../config/legal';
       <p>
         Google Analytics loads only after you choose Allow analytics. Declining leaves the tools and
         affiliate links available without this measurement. It records page visits and identified
-        product-link clicks. Events omit URL query strings, fragments, tool answers, email content
-        and customer information. This version also omits referrer values; it does not promise
-        complete campaign or organic-source attribution. Search Console supplies search reports
-        separately.
+        product-link clicks, completion of the Printer Finder and use of comparison controls.
+        Tool-use events carry no answers, budgets, order counts, quotes or selected-model lists.
+        Events omit URL query strings, fragments, tool answers, email content and customer
+        information. This version also omits referrer values; it does not promise complete campaign
+        or organic-source attribution. Search Console supplies search reports separately.
       </p>
       <p>
         Google receives technical connection information and can set analytics cookies after
@@ -84,6 +85,13 @@ import { legalPolicy } from '../config/legal';
         to withdraw permission. Revocation reloads the page and clears this integration's host
         cookies; it cannot retract data already received by Google. Contact us about applicable data
         rights.
+      </p>
+      <p>
+        Google Analytics is provided by Google LLC, identified below. The 30-day device preference
+        and cookie lifetime are not a promise that Google deletes stored event data after 30 days.
+        Event retention follows the property's Google Analytics settings and Google's applicable
+        policies. No advertising audiences, Google Signals, User-ID or personalized advertising are
+        enabled by this integration.
       </p>
     </>
   ) : (

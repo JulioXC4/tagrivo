@@ -17,7 +17,8 @@ declare global {
 
 export function initAnalytics() {
   const panel = document.querySelector<HTMLElement>('#analytics-preferences');
-  if (!panel?.dataset.measurementId) return;
+  if (!panel?.dataset.measurementId || panel.dataset.analyticsInitialized) return;
+  panel.dataset.analyticsInitialized = 'true';
   const config = { enabled: true, measurementId: panel.dataset.measurementId };
   const id = config.measurementId;
   const productHosts = JSON.parse(panel.dataset.productHosts || '{}') as Record<string, string>;
@@ -36,6 +37,7 @@ export function initAnalytics() {
   }
   const state = window;
   let started = false;
+  const measuredTools = new Set<string>();
   let permissionTimer: number | undefined;
   function gtag(..._args: unknown[]) {
     state.dataLayer!.push(arguments);
@@ -145,8 +147,22 @@ export function initAnalytics() {
       location.origin,
       productHosts,
     );
-    if (payload) gtag('event', 'product_outbound_click', payload);
+    if (payload)
+      gtag(
+        'event',
+        payload.link_kind === 'affiliate' ? 'amazon_affiliate_click' : 'product_outbound_click',
+        payload,
+      );
   });
+  for (const name of ['printer_finder_complete', 'comparison_used']) {
+    document.addEventListener(`tagrivo:${name}`, () => {
+      // No replay after consent: actions before acceptance are deliberately not retained.
+      // Count meaningful tool use once per document, rather than every comparison control change.
+      if (measuredTools.has(name) || !started || !mayMeasure(config, consent, signals())) return;
+      measuredTools.add(name);
+      gtag('event', name, { page_location: analyticsPageLocation(location.href) });
+    });
+  }
   // A consent change in another tab must also revoke collection in this one.
   window.addEventListener('storage', (event) => {
     if (event.key !== CONSENT_KEY && event.key !== null) return;

@@ -12,6 +12,7 @@ import {
 } from '../data/printers';
 import { calculateCosts } from '../lib/costs';
 import AmazonCTA from './AmazonCTA';
+import { announceToolUse } from '../lib/analytics';
 
 const rows: { label: string; get: (p: Printer) => string }[] = [
   { label: 'Printing method', get: () => 'Direct thermal · black only' },
@@ -56,8 +57,10 @@ export default function Compare() {
     setIds(next);
     const query = new URLSearchParams({ printers: next.filter(Boolean).join(',') });
     history.replaceState(null, '', `/compare/?${query}`);
+    announceToolUse('comparison_used');
   }
   async function copy() {
+    announceToolUse('comparison_used');
     const url = new URL('/compare/', location.origin);
     url.searchParams.set('printers', ids.filter(Boolean).join(','));
     try {
@@ -129,7 +132,10 @@ export default function Compare() {
           className="plain-button"
           aria-expanded={showCosts}
           aria-controls="comparison-cost-settings"
-          onClick={() => setShowCosts((value) => !value)}
+          onClick={() => {
+            announceToolUse('comparison_used');
+            setShowCosts((value) => !value);
+          }}
         >
           {showCosts ? 'Hide cost estimates' : 'Estimate ownership costs'}
         </button>
@@ -169,7 +175,10 @@ export default function Compare() {
         <input
           type="checkbox"
           checked={differences}
-          onChange={(e) => setDifferences(e.currentTarget.checked)}
+          onChange={(e) => {
+            announceToolUse('comparison_used');
+            setDifferences(e.currentTarget.checked);
+          }}
         />{' '}
         Show only differences
       </label>
@@ -299,7 +308,13 @@ export default function Compare() {
           {copyState === 'Link copied' ? <Check size={18} /> : <Copy size={18} />}
           <span role="status">{copyState}</span>
         </button>
-        <button className="plain-button" onClick={() => window.print()}>
+        <button
+          className="plain-button"
+          onClick={() => {
+            announceToolUse('comparison_used');
+            window.print();
+          }}
+        >
           <PrintIcon size={19} /> Print comparison
         </button>
         <a href="/cost-calculator/" className="text-link">

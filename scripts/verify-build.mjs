@@ -146,6 +146,16 @@ for (const file of htmlFiles) {
   }
   if (!analytics.enabled && html.includes('id="analytics-preferences"'))
     failures.push(`${file}: analytics controls must be absent while integration is disabled`);
+  if (
+    analytics.enabled &&
+    ((html.match(/id="analytics-preferences"/g) || []).length !== 1 ||
+      !html.includes(`data-measurement-id="${analytics.measurementId}"`) ||
+      !html.includes('data-analytics-accept') ||
+      !html.includes('data-analytics-reject'))
+  )
+    failures.push(
+      `${file}: one authentic measurement destination and both consent choices are required`,
+    );
   if (/src="https:\/\/www\.googletagmanager\.com/.test(html))
     failures.push(`${file}: Google tag must not load before browser consent`);
   if (!deployment.indexable && !html.includes('content="noindex, nofollow"'))
@@ -290,6 +300,12 @@ for (const file of all) {
     const text = await readFile(file, 'utf8');
     if (file.endsWith('.js') && privateLegalValues.some((value) => text.includes(value)))
       failures.push(`${relative}: legal build data must not be bundled into client scripts`);
+    if (
+      file.endsWith('.html') &&
+      relative.replaceAll('\\', '/') !== 'privacy/index.html' &&
+      privateLegalValues.some((value) => text.includes(value))
+    )
+      failures.push(`${relative}: approved legal identity belongs only in Privacy`);
     if (
       /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\bgithub_pat_[A-Za-z0-9_]{30,}\b|\bghp_[A-Za-z0-9]{30,}\b/.test(
         text,

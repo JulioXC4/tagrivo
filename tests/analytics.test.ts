@@ -7,6 +7,7 @@ import {
   analyticsPageLocation,
   productClickPayload,
   CONSENT_LIFETIME,
+  announceToolUse,
 } from '../src/lib/analytics.ts';
 
 // Synthetic unit-test ID only; it is never supplied to a build or sent to a provider.
@@ -97,4 +98,26 @@ test('product events reject unlisted models, unsafe destinations and internal or
       productClickPayload({ ...base, ...change }, 'https://tagrivo.pages.dev', hosts),
       null,
     );
+});
+
+test('tool signals expose only approved names and never accept answer payloads', () => {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, 'document');
+  const target = new EventTarget();
+  const seen: Event[] = [];
+  target.addEventListener('tagrivo:printer_finder_complete', (event) => seen.push(event));
+  target.addEventListener('tagrivo:comparison_used', (event) => seen.push(event));
+  Object.defineProperty(globalThis, 'document', { value: target, configurable: true });
+  try {
+    announceToolUse('printer_finder_complete');
+    announceToolUse('comparison_used');
+    announceToolUse('email=user@example.test' as 'comparison_used');
+    assert.deepEqual(
+      seen.map((event) => event.type),
+      ['tagrivo:printer_finder_complete', 'tagrivo:comparison_used'],
+    );
+    assert.ok(seen.every((event) => !('detail' in event)));
+  } finally {
+    if (previous) Object.defineProperty(globalThis, 'document', previous);
+    else Reflect.deleteProperty(globalThis, 'document');
+  }
 });

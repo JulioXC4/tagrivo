@@ -10,6 +10,12 @@ export interface AnalyticsConsent {
 export const CONSENT_KEY = 'tagrivo-analytics-consent';
 export const CONSENT_LIFETIME = 30 * 24 * 60 * 60 * 1000;
 
+/** Signals carry an event name only, never tool answers, URLs or quote values. */
+export function announceToolUse(name: 'printer_finder_complete' | 'comparison_used') {
+  if (!['printer_finder_complete', 'comparison_used'].includes(name)) return;
+  if (typeof document !== 'undefined') document.dispatchEvent(new Event(`tagrivo:${name}`));
+}
+
 /** A real destination, approved policy and reader consent are separate requirements. */
 export function resolveAnalyticsConfig(env: {
   PUBLIC_ANALYTICS_ENABLED?: string;

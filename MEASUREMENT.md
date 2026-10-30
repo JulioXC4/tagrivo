@@ -1,41 +1,43 @@
-# Google y medición: configuración preparada, todavía apagada
+# Google Analytics y Search Console
 
-Actualización del 30/10/2026: el titular confirmó que aún no tiene Measurement ID y aplazó GA4 expresamente. Se conserva la integración y el consentimiento previo; se retiró el bloqueo de activación temporal ensayado durante la minimización. No se inventa un destino ni se declara recepción real. Este pendiente no impide el lanzamiento SEO. Search Console ya está verificado según el titular.
+Actualización: 30/10/2026. El titular facilitó el flujo real **Tagrivo Website**, ID público **G-H0LNBZ0ZJ8**, y autorizó activar GA4 con consentimiento previo. Search Console ya está verificado. Esta edición mantiene una única integración central en `src/config/integrations.ts`; no se instala GTM ni otro tag paralelo.
 
-29/10/2026. Search Console no necesita un beacon de analítica. Su verificación HTML está preparada en Base y usa únicamente `PUBLIC_GOOGLE_SITE_VERIFICATION`. No se ha verificado una propiedad desde esta sesión. Ver [LAUNCH-CHECKLIST.md](LAUNCH-CHECKLIST.md).
+## Configuración de Production
 
-## Activación futura de GA4
+- `PUBLIC_GA4_MEASUREMENT_ID=G-H0LNBZ0ZJ8`
+- `PUBLIC_ANALYTICS_ENABLED=true`
+- `PUBLIC_ANALYTICS_POLICY_APPROVED=true`
 
-No hay identificador real ni recopilación activa. Los valores de `.env.example` mantienen `PUBLIC_ANALYTICS_ENABLED=false`, `PUBLIC_ANALYTICS_POLICY_APPROVED=false` y `PUBLIC_GA4_MEASUREMENT_ID` vacío. `src/config/integrations.ts` es el punto de configuración; `src/lib/analytics.ts` valida y minimiza los datos.
+Mantener estos flags desactivados y sin destino en Preview. Los datos legales auténticos permanecen en las variables privadas de Cloudflare; no están en este documento ni en Git. La aprobación de analítica no sustituye el consentimiento del lector.
 
-Antes de activar:
+En la propiedad GA4, desactivar Medición mejorada, Google Signals y personalización publicitaria; no conectar audiencias publicitarias ni User-ID. Establecer la conservación de eventos en 2 meses. Estos ajustes de la cuenta requieren confirmación del titular y no pueden verificarse solo desde el código.
 
-1. Crear una propiedad GA4 y un stream web con el origen público real. Introducir su ID auténtico en Cloudflare Production; el código valida formato, no propiedad ni recepción.
-2. Revisar/terminar Privacy con responsable, contacto, base aplicable, terceros, retención, transferencias y ejercicio de derechos. La variable de aprobación no sustituye esa revisión. El titular ya aprobó Privacy para el lanzamiento sin GA4; revisar su adecuación antes de activar un destino real de analítica.
-3. En el stream, desactivar medición mejorada automática —incluidos clics salientes, formularios e historial— para utilizar únicamente los eventos explícitos de esta integración. No instalar GTM, otro gtag o un segundo beacon en paralelo. Mantener Google Signals y personalización desactivados, sin enlaces de publicidad ni User-ID, y elegir una retención mínima adecuada en la cuenta.
-4. Solo cuando el punto 2 esté resuelto, establecer `PUBLIC_ANALYTICS_POLICY_APPROVED=true` y `PUBLIC_ANALYTICS_ENABLED=true`; recompilar. Activar sin ID o sin aprobación causa error de configuración. No cambia noindex.
-5. Los controles opcionales se muestran al pie de la página; no hay carga de Google hasta que el lector acepta. Analytics preferences permite volver a abrirlos. Si se declina, las herramientas siguen funcionando. No se añadió un banner al diseño actual: con la integración apagada no aparece ningún control ni destino Google.
+## Consentimiento
 
-## Contrato de datos
+El panel existente al pie de la página ofrece Allow analytics y Decline analytics. El enlace Analytics preferences permite revisar la elección. No hay solicitud a Google, cookies GA ni pings de consentimiento denegado antes de aceptar. El tema y todas las herramientas funcionan si se rechaza. Consentimiento básico conforme a la documentación de Google, sin nuevas dependencias.
 
-| Evento                   | Datos explícitos                                                     | Exclusiones                                                                 |
-| ------------------------ | -------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `page_view`              | URL con origen/ruta y título público                                 | Query strings, fragmentos y referrer vacío; sin respuestas del Finder       |
-| `product_outbound_click` | ID público de impresora, manufacturer/affiliate y hostname permitido | URL completa, tag, cotizaciones, presupuesto, pedidos, correos y respuestas |
+La elección versionada y las cookies de esta integración duran hasta 30 días. No confundir su duración con la conservación de eventos en Google. Do Not Track y Global Privacy Control impiden iniciar medición. Revocar deshabilita el destino, elimina las cookies host de esta integración y recarga para retirar sus manejadores. Las solicitudes ya enviadas no pueden retractarse desde la web. El procedimiento de derechos del titular sigue siendo aplicable.
 
-Los enlaces medibles son los CTA externos identificados de las fichas, no todos los enlaces de fuentes. El código comprueba modelo y destino permitido. No se declara venta o ingreso a partir de un clic. No hay campos financieros ni resultados individuales de las herramientas en los eventos.
+## Eventos y datos
 
-Omitir referrer y parámetros también limita la atribución: esta integración no promete identificar campañas UTM ni clasificar todas las visitas orgánicas en GA4. Search Console será la fuente para consultas y rendimiento de búsqueda. Los clics de producto sirven para estudiar páginas/modelos, no para atribuir por sí solos ingresos a una keyword.
+| Evento | Momento | Parámetros propios |
+| --- | --- | --- |
+| `page_view` | Una vez al cargar cada documento, solo tras aceptar o con permiso vigente | Ruta canónica sin query ni fragmento y título público; referrer vacío |
+| `amazon_affiliate_click` | Clic real en CTA Amazon validado | ID público de impresora, tipo affiliate y hostname Amazon; nunca URL completa |
+| `product_outbound_click` | Clic en CTA de fabricante validado | ID público de impresora, tipo manufacturer y hostname permitido |
+| `printer_finder_complete` | Envío válido del quinto paso | Solo ruta de página; sin respuestas, presupuesto, volumen ni resultados |
+| `comparison_used` | Cambiar modelos/controles o compartir/imprimir comparación | Solo ruta de página; sin selecciones ni cotizaciones |
 
-El modo es de consentimiento básico: Google no se carga antes de aceptación, tampoco para enviar pings de consentimiento denegado. Después de aceptar, GA4 procesa peticiones técnicas y puede usar cookies; **no se afirma anonimato ni ausencia de cookies**. Consentimiento local y cookies de esta implementación se limitan a 30 días. Do Not Track y Global Privacy Control impiden iniciar medición. Revocar deshabilita el destino, limpia las cookies host `_ga`/`_ga_<stream>` de esta integración y recarga para descargar sus manejadores. No revierte solicitudes ya enviadas ni borra datos en Google; el operador necesita un procedimiento real de derechos.
+El uso de herramientas se cuenta una vez por documento y tipo de evento. Las acciones anteriores al consentimiento no se guardan ni se reenvían posteriormente. No se interpreta un clic como venta o comisión. GA4 puede añadir eventos técnicos propios como session_start o user_engagement después del consentimiento; no se afirma medición anónima ni ausencia de cookies tras aceptarlo.
 
-Si localStorage falla, la decisión dura solo esa pestaña. Un bloqueo de Google no debe romper navegación, Finder, Compare o Calculator. Las métricas representan a lectores que permiten medición; no son un censo completo del tráfico. Los controles al pie requieren una elección explícita, por lo que no se presupone una tasa alta de consentimiento.
+Se omiten referrer, query strings y fragmentos; por tanto esta integración no promete atribución completa de campañas ni fuentes orgánicas. Search Console proporciona consultas y rendimiento de Google sin instalar un beacon en el sitio.
 
-## Prueba obligatoria con la propiedad real
+## Verificación
 
-- Sin preferencia: no cargar gtag ni hacer solicitudes de colección. Rechazar: lo mismo, y sitio funcional.
-- Aceptar: una vista de página en Realtime/DebugView y un clic a fabricante con el ID/host correctos. Inspeccionar la carga de red para comprobar que `page_location` no contiene parámetros y que no hay eventos duplicados de medición mejorada.
-- Revocar y navegar: no más colección de esta integración; comprobar cookies y nueva carga. Verificar también otra pestaña, consentimiento expirado, DNT/GPC y almacenamiento bloqueado.
-- Mantener todos los datos de prueba sin información privada; no configurar un ID inventado para aparentar recepción. La comprobación de recepción sigue pendiente porque no se proporcionó una propiedad real.
+- Pruebas unitarias: permisos, rechazo, caducidad, señales de privacidad, destinos permitidos y eventos sin datos de herramientas.
+- Build: un solo panel/destino auténtico, aceptar/rechazar disponibles y ningún script externo Google en el HTML inicial.
+- Navegador: comprobar ausencia de solicitudes GA antes de aceptar y después de rechazar, una etiqueta tras aceptar, los eventos solicitados y revocación.
+- En producción, una respuesta satisfactoria de collect verifica transporte, no demuestra por sí sola que el evento aparezca en un informe. El titular debe confirmar Realtime/DebugView en su cuenta; no se solicitan contraseñas ni se simulan compras o clics facturables de afiliados.
+- En Search Console, enviar `https://tagrivo.pages.dev/sitemap-index.xml` cuando la comprobación pública confirme HTTP 200 y ausencia de noindex. La recepción del sitemap no garantiza indexación inmediata.
 
-Fuentes: [consentimiento básico](https://developers.google.com/tag-platform/security/guides/consent?consentmode=basic), [privacidad y desactivación](https://developers.google.com/tag-platform/security/guides/privacy), [configuración GA4](https://developers.google.com/analytics/devguides/collection/ga4/reference/config). Cloudflare Web Analytics puede medir visitas/rendimiento, pero sus [FAQ](https://developers.cloudflare.com/web-analytics/faq/) no ofrecen eventos personalizados; no se usa para simular clics afiliados.
+Fuentes oficiales: [consentimiento básico](https://developers.google.com/tag-platform/security/guides/consent?consentmode=basic), [eventos GA4](https://developers.google.com/analytics/devguides/collection/ga4/events), [configuración](https://developers.google.com/analytics/devguides/collection/ga4/reference/config).

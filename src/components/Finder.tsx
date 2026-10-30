@@ -5,6 +5,7 @@ import { ArrowCounterClockwiseIcon as ArrowCounterClockwise } from '@phosphor-ic
 import { recommend, type FinderAnswers } from '../lib/recommend';
 import AmazonCTA from './AmazonCTA';
 import { finderPlatforms, finderHandoffHref, readFinderHandoff } from '../lib/finder-handoff';
+import { announceToolUse } from '../lib/analytics';
 import {
   systemNames,
   connectionNames,
@@ -97,8 +98,10 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
       return;
     }
     setError('');
-    if (step === 4) setDone(true);
-    else setStep((s) => s + 1);
+    if (step === 4) {
+      if (!done) announceToolUse('printer_finder_complete');
+      setDone(true);
+    } else setStep((s) => s + 1);
   };
   const reset = () => {
     setDone(false);

@@ -2,6 +2,8 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { deployment } from './deployment-env.mjs';
 import { amazonLinkFor, resolveAmazonStoreId } from '../src/lib/affiliate.ts';
+import { resolveAnalyticsConfig } from '../src/lib/analytics.ts';
+const analytics = resolveAnalyticsConfig(process.env);
 if (!process.argv[2])
   throw new Error('Usage: npm run check:deployment -- https://YOUR-ACTUAL-PROJECT.pages.dev');
 const origin = new URL(process.argv[2]).origin;
@@ -43,7 +45,12 @@ for (const route of routes) {
       html,
     )
   )
-    failures.push(`${route}: unexpected external analytics script while measurement is disabled`);
+    failures.push(`${route}: third-party measurement script must not load before consent`);
+  const measurementId = html.match(/data-measurement-id="([^"]+)"/)?.[1];
+  if (analytics.enabled && measurementId !== analytics.measurementId)
+    failures.push(`${route}: missing or mismatched consent-gated measurement destination`);
+  if (!analytics.enabled && measurementId)
+    failures.push(`${route}: measurement controls present while integration is disabled`);
   for (const match of html.matchAll(/<a\b[^>]*data-link-kind="affiliate"[^>]*>[\s\S]*?<\/a>/g)) {
     const anchor = match[0];
     const id = anchor.match(/data-printer-id="([^"]+)"/)?.[1];

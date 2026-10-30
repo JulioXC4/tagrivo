@@ -6,6 +6,7 @@ dist/
 !.env.example
 .DS_Store
 .impeccable/review/
+.playwright-mcp/
 .wrangler/
 .dev.vars
 .dev.vars.*
