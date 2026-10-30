@@ -10,7 +10,7 @@ export interface AnalyticsConsent {
 export const CONSENT_KEY = 'tagrivo-analytics-consent';
 export const CONSENT_LIFETIME = 30 * 24 * 60 * 60 * 1000;
 
-/** Enabling a destination is separate from approving policy and obtaining reader consent. */
+/** A real destination, approved policy and reader consent are separate requirements. */
 export function resolveAnalyticsConfig(env: {
   PUBLIC_ANALYTICS_ENABLED?: string;
   PUBLIC_ANALYTICS_POLICY_APPROVED?: string;

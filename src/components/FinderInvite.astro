@@ -1,12 +1,13 @@
 ---
 import Icon from './Icon.astro';
+import { finderPlatforms } from '../lib/finder-handoff';
 ---
 
-<form class="finder-compact" action="/printer-finder/" method="get">
+<form class="finder-compact" action="/printer-finder/" method="get" data-finder-invite>
   <h3>How do you sell?</h3>
-  <fieldset class="choices">
+  <fieldset class="choices" disabled data-finder-ready>
     <legend class="sr-only">Your selling platform</legend>
-    {['Etsy', 'Shopify', 'eBay', 'Other'].map((platform) => (
+    {finderPlatforms.map((platform) => (
       <label class="option native-option">
         <input type="radio" name="platform" value={platform} required />
         <span>{platform}</span>
@@ -15,9 +16,32 @@ import Icon from './Icon.astro';
   </fieldset>
   <div class="form-navigation">
     <span class="small-note">A shortlist built around your setup.</span>
-    <button class="button" type="submit">
+    <button class="button" type="submit" disabled data-finder-ready>
       Start my printer match <Icon name="arrow" size={18} />
     </button>
   </div>
   <p class="privacy-note">No email required. Your platform carries over to the Finder.</p>
+  <noscript>
+    <p class="small-note">
+      <a href="/printers/">Explore the printers without JavaScript</a>.
+    </p>
+  </noscript>
 </form>
+
+<script>
+  import { finderHandoffHref } from '../lib/finder-handoff';
+  const form = document.querySelector<HTMLFormElement>('[data-finder-invite]');
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const href = finderHandoffHref(new FormData(form).get('platform'));
+      if (href) location.assign(href);
+    });
+    // Enable only after native submission has been intercepted.
+    form
+      .querySelectorAll<HTMLFieldSetElement | HTMLButtonElement>('[data-finder-ready]')
+      .forEach((control) => {
+        control.disabled = false;
+      });
+  }
+</script>

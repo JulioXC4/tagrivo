@@ -2,7 +2,7 @@
 
 Estado preparado el 29 de octubre de 2026. Astro estático + Tailwind + React Islands; se conserva la implementación y la identidad aprobadas. Repositorio: https://github.com/JulioXC4/tagrivo.
 
-Primera URL asignada y publicada: **https://tagrivo.pages.dev/**. El proyecto Pages se llama `tagrivo`, conectado a `main`. La prueba permanece sin indexación. No se ha comprado ni configurado un dominio propio.
+Primera URL asignada y publicada: **https://tagrivo.pages.dev/**. El proyecto Pages se llama `tagrivo`, conectado a `main`. El lanzamiento indexable fue autorizado el 30/10/2026; Production usa SITE_INDEXING=enabled y LEGAL_POLICY_APPROVED=true. Los pasos de primera publicación sin indexación siguientes se conservan como referencia histórica. No se ha comprado ni configurado un dominio propio.
 
 ## Configuración de Cloudflare Pages
 
@@ -91,7 +91,15 @@ Cloudflare publica **solo `dist`**, no la raíz ni `public` directamente. La sal
 - Las especificaciones tienen fuentes y fecha; no se presentan como pruebas físicas. El detalle exacto de variante y versión del sistema operativo debe confirmarse antes de comprar. La documentación de Rollo indica una limitación de su driver para Windows ARM.
 - Los precios no son ofertas en vivo. El catálogo conserva referencias de Rollo ($279.99) y Brother ($334.99) del 29 de octubre de 2026; la página Brother marcaba falta de stock en esa consulta. MUNBYN sigue sin precio verificado para la variante USB exacta. Una cifra fechada no se convierte automáticamente en una oferta actual del recomendador.
 - Tres identidades Amazon verificadas documentalmente están configuradas en `src/data/amazon.ts` con el Store ID real `tagrivo-20`. CTA común con Paid link, declaración exacta de Amazon y `rel="sponsored nofollow noopener noreferrer"`. No se muestran precios/reseñas Amazon ni se hacen peticiones automáticas de afiliación. Ver MONETIZATION-PERU.md.
-- Antes de indexar, resolver la identidad y dirección exigibles del responsable natural y finalizar Privacy conforme a PRIVACY-OPERATIONS.md. País, correo y retención ya definidos. El build rechaza indexación si Privacy conserva su aviso provisional. SITE_INDEXING sigue disabled; GA4 sigue apagado. El origen pages.dev no exige comprar un dominio.
+- El titular aprobó la identificación auténtica y el texto final de Privacy, y confirmó las variables privadas en Production. El build rechaza indexación si Privacy conserva su aviso provisional. Production usa SITE_INDEXING=enabled; Preview permanece noindex. GA4 sigue aplazado por el titular. El origen pages.dev no exige comprar un dominio.
+
+## Identificación legal privada y lanzamiento autorizado
+
+La identificación del responsable se suministra mediante `LEGAL_OPERATOR_NAME`, `LEGAL_OPERATOR_DOCUMENT` y `LEGAL_OPERATOR_ADDRESS`, sin prefijo PUBLIC. Mantener los valores reales únicamente en `.env` local ignorado y en variables de build de **Cloudflare Pages → tagrivo → Settings → Variables and Secrets → Production**. No guardarlos en Git, About, catálogos o módulos React. La identidad se muestra solamente en Privacy al aprobarla mediante `LEGAL_POLICY_APPROVED=true`.
+
+`.env.cloudflare-production` es un archivo local ignorado para copiar las variables reales después de revisar y aprobar el texto. No se carga automáticamente durante el desarrollo. Incluye el origen estable, `SITE_INDEXING=enabled`, la aprobación legal y el Store ID; no contiene credenciales de proveedores. No importar esos valores en Preview. Guardar las variables no sustituye el commit/push y el nuevo build. Las ramas de vista previa siguen noindex por código.
+
+GA4 está diferido por el titular: conservar `PUBLIC_ANALYTICS_ENABLED=false`, `PUBLIC_ANALYTICS_POLICY_APPROVED=false` y `PUBLIC_GA4_MEASUREMENT_ID` vacío hasta que facilite una propiedad real. Esto no es un bloqueo de indexación ni un cierre permanente de la integración. La recepción de eventos no se declara verificada sin un destino real y pruebas con consentimiento.
 
 ## Fuentes oficiales de despliegue
 

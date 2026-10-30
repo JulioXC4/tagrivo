@@ -1,5 +1,7 @@
 # Google y medición: configuración preparada, todavía apagada
 
+Actualización del 30/10/2026: el titular confirmó que aún no tiene Measurement ID y aplazó GA4 expresamente. Se conserva la integración y el consentimiento previo; se retiró el bloqueo de activación temporal ensayado durante la minimización. No se inventa un destino ni se declara recepción real. Este pendiente no impide el lanzamiento SEO. Search Console ya está verificado según el titular.
+
 29/10/2026. Search Console no necesita un beacon de analítica. Su verificación HTML está preparada en Base y usa únicamente `PUBLIC_GOOGLE_SITE_VERIFICATION`. No se ha verificado una propiedad desde esta sesión. Ver [LAUNCH-CHECKLIST.md](LAUNCH-CHECKLIST.md).
 
 ## Activación futura de GA4
@@ -9,7 +11,7 @@ No hay identificador real ni recopilación activa. Los valores de `.env.example`
 Antes de activar:
 
 1. Crear una propiedad GA4 y un stream web con el origen público real. Introducir su ID auténtico en Cloudflare Production; el código valida formato, no propiedad ni recepción.
-2. Revisar/terminar Privacy con responsable, contacto, base aplicable, terceros, retención, transferencias y ejercicio de derechos. La variable de aprobación no sustituye esa revisión. Privacy permanece provisional en la edición actual.
+2. Revisar/terminar Privacy con responsable, contacto, base aplicable, terceros, retención, transferencias y ejercicio de derechos. La variable de aprobación no sustituye esa revisión. El titular ya aprobó Privacy para el lanzamiento sin GA4; revisar su adecuación antes de activar un destino real de analítica.
 3. En el stream, desactivar medición mejorada automática —incluidos clics salientes, formularios e historial— para utilizar únicamente los eventos explícitos de esta integración. No instalar GTM, otro gtag o un segundo beacon en paralelo. Mantener Google Signals y personalización desactivados, sin enlaces de publicidad ni User-ID, y elegir una retención mínima adecuada en la cuenta.
 4. Solo cuando el punto 2 esté resuelto, establecer `PUBLIC_ANALYTICS_POLICY_APPROVED=true` y `PUBLIC_ANALYTICS_ENABLED=true`; recompilar. Activar sin ID o sin aprobación causa error de configuración. No cambia noindex.
 5. Los controles opcionales se muestran al pie de la página; no hay carga de Google hasta que el lector acepta. Analytics preferences permite volver a abrirlos. Si se declina, las herramientas siguen funcionando. No se añadió un banner al diseño actual: con la integración apagada no aparece ningún control ni destino Google.

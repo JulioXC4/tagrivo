@@ -1,5 +1,6 @@
 ---
 import Editorial from '../layouts/Editorial.astro';
+import { legalPolicy } from '../config/legal';
 ---
 
 <Editorial
@@ -11,8 +12,10 @@ import Editorial from '../layouts/Editorial.astro';
     thermal label printer research, recommendations and comparisons for US sellers. Tagrivo is one
     of the projects developed under JC Labs, the creator's personal brand for digital projects. An
     individual based in Peru administers the project under that personal brand; neither brand is
-    presented as an incorporated company. Required legal identity and address information is still
-    under review in our <a href="/privacy/">provisional privacy notice</a>.
+    presented as an incorporated company. Responsible-person details and current data practices are
+    described in our{' '}
+    <a href="/privacy/">{legalPolicy.approved ? 'privacy policy' : 'provisional privacy notice'}</a>
+    .
   </p>
   <p>
     A label printer is a small purchase with an outsized place in your working day. It sits between

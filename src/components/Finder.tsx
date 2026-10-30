@@ -4,6 +4,7 @@ import { ArrowLeftIcon as ArrowLeft } from '@phosphor-icons/react/dist/csr/Arrow
 import { ArrowCounterClockwiseIcon as ArrowCounterClockwise } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise';
 import { recommend, type FinderAnswers } from '../lib/recommend';
 import AmazonCTA from './AmazonCTA';
+import { finderPlatforms, finderHandoffHref, readFinderHandoff } from '../lib/finder-handoff';
 import {
   systemNames,
   connectionNames,
@@ -29,6 +30,7 @@ const descriptions = [
 export default function Finder({ compact = false }: { compact?: boolean }) {
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
+  const [ready, setReady] = useState(false);
   const [answers, setAnswers] = useState<FinderAnswers>({
     platform: '',
     os: 'windows',
@@ -42,9 +44,12 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
   const form = useRef<HTMLFormElement>(null);
   const mounted = useRef(false);
   useEffect(() => {
+    setReady(true);
     if (compact) return;
-    const platform = new URLSearchParams(window.location.search).get('platform');
-    if (platform && ['Etsy', 'Shopify', 'eBay', 'Other'].includes(platform)) {
+    const { platform, cleanHref } = readFinderHandoff(window.location.href);
+    if (`${location.pathname}${location.search}${location.hash}` !== cleanHref)
+      history.replaceState(null, '', cleanHref);
+    if (platform) {
       setAnswers((a) => ({ ...a, platform }));
       setPicked({ 0: true });
       setStep(1);
@@ -87,7 +92,8 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
       return;
     }
     if (compact) {
-      window.location.assign(`/printer-finder/?platform=${encodeURIComponent(answers.platform)}`);
+      const href = finderHandoffHref(answers.platform);
+      if (href) window.location.assign(href);
       return;
     }
     setError('');
@@ -109,6 +115,7 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
     return (
       <fieldset
         className="choices"
+        disabled={!ready}
         aria-invalid={!!error}
         aria-describedby={error ? 'finder-error' : undefined}
       >
@@ -270,7 +277,7 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
       {step === 0
         ? choices(
             'platform',
-            ['Etsy', 'Shopify', 'eBay', 'Other'].map((value) => ({ value, label: value })),
+            finderPlatforms.map((value) => ({ value, label: value })),
           )
         : null}
       {step === 1
@@ -353,7 +360,7 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
             {compact ? 'Five questions. A more considered choice.' : 'Your setup comes first.'}
           </span>
         )}
-        <button className="button" type="submit">
+        <button className="button" type="submit" disabled={!ready}>
           {step === 4 ? 'See my matches' : compact ? 'Find my printer' : 'Continue'}
           <ArrowRight size={18} />
         </button>

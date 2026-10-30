@@ -4,7 +4,18 @@ import { deployment } from './deployment-env.mjs';
 import { resolveAnalyticsConfig } from '../src/lib/analytics.ts';
 import { amazonLinkFor, resolveAmazonStoreId } from '../src/lib/affiliate.ts';
 import { amazonListings, guideAmazonProducts } from '../src/data/amazon.ts';
+import { resolveLegalPolicy } from '../src/lib/legal.ts';
 const analytics = resolveAnalyticsConfig(process.env);
+const legal = resolveLegalPolicy(process.env);
+const privateLegalValues = [
+  'LEGAL_OPERATOR_NAME',
+  'LEGAL_OPERATOR_DOCUMENT',
+  'LEGAL_OPERATOR_ADDRESS',
+]
+  .map((key) => process.env[key]?.trim())
+  .filter(Boolean);
+if (deployment.indexable && !legal.approved)
+  throw new Error('Approve the authentic Privacy text before enabling production indexing.');
 const amazonTag = resolveAmazonStoreId(process.env.PUBLIC_AMAZON_ASSOCIATE_TAG);
 const root = path.resolve('dist');
 async function files(dir) {
@@ -63,6 +74,15 @@ const canonicals = new Set();
 const articleBodies = new Set();
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
+  for (const [form] of html.matchAll(/<form\b[^>]*>[\s\S]*?<\/form>/g)) {
+    if (
+      !/<fieldset\b[^>]*\bdisabled\b/.test(form) ||
+      !/<button\b(?=[^>]*type="submit")(?=[^>]*\bdisabled\b)[^>]*>/.test(form)
+    )
+      failures.push(
+        `${file}: interactive forms must not submit answers before browser handlers load`,
+      );
+  }
   const relativePage = path.relative(root, file).replaceAll('\\', '/');
   const guideId = relativePage.match(/^guides\/([^/]+)\/index\.html$/)?.[1];
   const productId = relativePage.match(/^printers\/([^/]+)\/index\.html$/)?.[1];
@@ -237,6 +257,8 @@ for (const file of [
 ])
   if (!all.includes(path.join(root, file))) failures.push(`Missing ${file}`);
 const headers = await readFile(path.join(root, '_headers'), 'utf8');
+if (!headers.includes("Content-Security-Policy: form-action 'none'"))
+  failures.push('Native form submission must be blocked by the production privacy policy');
 const robots = await readFile(path.join(root, 'robots.txt'), 'utf8');
 if (!deployment.indexable) {
   if (!headers.includes('X-Robots-Tag: noindex, nofollow'))
@@ -266,6 +288,8 @@ for (const file of all) {
     failures.push(`Private/source artifact in deployment: ${relative}`);
   if (/\.(?:html|js|css|txt|xml)$/.test(file)) {
     const text = await readFile(file, 'utf8');
+    if (file.endsWith('.js') && privateLegalValues.some((value) => text.includes(value)))
+      failures.push(`${relative}: legal build data must not be bundled into client scripts`);
     if (
       /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\bgithub_pat_[A-Za-z0-9_]{30,}\b|\bghp_[A-Za-z0-9]{30,}\b/.test(
         text,
