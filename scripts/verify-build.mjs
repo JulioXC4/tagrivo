@@ -261,6 +261,8 @@ for (const file of htmlFiles) {
 }
 for (const file of [
   'robots.txt',
+  'favicon.ico',
+  'favicon.svg',
   '404.html',
   '_headers',
   ...(deployment.indexable ? ['sitemap-index.xml', 'sitemap-0.xml'] : []),
