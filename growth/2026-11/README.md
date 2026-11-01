@@ -69,4 +69,4 @@ Amazon Associates → Informes para `tagrivo-20`: clics, artículos pedidos/envi
 - Revisar mensualmente métricas reales. En GA4 mantener Medición mejorada y Google Signals desactivados para evitar ampliar/duplicar esta instrumentación. Si falta configurar conservación: Administrar → Recogida y modificación de datos → Conservación de datos → datos de eventos 2 meses; los nombres pueden variar. Confirmar zona horaria de la propiedad.
 - GSC: conservar el sitemap enviado, revisar su lectura y las páginas; no repetir solicitudes manuales por cuota ni prometer indexación inmediata. No se necesita volver a cambiar variables de Cloudflare para esta fase.
 
-Estado de publicación, pruebas e IndexNow: véase [verification.md](verification.md).
+Publicado: commit funcional `ba58ac7`, Cloudflare confirmado. IndexNow recibió las diez guías modificadas con HTTP 202 (validación de clave pendiente); no equivale a indexación. Bing aún requiere importación personal. Estado y alcances de las comprobaciones: [verification.md](verification.md).
