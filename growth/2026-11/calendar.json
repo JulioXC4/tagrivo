@@ -1,0 +1,242 @@
+[
+  {
+    "day": 1,
+    "date": "2026-11-02",
+    "category": "Medición",
+    "action": "Importar Tagrivo desde GSC a Bing; comprobar sitemap",
+    "channel": "Bing",
+    "check": "Propiedad y sitemap aceptados, si el servicio los procesa"
+  },
+  {
+    "day": 2,
+    "date": "2026-11-03",
+    "category": "Distribución",
+    "action": "Publicar Pin 01: comparación exacta",
+    "channel": "Pinterest",
+    "check": "Registrar URL del Pin, no estimar visitas"
+  },
+  {
+    "day": 3,
+    "date": "2026-11-04",
+    "category": "Calidad",
+    "action": "Revisar dudas/comentarios sin promocionar en comunidades",
+    "channel": "Investigación",
+    "check": "Anotar una duda concreta y su fuente"
+  },
+  {
+    "day": 4,
+    "date": "2026-11-05",
+    "category": "Distribución",
+    "action": "Publicar Pin 02: Mac y Windows",
+    "channel": "Pinterest",
+    "check": "Comprobar destino y texto alternativo"
+  },
+  {
+    "day": 5,
+    "date": "2026-11-06",
+    "category": "Video",
+    "action": "Grabar Short 01 con Finder y datos de ejemplo",
+    "channel": "Producción local",
+    "check": "No mostrar paneles privados"
+  },
+  {
+    "day": 6,
+    "date": "2026-11-07",
+    "category": "Medición",
+    "action": "Registrar GSC, GA4 y Amazon con sus zonas horarias",
+    "channel": "Tracker",
+    "check": "Usar datos disponibles; dejar el resto vacío"
+  },
+  {
+    "day": 7,
+    "date": "2026-11-08",
+    "category": "Revisión",
+    "action": "Revisar qué páginas reciben impresiones US",
+    "channel": "GSC",
+    "check": "No interpretar un día como tendencia"
+  },
+  {
+    "day": 8,
+    "date": "2026-11-09",
+    "category": "Distribución",
+    "action": "Publicar Pin 03: tamaño Etsy 4 × 6",
+    "channel": "Pinterest",
+    "check": "No prometer compatibilidad de todos los carriers"
+  },
+  {
+    "day": 9,
+    "date": "2026-11-10",
+    "category": "Distribución",
+    "action": "Publicar Short 01 si está revisado",
+    "channel": "YouTube / Pinterest",
+    "check": "Usar campaña short_01"
+  },
+  {
+    "day": 10,
+    "date": "2026-11-11",
+    "category": "Comunidad",
+    "action": "Leer hilo semanal vigente de r/Etsy y reglas",
+    "channel": "Reddit",
+    "check": "Publicar presentación solo si está permitida"
+  },
+  {
+    "day": 11,
+    "date": "2026-11-12",
+    "category": "Calidad",
+    "action": "Revisar consultas reales de ARM y Mac",
+    "channel": "GSC / fuentes",
+    "check": "Anotar necesidades; no crear artículos por rutina"
+  },
+  {
+    "day": 12,
+    "date": "2026-11-13",
+    "category": "Distribución",
+    "action": "Publicar Pin 04: conexiones",
+    "channel": "Pinterest",
+    "check": "Comprobar UTMs y página de llegada"
+  },
+  {
+    "day": 13,
+    "date": "2026-11-14",
+    "category": "Video",
+    "action": "Grabar Short 02: comparación de variantes",
+    "channel": "Producción local",
+    "check": "Identificar renders editoriales en pantalla"
+  },
+  {
+    "day": 14,
+    "date": "2026-11-15",
+    "category": "Revisión",
+    "action": "Registrar semana 2 y errores de rastreo",
+    "channel": "Tracker / Bing / GSC",
+    "check": "Comparar periodos completos si existen"
+  },
+  {
+    "day": 15,
+    "date": "2026-11-16",
+    "category": "Distribución",
+    "action": "Publicar Pin 05: costes",
+    "channel": "Pinterest",
+    "check": "Valores de calculadora solo ilustrativos"
+  },
+  {
+    "day": 16,
+    "date": "2026-11-17",
+    "category": "Distribución",
+    "action": "Publicar Short 02 si está revisado",
+    "channel": "YouTube / Pinterest",
+    "check": "Usar campaña short_02"
+  },
+  {
+    "day": 17,
+    "date": "2026-11-18",
+    "category": "Calidad",
+    "action": "Revisar clics y entradas a la comparación exacta",
+    "channel": "GA4",
+    "check": "Solo medición consentida; no inferir ventas individuales"
+  },
+  {
+    "day": 18,
+    "date": "2026-11-19",
+    "category": "Distribución",
+    "action": "Publicar Pin 06: Finder",
+    "channel": "Pinterest",
+    "check": "No prometer un ganador universal"
+  },
+  {
+    "day": 19,
+    "date": "2026-11-20",
+    "category": "Comunidad",
+    "action": "Ayudar con una respuesta propia si las reglas lo permiten",
+    "channel": "Comunidad",
+    "check": "Sin enlaces de Tagrivo donde estén prohibidos"
+  },
+  {
+    "day": 20,
+    "date": "2026-11-21",
+    "category": "Video",
+    "action": "Grabar Short 03: calculadora",
+    "channel": "Producción local",
+    "check": "Mostrar cotizaciones de ejemplo identificadas"
+  },
+  {
+    "day": 21,
+    "date": "2026-11-22",
+    "category": "Revisión",
+    "action": "Registrar semana 3 y preguntas de compra",
+    "channel": "Tracker",
+    "check": "Distinguir clics GA4 y clics Amazon"
+  },
+  {
+    "day": 22,
+    "date": "2026-11-23",
+    "category": "Distribución",
+    "action": "Publicar Short 03 si está revisado",
+    "channel": "YouTube / Pinterest",
+    "check": "Usar campaña short_03"
+  },
+  {
+    "day": 23,
+    "date": "2026-11-24",
+    "category": "Medición",
+    "action": "Comparar fuentes / páginas de entrada consentidas",
+    "channel": "GA4",
+    "check": "No sumar usuarios y sesiones"
+  },
+  {
+    "day": 24,
+    "date": "2026-11-25",
+    "category": "SEO",
+    "action": "Revisar canonical y sitemap en Bing / GSC",
+    "channel": "Search",
+    "check": "No repetir IndexNow para páginas sin cambios"
+  },
+  {
+    "day": 25,
+    "date": "2026-11-26",
+    "category": "Investigación",
+    "action": "Revisar Trends US con los mismos filtros",
+    "channel": "Trends",
+    "check": "Registrar fecha y ventana; no inventar volumen"
+  },
+  {
+    "day": 26,
+    "date": "2026-11-27",
+    "category": "Conversión",
+    "action": "Revisar qué guías generan clics Amazon",
+    "channel": "GA4 / Amazon",
+    "check": "No atribuir pedidos a un usuario individual"
+  },
+  {
+    "day": 27,
+    "date": "2026-11-28",
+    "category": "Calidad",
+    "action": "Volver a comprobar rutas y límites de compatibilidad prioritarios",
+    "channel": "Fabricantes",
+    "check": "Cambiar contenido solo con evidencia nueva"
+  },
+  {
+    "day": 28,
+    "date": "2026-11-29",
+    "category": "Revisión",
+    "action": "Registrar semana 4 y ajustes de comisiones",
+    "channel": "Tracker",
+    "check": "Conservar devoluciones y ajustes de Amazon"
+  },
+  {
+    "day": 29,
+    "date": "2026-11-30",
+    "category": "Decisión",
+    "action": "Elegir 2 páginas para siguiente iteración según datos",
+    "channel": "GSC / GA4",
+    "check": "No decidir solo por posición o una visita"
+  },
+  {
+    "day": 30,
+    "date": "2026-12-01",
+    "category": "Cierre",
+    "action": "Consolidar 30 días y decidir el siguiente ciclo",
+    "channel": "Tracker",
+    "check": "Sin objetivos inventados ni promesa de ingresos"
+  }
+]

@@ -11,8 +11,11 @@ export const CONSENT_KEY = 'tagrivo-analytics-consent';
 export const CONSENT_LIFETIME = 30 * 24 * 60 * 60 * 1000;
 
 /** Signals carry an event name only, never tool answers, URLs or quote values. */
-export function announceToolUse(name: 'printer_finder_complete' | 'comparison_used') {
-  if (!['printer_finder_complete', 'comparison_used'].includes(name)) return;
+export function announceToolUse(
+  name: 'printer_finder_complete' | 'comparison_used' | 'cost_calculator_used',
+) {
+  if (!['printer_finder_complete', 'comparison_used', 'cost_calculator_used'].includes(name))
+    return;
   if (typeof document !== 'undefined') document.dispatchEvent(new Event(`tagrivo:${name}`));
 }
 
@@ -73,10 +76,48 @@ export function mayMeasure(
   );
 }
 
-/** Omit URL queries, fragments and referral data, including Finder/comparison answers. */
+/** Omit URL queries and fragments, including Finder/comparison answers. */
 export function analyticsPageLocation(href: string): string {
   const url = new URL(href);
   return `${url.origin}${url.pathname}`;
+}
+
+/** Coarse acquisition only: no referring paths, search terms or arbitrary campaign text. */
+export function analyticsAcquisition(href: string, referrer: string) {
+  const page = new URL(href);
+  let page_referrer = '';
+  try {
+    const from = new URL(referrer);
+    if (
+      from.protocol === 'https:' &&
+      from.origin !== page.origin &&
+      !from.username &&
+      !from.password
+    )
+      page_referrer = `${from.origin}/`;
+  } catch {
+    /* Direct or suppressed referrer. */
+  }
+  const campaign: Record<string, string> = {};
+  const source = page.searchParams.get('utm_source');
+  const content = page.searchParams.get('utm_content');
+  const validContent =
+    source === 'pinterest'
+      ? /^(pin_0[1-6]|short_0[1-3])$/.test(content || '')
+      : source === 'youtube' && /^short_0[1-3]$/.test(content || '');
+  if (
+    validContent &&
+    page.searchParams.get('utm_medium') === 'social' &&
+    page.searchParams.get('utm_campaign') === 'organic_2026_11'
+  ) {
+    Object.assign(campaign, {
+      campaign_source: source!,
+      campaign_medium: 'social',
+      campaign_name: 'organic_2026_11',
+      campaign_content: content!,
+    });
+  }
+  return { page_referrer, ...campaign };
 }
 
 export function productClickPayload(

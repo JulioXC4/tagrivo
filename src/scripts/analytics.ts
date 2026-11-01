@@ -4,6 +4,7 @@ import {
   parseAnalyticsConsent,
   mayMeasure,
   analyticsPageLocation,
+  analyticsAcquisition,
   productClickPayload,
   type AnalyticsConsent,
 } from '../lib/analytics';
@@ -21,6 +22,9 @@ export function initAnalytics() {
   panel.dataset.analyticsInitialized = 'true';
   const config = { enabled: true, measurementId: panel.dataset.measurementId };
   const id = config.measurementId;
+  // Capture the public landing campaign before a tool clears its URL handoff.
+  // Nothing is stored or sent until consent is granted.
+  const acquisition = analyticsAcquisition(location.href, document.referrer);
   const productHosts = JSON.parse(panel.dataset.productHosts || '{}') as Record<string, string>;
   const status = panel.querySelector<HTMLElement>('[data-analytics-status]')!;
   const heading = panel.querySelector<HTMLElement>('h2')!;
@@ -82,12 +86,12 @@ export function initAnalytics() {
       cookie_expires: CONSENT_LIFETIME / 1000,
       cookie_update: false,
       page_location: analyticsPageLocation(location.href),
-      page_referrer: '',
+      ...acquisition,
     });
     gtag('event', 'page_view', {
       page_location: analyticsPageLocation(location.href),
       page_title: document.title,
-      page_referrer: '',
+      page_referrer: acquisition.page_referrer,
     });
     const script = document.createElement('script');
     script.async = true;
@@ -154,7 +158,7 @@ export function initAnalytics() {
         payload,
       );
   });
-  for (const name of ['printer_finder_complete', 'comparison_used']) {
+  for (const name of ['printer_finder_complete', 'comparison_used', 'cost_calculator_used']) {
     document.addEventListener(`tagrivo:${name}`, () => {
       // No replay after consent: actions before acceptance are deliberately not retained.
       // Count meaningful tool use once per document, rather than every comparison control change.

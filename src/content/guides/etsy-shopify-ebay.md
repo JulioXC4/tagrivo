@@ -3,7 +3,7 @@ title: A practical label workflow for Etsy, Shopify, and eBay
 description: Follow the label from your marketplace to the print dialog, and prevent common page-size and scaling problems.
 category: Shipping workflow
 date: 2026-10-28
-updated: 2026-10-29
+updated: 2026-11-01
 seoTitle: 'Etsy, Shopify & eBay: 4 × 6 Shipping Label Workflows'
 readingTime: 4
 ---
@@ -11,6 +11,8 @@ readingTime: 4
 The printer is one part of a shipping workflow. Your marketplace or shipping provider produces the label file; your device and application send it to the hardware. Understanding those separate steps helps you avoid buying the wrong connection for the job.
 
 ## Follow one order from start to finish
+
+**Quick buying answer:** a marketplace generates a shipping label; your device, application and printer still need a compatible route. A printer need not be chosen by marketplace logo alone. If you already have a usable PDF, compare the [exact connection options](/compare/) and [computer requirements](/guides/mac-windows-label-printer-compatibility/) before replacing hardware.
 
 Before purchasing a printer, map your normal process: where you buy postage, where you download the label, which device holds that file, and which application prints it.
 

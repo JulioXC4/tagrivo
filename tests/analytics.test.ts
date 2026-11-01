@@ -5,6 +5,7 @@ import {
   parseAnalyticsConsent,
   mayMeasure,
   analyticsPageLocation,
+  analyticsAcquisition,
   productClickPayload,
   CONSENT_LIFETIME,
   announceToolUse,
@@ -106,18 +107,65 @@ test('tool signals expose only approved names and never accept answer payloads',
   const seen: Event[] = [];
   target.addEventListener('tagrivo:printer_finder_complete', (event) => seen.push(event));
   target.addEventListener('tagrivo:comparison_used', (event) => seen.push(event));
+  target.addEventListener('tagrivo:cost_calculator_used', (event) => seen.push(event));
   Object.defineProperty(globalThis, 'document', { value: target, configurable: true });
   try {
     announceToolUse('printer_finder_complete');
     announceToolUse('comparison_used');
+    announceToolUse('cost_calculator_used');
     announceToolUse('email=user@example.test' as 'comparison_used');
     assert.deepEqual(
       seen.map((event) => event.type),
-      ['tagrivo:printer_finder_complete', 'tagrivo:comparison_used'],
+      [
+        'tagrivo:printer_finder_complete',
+        'tagrivo:comparison_used',
+        'tagrivo:cost_calculator_used',
+      ],
     );
     assert.ok(seen.every((event) => !('detail' in event)));
   } finally {
     if (previous) Object.defineProperty(globalThis, 'document', previous);
     else Reflect.deleteProperty(globalThis, 'document');
   }
+});
+
+test('acquisition preserves coarse sources and only fixed public campaign labels', () => {
+  const base = 'https://tagrivo.pages.dev/guides/printing-costs/';
+  assert.deepEqual(analyticsAcquisition(base, 'https://www.google.com/search?q=private#secret'), {
+    page_referrer: 'https://www.google.com/',
+  });
+  const credentialUrl = new URL('https://example.test/');
+  credentialUrl.username = 'synthetic';
+  credentialUrl.password = 'unit-test';
+  for (const from of [base, 'invalid', 'http://example.test/private', credentialUrl.href])
+    assert.equal(analyticsAcquisition(base, from).page_referrer, '');
+  assert.deepEqual(
+    analyticsAcquisition(
+      base +
+        '?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=pin_01&email=private',
+      '',
+    ),
+    {
+      page_referrer: '',
+      campaign_source: 'pinterest',
+      campaign_medium: 'social',
+      campaign_name: 'organic_2026_11',
+      campaign_content: 'pin_01',
+    },
+  );
+  assert.deepEqual(
+    analyticsAcquisition(
+      base + '?utm_source=email@example.test&utm_medium=social&utm_campaign=private',
+      '',
+    ),
+    { page_referrer: '' },
+  );
+  assert.deepEqual(
+    analyticsAcquisition(
+      base +
+        '?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=email@example.test',
+      '',
+    ),
+    { page_referrer: '' },
+  );
 });

@@ -16,6 +16,7 @@ dist/
 *.p12
 *.pfx
 coverage/
+*.inspect.ndjson
 release-artifacts/
 /design-assets/
 /design-qa.md

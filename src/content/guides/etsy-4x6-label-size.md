@@ -4,6 +4,7 @@ seoTitle: 'Etsy 4 × 6 Labels Printing Too Small or Cropped: A Checklist'
 description: Diagnose Etsy shipping-label format, PDF size, paper settings and app limitations before replacing a thermal printer.
 category: Shipping problems
 date: 2026-10-29
+updated: 2026-11-01
 readingTime: 4
 ---
 
@@ -12,6 +13,10 @@ A tiny shipping label on a large sticker is not, by itself, a reason to replace 
 This is a document-based diagnostic checklist. It is not a repair tested on a customer's printer, and it does not guarantee carrier acceptance.
 
 ## First check the carrier and the source format
+
+**Quick check:** download the original PDF and inspect its page size. A 4 × 6 label drawn inside a Letter-size page is not a 4 × 6 PDF. Next, match the PDF dimensions, print-dialog paper size and loaded stock before changing scaling or buying another printer.
+
+For an eBay order with a similar symptom, check the platform-specific steps in our [Etsy, Shopify and eBay workflow guide](/guides/etsy-shopify-ebay/); Etsy's carrier-specific format guidance should not be transferred to another marketplace.
 
 [Etsy's current help page](https://help.etsy.com/hc/en-us/articles/360001968348-How-to-Download-and-Print-a-Shipping-Label) describes 4 × 6 formatting for USPS shipping labels. Do not assume every carrier, service or document in an Etsy order offers the same format. Confirm the options for the actual label you are printing, including any additional international paperwork.
 

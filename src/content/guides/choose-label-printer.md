@@ -3,8 +3,8 @@ title: How to choose a 4 × 6 label printer
 description: Start with your devices and label workflow. Then compare connectivity, media costs, and the trade-offs that affect your shipping desk.
 category: Buying guide
 date: 2026-10-28
-updated: 2026-10-29
-seoTitle: '4 × 6 Thermal Label Printers for Small US Sellers'
+updated: 2026-11-01
+seoTitle: '4 × 6 Shipping Label Printers for Small Business: How to Choose'
 readingTime: 4
 featured: true
 ---
@@ -14,6 +14,8 @@ A label printer should make packing simpler. The useful question is not which mo
 This guide focuses on direct-thermal shipping-label printers for small US sellers. Our recommendations are based on manufacturer documentation, not hands-on testing.
 
 ## Start with the label file
+
+**For Etsy, Shopify and eBay sellers:** choose around the device that prints, not just the marketplace you sell on. A supported desktop with USB can suit one fixed station; a phone-first setup needs a documented app and wireless route. Begin with the [platform workflow checks](/guides/etsy-shopify-ebay/), then use the [Finder](/printer-finder/) to narrow the three-model shortlist.
 
 Before choosing hardware, open a label from your selling or shipping platform. Check whether it can be downloaded as a **4 × 6 PDF**, rather than a full Letter-size page. The paper setting, PDF page dimensions, and driver label size need to agree.
 

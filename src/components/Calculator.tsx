@@ -2,6 +2,15 @@ import { useState } from 'react';
 import { DownloadSimpleIcon as DownloadSimple } from '@phosphor-icons/react/dist/csr/DownloadSimple';
 import { ArrowCounterClockwiseIcon as ArrowCounterClockwise } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise';
 import { calculateCosts, type CostInputs } from '../lib/costs';
+import { announceToolUse } from '../lib/analytics';
+const withinLimits = (inputs: CostInputs) =>
+  inputs.weeklyOrders <= 100000 &&
+  Number.isInteger(inputs.weeklyOrders) &&
+  inputs.printerPrice <= 100000 &&
+  inputs.packPrice <= 100000 &&
+  inputs.labelsPerPack <= 1000000 &&
+  Number.isInteger(inputs.labelsPerPack) &&
+  inputs.waste <= 99;
 const defaults: CostInputs = {
   weeklyOrders: 50,
   printerPrice: 200,
@@ -19,8 +28,11 @@ const dollars = (value: number) =>
 export default function Calculator() {
   const [inputs, setInputs] = useState<CostInputs>(defaults);
   const result = calculateCosts(inputs);
-  const update = (key: keyof CostInputs, value: number) =>
-    setInputs((i) => ({ ...i, [key]: value }));
+  const update = (key: keyof CostInputs, value: number) => {
+    const next = { ...inputs, [key]: value };
+    setInputs(next);
+    if (calculateCosts(next) && withinLimits(next)) announceToolUse('cost_calculator_used');
+  };
   const fields: {
     key: keyof CostInputs;
     label: string;
@@ -70,14 +82,7 @@ export default function Calculator() {
       step: 1,
     },
   ];
-  const inRange =
-    inputs.weeklyOrders <= 100000 &&
-    Number.isInteger(inputs.weeklyOrders) &&
-    inputs.printerPrice <= 100000 &&
-    inputs.packPrice <= 100000 &&
-    inputs.labelsPerPack <= 1000000 &&
-    Number.isInteger(inputs.labelsPerPack) &&
-    inputs.waste <= 99;
+  const inRange = withinLimits(inputs);
   const valid = result && inRange;
   function download() {
     if (!valid || !result) return;

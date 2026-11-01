@@ -26,6 +26,28 @@ const {
 const site = Astro.site!;
 const preventIndexing = noindex || !import.meta.env.SITE_INDEXABLE;
 const canonical = new URL(Astro.url.pathname, site);
+const section = Astro.url.pathname.startsWith('/guides/')
+  ? ['Buying guides', '/guides/']
+  : Astro.url.pathname.startsWith('/printers/')
+    ? ['Printers', '/printers/']
+    : null;
+const breadcrumbs =
+  section && Astro.url.pathname !== section[1]
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: site.href },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: section[0],
+            item: new URL(section[1], site).href,
+          },
+          { '@type': 'ListItem', position: 3, name: title, item: canonical.href },
+        ],
+      }
+    : null;
 const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 if (googleVerification && !/^[A-Za-z0-9_-]{10,200}$/.test(googleVerification))
   throw new Error(
@@ -90,6 +112,12 @@ const navigation = [
         },
       ).replace(/</g, '\u003c')}
     />
+    {breadcrumbs && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(breadcrumbs).replace(/</g, '\\u003c')}
+      />
+    )}
   </head>
   <body>
     <a href="#main" class="skip-link">

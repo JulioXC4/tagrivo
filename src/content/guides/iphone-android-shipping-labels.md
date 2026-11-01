@@ -4,6 +4,7 @@ seoTitle: 'Print Shipping Labels from iPhone or Android: What to Check'
 description: Follow the PDF, app and network route before buying a phone-compatible 4 × 6 label printer. Compare documented options and limits.
 category: Mobile printing
 date: 2026-10-29
+updated: 2026-11-01
 readingTime: 4
 ---
 
@@ -50,6 +51,10 @@ Shopify publishes a model-specific supported list. Its Rollo entry is X1038, not
 For a phone-first setup, investigate a documented Wi-Fi route and confirm the file/app combination. For a reliable desktop route you already have, USB may remain a simpler option. Keep the original PDF and test with appropriate media when your own hardware is available, without treating a preview as proof of scanning reliability.
 
 [Find a shortlist](/printer-finder/), [compare the models](/compare/) and [estimate compatible-label costs](/cost-calculator/). No printer should become a recommendation merely because an app displays its brand.
+
+## Before you buy for a phone-only shop
+
+Keep an original shipping-label PDF available, identify the app that opens it, and confirm that the exact printer can receive that file from your phone. Designing a label in a manufacturer's editor is a different task. Compare [Rollo's network route and MUNBYN's USB limitation](/guides/rollo-wireless-vs-munbyn-itpp941-usb/) before treating a mobile seller dashboard as a complete printing setup.
 
 ## Sources and scope
 

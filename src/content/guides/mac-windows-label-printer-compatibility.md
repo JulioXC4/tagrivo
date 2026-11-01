@@ -4,6 +4,7 @@ seoTitle: 'Mac & Windows Label Printers: Drivers, AirPrint and ARM'
 description: Check the operating system, processor and print route before choosing Rollo X1040, MUNBYN ITPP941 USB or Brother QL-1110NWB.
 category: Compatibility
 date: 2026-10-29
+updated: 2026-11-01
 readingTime: 4
 ---
 
@@ -12,6 +13,10 @@ readingTime: 4
 This guide checks the three exact models in Tagrivo's catalog against official documentation. It does not report installations we have performed.
 
 ## Write down the computer before choosing the printer
+
+**Quick buying answer:** there is no model-independent “Mac compatible” or “Windows compatible” shortcut. Check the exact OS release and CPU against the manufacturer's downloads, then the print application. For Windows ARM, pause before ordering: a printer appearing on Wi-Fi does not establish full driver support.
+
+For a first shortlist, use the [Printer Finder](/printer-finder/). Before checkout, use the model-specific checks below; the Finder's broad Windows/Mac choices cannot identify your processor or certify every OS release.
 
 Record your OS release, processor type and available ports. On Windows, distinguish an Intel/AMD-based PC from an Arm-based PC. On a Mac, record the macOS release and whether the machine uses Apple silicon or Intel. Include any USB adapter or dock in the proposed setup.
 

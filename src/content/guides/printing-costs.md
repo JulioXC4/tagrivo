@@ -3,7 +3,7 @@ title: What a shipping label really costs
 description: Separate postage from printing, price your exact label stock, and build a useful estimate for the way your business ships.
 category: Costs explained
 date: 2026-10-28
-updated: 2026-10-29
+updated: 2026-11-01
 seoTitle: 'Shipping Label Printing Costs: Hardware, Media & Waste'
 readingTime: 4
 ---
@@ -13,6 +13,8 @@ The cost to print a shipping label is different from the cost to send the packag
 Keeping those costs separate makes printer comparisons more useful.
 
 ## Start with the price per usable label
+
+**Quick answer:** direct-thermal printing does not use an ink or toner cartridge. It still consumes compatible label stock, and waste increases the effective cost per shipped order. Postage remains a separate expense. Use your own quotes in the [printing cost calculator](/cost-calculator/) rather than treating a printer's advertised purchase price as its total cost.
 
 Divide your label pack's price by the usable label count. Include any delivery cost in your own pack quote if you want it represented in the estimate.
 

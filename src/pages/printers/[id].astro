@@ -16,6 +16,12 @@ export function getStaticPaths() {
 }
 const { printer: p } = Astro.props;
 const affiliate = amazonLinkFor(p.id, amazonAssociateTag);
+const pageTitle =
+  p.id === 'rollo-wireless'
+    ? 'Rollo Wireless X1040: Compatibility & Trade-offs'
+    : p.id === 'munbyn-itpp941'
+      ? 'MUNBYN ITPP941 USB (203 dpi): Compatibility & Trade-offs'
+      : 'Brother QL-1110NWB: DK Media, Compatibility & Trade-offs';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -32,7 +38,7 @@ const schema = {
 ---
 
 <Base
-  title={`${p.name} — Specifications, Compatibility & Trade-offs`}
+  title={pageTitle}
   description={p.description}
   image={p.image}
   imageAlt={p.imageAlt}

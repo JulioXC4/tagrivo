@@ -4,6 +4,7 @@ seoTitle: 'Shopify Label Printers: Supported Models vs PDF Printing'
 description: Separate Shopify's supported printer list from a downloaded-PDF workflow. Check Brother QL-1110NWB, Rollo X1038 versus X1040, and MUNBYN USB.
 category: Platform compatibility
 date: 2026-10-29
+updated: 2026-11-01
 readingTime: 4
 ---
 
@@ -12,6 +13,10 @@ readingTime: 4
 This guide focuses on what that distinction means for the three printers in Tagrivo's catalog. It does not claim that we have fulfilled Shopify orders or tested Shopify hardware integrations.
 
 ## Start with Shopify's exact supported list
+
+**Quick buying answer:** of Tagrivo's three models, Brother QL-1110NWB is explicitly named in Shopify's current supported-printer table. Shopify's Rollo entry is X1038, not Wireless X1040. A downloaded-PDF workflow may be useful for another printer, but it is a separate claim that needs its own device and app check.
+
+If you mainly need to choose between network printing and a fixed USB workstation, read the [Rollo X1040 versus MUNBYN USB comparison](/guides/rollo-wireless-vs-munbyn-itpp941-usb/) after checking the platform route.
 
 The [Shopify-supported printer table](https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/shipping-labels/label-printers/supported-printers) is the primary source for its current list. It records model numbers, regions and compatibility rather than supporting an entire manufacturer brand at once.
 
