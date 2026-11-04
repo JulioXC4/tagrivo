@@ -16,6 +16,13 @@ export function getStaticPaths() {
 }
 const { printer: p } = Astro.props;
 const affiliate = amazonLinkFor(p.id, amazonAssociateTag);
+const comparisonGuide =
+  p.id === 'brother-ql1110nwb'
+    ? { href: '/guides/rollo-vs-brother/', label: 'Rollo X1040 versus Brother QL-1110NWB' }
+    : {
+        href: '/guides/rollo-wireless-vs-munbyn-itpp941-usb/',
+        label: 'Rollo X1040 versus MUNBYN ITPP941 USB',
+      };
 const pageTitle =
   p.id === 'rollo-wireless'
     ? 'Rollo Wireless X1040: Compatibility & Trade-offs'
@@ -156,8 +163,15 @@ const schema = {
         <p style="color:var(--muted);font-size:14px">{p.setup}</p>
         <p class="small-note">
           Documented workflows: {p.systems.map((s) => systemNames[s]).join(', ')}. Support depends
-          on your exact OS version and application. For Etsy, Shopify, and eBay, use a 4 × 6 PDF
-          label and confirm scaling in the print dialog.
+          on your exact OS version, CPU and application. Confirm your carrier's available format
+          before selecting 4 × 6 stock; Etsy's documented 4 × 6 route is for USPS labels.
+        </p>
+        <p class="small-note">
+          Check <a href="/guides/mac-windows-label-printer-compatibility/">Mac/Windows drivers</a>{' '}
+          or <a href="/guides/iphone-android-shipping-labels/">mobile printing</a>, and read{' '}
+          <a href={comparisonGuide.href}>{comparisonGuide.label}</a> for the buying trade-offs. For
+          platform requirements, use the{' '}
+          <a href="/guides/etsy-shopify-ebay/">Etsy, Shopify and eBay workflow guide</a>.
         </p>
         <a class="text-link" href="/printer-finder/">
           Check your own setup <Icon name="arrow" size={18} />

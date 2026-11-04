@@ -1,10 +1,10 @@
 ---
-title: When an Etsy label prints too small or gets cut off
-seoTitle: 'Etsy 4 × 6 Labels Printing Too Small or Cropped: A Checklist'
-description: Diagnose Etsy shipping-label format, PDF size, paper settings and app limitations before replacing a thermal printer.
+title: Etsy 4 × 6 labels printing too small or getting cut off
+seoTitle: 'Etsy 4x6 Labels Too Small or Cut Off? Check PDF & Scale'
+description: Fix the workflow behind an Etsy label that prints too small or gets cut off. Check USPS format, the original PDF, paper size and scaling before buying hardware.
 category: Shipping problems
 date: 2026-10-29
-updated: 2026-11-01
+updated: 2026-11-03
 readingTime: 4
 ---
 
@@ -51,6 +51,8 @@ That is a route to investigate, not a result we reproduced. If a manufacturer sa
 The same Rollo article says the Etsy selling channel in Rollo Ship is currently unavailable following a policy change. A channel failing to synchronize is distinct from the hardware's ability to print a downloaded label. Reconnecting a channel is not a general sizing fix.
 
 ## A sensible stop point before buying hardware
+
+If the original PDF has the wrong page dimensions, investigate the marketplace's download format first. If the PDF is correctly sized but the print dialog changes it, investigate the selected paper size and scaling. If the file and settings agree but feeding remains wrong, consult the exact printer's media/calibration instructions. Those observations narrow the next check; they do not establish a defective printer or guarantee that the carrier will accept a label.
 
 Keep a short record of the exact model, OS/app, carrier/service, original PDF dimensions and selected paper size. Do not send customer addresses, account credentials or live shipping labels to public forums. Use official support if the documented route still fails.
 

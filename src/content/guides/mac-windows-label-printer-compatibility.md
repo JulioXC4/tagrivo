@@ -1,10 +1,10 @@
 ---
-title: A label printer that fits your Mac or Windows PC
-seoTitle: 'Mac & Windows Label Printers: Drivers, AirPrint and ARM'
-description: Check the operating system, processor and print route before choosing Rollo X1040, MUNBYN ITPP941 USB or Brother QL-1110NWB.
+title: 'Thermal label printers for Mac and Windows: compatibility checks'
+seoTitle: 'Thermal Label Printers for Mac & Windows: Driver Checks'
+description: Check OS version, CPU and printer drivers for Mac or Windows. Compare Rollo X1040, MUNBYN ITPP941 USB and Brother QL-1110NWB, including ARM caveats.
 category: Compatibility
 date: 2026-10-29
-updated: 2026-11-01
+updated: 2026-11-03
 readingTime: 4
 ---
 
@@ -49,6 +49,8 @@ The shared NWB/NWBc support page contains variant-specific exceptions. Confirm t
 Read the [Brother analysis](/printers/brother-ql1110nwb/) if its cutter, Ethernet or DK media system matters to the decision.
 
 ## A useful purchase check
+
+Keep four items together before checkout: the exact model/SKU, OS release and CPU, selected connection, and application that prints the shipping PDF. A driver download for another 941 variant or an older OS is not evidence for your setup. Once those requirements are confirmed, use the [interactive specification comparison](/compare/) to assess hardware differences; it cannot inspect the computer you are using.
 
 Ask the manufacturer or seller to confirm the exact model, OS release, CPU and intended PDF-printing application. Check the return terms if that combination cannot be confirmed. Do not install drivers from an unrelated download directory to make a purchase appear safe.
 

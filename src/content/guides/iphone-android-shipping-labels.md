@@ -1,10 +1,10 @@
 ---
-title: Shipping labels from your phone, without the guesswork
+title: How to print shipping labels from iPhone or Android
 seoTitle: 'Print Shipping Labels from iPhone or Android: What to Check'
 description: Follow the PDF, app and network route before buying a phone-compatible 4 × 6 label printer. Compare documented options and limits.
 category: Mobile printing
 date: 2026-10-29
-updated: 2026-11-01
+updated: 2026-11-03
 readingTime: 4
 ---
 
@@ -46,15 +46,11 @@ Rollo uses Bluetooth during setup to join Wi-Fi; it is not direct Bluetooth labe
 
 Shopify publishes a model-specific supported list. Its Rollo entry is X1038, not the X1040 in our catalog. Read the [Shopify model guide](/guides/shopify-label-printer-models/) instead of transferring a brand-level promise to another workflow.
 
-## Choose around a confirmed route
-
-For a phone-first setup, investigate a documented Wi-Fi route and confirm the file/app combination. For a reliable desktop route you already have, USB may remain a simpler option. Keep the original PDF and test with appropriate media when your own hardware is available, without treating a preview as proof of scanning reliability.
-
-[Find a shortlist](/printer-finder/), [compare the models](/compare/) and [estimate compatible-label costs](/cost-calculator/). No printer should become a recommendation merely because an app displays its brand.
-
 ## Before you buy for a phone-only shop
 
 Keep an original shipping-label PDF available, identify the app that opens it, and confirm that the exact printer can receive that file from your phone. Designing a label in a manufacturer's editor is a different task. Compare [Rollo's network route and MUNBYN's USB limitation](/guides/rollo-wireless-vs-munbyn-itpp941-usb/) before treating a mobile seller dashboard as a complete printing setup.
+
+For iPhone, check the supported network protocol and whether the actual app exposes printing. For Android, check the documented app route and supported label dimensions. If neither is confirmed, a supported desktop route may be a more appropriate starting point than buying an unverified phone-only setup. [Use the Finder](/printer-finder/) after those checks, then [estimate compatible-label costs](/cost-calculator/). No printer is recommended solely because an app displays its brand.
 
 ## Sources and scope
 

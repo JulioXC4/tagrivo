@@ -1,11 +1,11 @@
 ---
-title: How to choose a 4 × 6 label printer
-description: Start with your devices and label workflow. Then compare connectivity, media costs, and the trade-offs that affect your shipping desk.
+title: How to choose a thermal label printer
+description: Choose a direct thermal label printer for a small US business. Check 4 × 6 files, devices, connections and media costs before comparing three models.
 category: Buying guide
 date: 2026-10-28
-updated: 2026-11-01
-seoTitle: '4 × 6 Shipping Label Printers for Small Business: How to Choose'
-readingTime: 4
+updated: 2026-11-03
+seoTitle: 'How to Choose a Thermal Label Printer for Shipping'
+readingTime: 5
 featured: true
 ---
 
@@ -13,7 +13,15 @@ A label printer should make packing simpler. The useful question is not which mo
 
 This guide focuses on direct-thermal shipping-label printers for small US sellers. Our recommendations are based on manufacturer documentation, not hands-on testing.
 
-## Start with the label file
+## Direct thermal or thermal transfer: which do you need?
+
+“Thermal printer” describes a broader category than the shipping-label workflow covered here. A receipt printer or a small label maker is not automatically suitable for an original 4 × 6 shipping PDF. Confirm the supported label dimensions and software route before comparing brands.
+
+[Avery explains the distinction](https://www.avery.com/help/article/direct-thermal-vs-thermal-transfer-labels): **direct thermal** printing marks heat-sensitive media without an ink ribbon; **thermal transfer** moves material from a heated ribbon onto the label. All three models in Tagrivo's [shipping-printer shortlist](/printers/) use direct thermal printing. They are not thermal transfer recommendations.
+
+For labels that must remain readable during prolonged heat or light exposure, investigate the media's durability requirements rather than assuming an ordinary direct thermal shipping label is suitable. This guide does not validate archival, freezer or outdoor use. Avery identifies exposure to heat and light as a limitation of direct thermal media; the method distinction was checked November 3, 2026.
+
+## Start with the shipping-label file
 
 **For Etsy, Shopify and eBay sellers:** choose around the device that prints, not just the marketplace you sell on. A supported desktop with USB can suit one fixed station; a phone-first setup needs a documented app and wireless route. Begin with the [platform workflow checks](/guides/etsy-shopify-ebay/), then use the [Finder](/printer-finder/) to narrow the three-model shortlist.
 

@@ -1,9 +1,9 @@
 ---
-title: A practical label workflow for Etsy, Shopify, and eBay
-description: Follow the label from your marketplace to the print dialog, and prevent common page-size and scaling problems.
+title: Printing shipping labels from Etsy, Shopify and eBay
+description: Follow an Etsy, Shopify or eBay shipping label from the original PDF to your printer. Check carrier format, page size, device and print application.
 category: Shipping workflow
 date: 2026-10-28
-updated: 2026-11-01
+updated: 2026-11-03
 seoTitle: 'Etsy, Shopify & eBay: 4 × 6 Shipping Label Workflows'
 readingTime: 4
 ---
@@ -57,6 +57,8 @@ When your own printer is available, use the manufacturer's setup procedure and a
 Inspect the barcode for clipping, stretching, or obvious print defects. If something is wrong, return to page size and scaling before assuming that higher-resolution hardware is the answer. Use the carrier's current requirements for the label you are printing.
 
 ## Keep setup instructions close
+
+Use this guide to map the whole marketplace workflow. If the purchase question is specifically Shopify certification, continue to the [supported-model guide](/guides/shopify-label-printer-models/). If an Etsy label is already printing too small, use the [4 × 6 troubleshooting checklist](/guides/etsy-4x6-label-size/). If you are still selecting hardware, start with [how to choose a thermal label printer](/guides/choose-label-printer/) before comparing offers. These are different decisions, not interchangeable compatibility claims.
 
 Save the exact manufacturer support page for your model variant and OS. Document your working paper settings so a future computer change does not reset the workflow to Letter-size defaults.
 

@@ -4,8 +4,8 @@ import Calculator from '../components/Calculator';
 ---
 
 <Base
-  title="Label Printing Cost Calculator"
-  description="Estimate label printing costs from your order volume, printer purchase price, label stock and waste rate. See transparent one- to five-year cost projections."
+  title="Label Printing Cost Calculator: Stock & Waste"
+  description="Calculate shipping label printing costs from your hardware quote, label-pack price, order volume and waste. Planning estimates exclude postage and taxes."
 >
   <div class="wrap">
     <header class="page-heading">
@@ -18,8 +18,10 @@ import Calculator from '../components/Calculator';
         Look beyond <em>the price tag.</em>
       </h1>
       <p>
-        A more useful estimate starts with your order volume and the labels you actually buy. Change
-        the assumptions. See the difference.
+        Estimate label printing costs with your order volume and actual hardware and label quotes.
+        Read{' '}
+        <a href="/guides/printing-costs/">how the formula treats waste, whole packs and postage</a>,
+        then change the assumptions below.
       </p>
     </header>
     <Calculator client:load />

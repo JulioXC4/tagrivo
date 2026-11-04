@@ -1,10 +1,10 @@
 ---
-title: What a shipping label really costs
-description: Separate postage from printing, price your exact label stock, and build a useful estimate for the way your business ships.
+title: 'Thermal label printer costs: what one shipping label costs'
+description: Estimate thermal label printing cost per shipped order using hardware, compatible stock and waste. Separate printing from postage and whole-pack purchases.
 category: Costs explained
 date: 2026-10-28
-updated: 2026-11-01
-seoTitle: 'Shipping Label Printing Costs: Hardware, Media & Waste'
+updated: 2026-11-03
+seoTitle: 'Thermal Label Printer Cost per Label: Stock & Waste'
 readingTime: 4
 ---
 
@@ -61,6 +61,10 @@ If a label workflow saves packing time, measure that in your own operation rathe
 The calculator is a planning tool, not a prediction of what a retailer will charge or a guarantee of savings.
 
 ## Use the estimate to decide
+
+### How do you compare two printers fairly?
+
+Use the same shipped-order count, planning period and waste assumption, but a separate **compatible** media quote for each model. Compare both the per-order estimate and the cash needed to buy whole packs. Do not include postage for one printer and omit it for the other. A lower calculated total is useful only after both devices pass your [OS and driver checks](/guides/mac-windows-label-printer-compatibility/).
 
 Run at least two scenarios: a normal week and a busy week. Use the actual media quote for each printer. If you are unsure about waste, compare a low and higher rate. You will see which assumption changes the decision most.
 

@@ -1,10 +1,10 @@
 ---
-title: A Shopify printer recommendation starts with the model
+title: 'Shopify-supported label printers: check the exact model'
 seoTitle: 'Shopify Label Printers: Supported Models vs PDF Printing'
-description: Separate Shopify's supported printer list from a downloaded-PDF workflow. Check Brother QL-1110NWB, Rollo X1038 versus X1040, and MUNBYN USB.
+description: Check Shopify's supported label printers before buying. Separate Brother QL-1110NWB and Rollo X1038 listings from X1040 or MUNBYN USB PDF workflows.
 category: Platform compatibility
 date: 2026-10-29
-updated: 2026-11-01
+updated: 2026-11-03
 readingTime: 4
 ---
 
@@ -51,6 +51,8 @@ Confirm that the actual label service provides the file and dimensions you need.
 Shopify also documents standard desktop printing with its Letter-size paper option. That instruction does not make shrinking an entire Letter page onto 4 × 6 stock correct. Use the platform's current size options for your actual printer and workflow. For the shared concepts, see our [marketplace workflow guide](/guides/etsy-shopify-ebay/).
 
 ## Choose by route, then compare the trade-offs
+
+For the supported-model route, read the current instructions attached to Shopify's exact model row. For a downloaded-PDF route, confirm the computer or mobile application that opens and prints that file. If your choice is Rollo versus Brother, the [media and connectivity comparison](/guides/rollo-vs-brother/) explains the hardware trade-offs after that platform check. Neither this guide nor the Finder certifies every version of Shopify's apps.
 
 Write down your intended device, whether the route is desktop or a specific Shopify app, the model number and the support source. If a seller cannot confirm them, keep the purchase conditional rather than relying on “compatible” in the listing title.
 
