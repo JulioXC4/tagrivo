@@ -1,6 +1,7 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { deployment } from './deployment-env.mjs';
+import { ORIGIN, validateManifest } from './indexnow-production.mjs';
 import { resolveAnalyticsConfig } from '../src/lib/analytics.ts';
 import { amazonLinkFor, resolveAmazonStoreId } from '../src/lib/affiliate.ts';
 import { amazonListings, guideAmazonProducts } from '../src/data/amazon.ts';
@@ -272,6 +273,23 @@ const headers = await readFile(path.join(root, '_headers'), 'utf8');
 if (!headers.includes("Content-Security-Policy: form-action 'none'"))
   failures.push('Native form submission must be blocked by the production privacy policy');
 const robots = await readFile(path.join(root, 'robots.txt'), 'utf8');
+const { key: indexNowKey } = JSON.parse(await readFile('scripts/indexnow.config.json', 'utf8'));
+if ((await readFile(path.join(root, `${indexNowKey}.txt`), 'utf8')).trim() !== indexNowKey)
+  failures.push('The deployed IndexNow verification file must match its public key.');
+if (deployment.indexable && deployment.site === ORIGIN) {
+  const manifestText = await readFile(path.join(root, 'indexnow-manifest.json'), 'utf8');
+  const manifest = validateManifest(JSON.parse(manifestText));
+  const expected = [...canonicals].filter((url) => !new URL(url).pathname.startsWith('/404'));
+  if (
+    Object.keys(manifest.pages).length !== expected.length ||
+    expected.some((url) => !manifest.pages[url])
+  )
+    failures.push('IndexNow manifest must match all indexable canonical pages.');
+  if (privateLegalValues.some((value) => manifestText.includes(value)))
+    failures.push('IndexNow manifest must contain hashes only, never private legal values.');
+} else if (all.some((file) => path.basename(file) === 'indexnow-manifest.json')) {
+  failures.push('Preview/non-production builds must not publish an IndexNow manifest.');
+}
 if (!deployment.indexable) {
   if (!headers.includes('X-Robots-Tag: noindex, nofollow'))
     failures.push('Missing preview noindex HTTP header');
