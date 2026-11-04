@@ -50,3 +50,13 @@ Para un dry run local, usar `INDEXNOW_EXPECTED_COMMIT` con el SHA real de produc
 4. Contrastar con **URL Inspection** para una URL concreta. No interpretar el historial de envíos ni un HTTP 200/202 como prueba de que Bing la indexó.
 
 [Descripción oficial de IndexNow Insights](https://blogs.bing.com/webmaster/2024/3/Optimize-your-Impact-with-IndexNow-Insights/) · [Protocolo y respuestas](https://www.indexnow.org/documentation) · [Preguntas sobre bajas y cambios reales](https://www.indexnow.org/faq) · [Artifacts de Actions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts).
+
+## Verificación real de la integración
+
+- Commit funcional: `02f70b4`. Cloudflare publicó correctamente su manifiesto de producción con ese SHA, 24 fingerprints y `Cache-Control: no-store`.
+- [Primera ejecución automática](https://github.com/JulioXC4/tagrivo/actions/runs/41768848742): pasó los 12 tests específicos, esperó producción, notificó **solo `https://tagrivo.pages.dev/privacy/`** y recibió **HTTP 200**. Hora registrada: 3 de noviembre de 2026, 22:44 (Perú). No se notificaron las 24 URL ni se fabricó contenido para probar.
+- Estado y reporte guardados correctamente en artifacts. La aceptación HTTP no acredita que Bing haya rastreado o indexado Privacy.
+- Verificación local completa: **49 pruebas aprobadas**, TypeScript sin errores/advertencias y **25 páginas compiladas**, incluida 404. `verify-build` valida inventario del manifiesto, canonical, clave pública, exclusión de previews y ausencia de valores legales en el JSON.
+- Comprobación pública: 25 solicitudes de páginas, 9 recursos y 25 apariciones de enlaces comerciales verificados, junto con Google verification, robots, sitemap, consentimiento/configuración GA4 y rutas privadas 404. No se solicitaron enlaces de Amazon para inflar clics.
+- No se alteraron archivos de `src/`, artículos, imágenes ni enlaces Amazon durante esta integración. Solo herramientas de build/notificación, configuración de cabecera del manifiesto, pruebas y documentación.
+- Una segunda publicación exclusivamente documental sirve para verificar restauración de artifacts y cero notificaciones cuando el contenido público no cambió. Su ejecución queda visible en el historial de Actions.
