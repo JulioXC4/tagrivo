@@ -3,7 +3,7 @@ title: How to choose a thermal label printer
 description: Choose a direct thermal label printer for a small US business. Check 4 × 6 files, devices, connections and media costs before comparing three models.
 category: Buying guide
 date: 2026-10-28
-updated: 2026-11-03
+updated: 2026-11-05
 seoTitle: 'How to Choose a Thermal Label Printer for Shipping'
 readingTime: 5
 featured: true
@@ -63,7 +63,7 @@ Generic fanfold stock and DK-format rolls are different purchasing decisions. Di
 
 Check where the paper sits. Externally fed printers need room behind the machine for a stack or roll holder. A small printer footprint does not describe the entire packing setup.
 
-The [printing cost calculator](/cost-calculator/) combines a hardware quote with your label costs and weekly orders. Its starting numbers are examples for planning, not live retailer prices.
+The [printing cost calculator](/cost-calculator/) combines a hardware quote with your label costs and daily usable labels, operating days and waste. Its starting numbers are examples for planning, not live retailer prices.
 
 ## A practical shortlist
 

@@ -9,7 +9,7 @@ import { legalPolicy } from '../config/legal';
   description="What this edition of Tagrivo stores, what the interactive tools do with your inputs, and what changes when you visit another website."
 >
   <p>
-    <strong>Last updated: November 1, 2026.</strong>
+    <strong>Last updated: November 5, 2026.</strong>
   </p>
   {legalPolicy.approved ? (
     <section class="helper" aria-label="Person responsible for data processing">
@@ -41,7 +41,10 @@ import { legalPolicy } from '../config/legal';
     The Printer Finder and cost calculator run in your browser. This edition has no account system,
     user database, contact-submission form, newsletter signup, or advertising pixel. The Finder has
     a local interactive form, not a server submission endpoint. Its controls remain disabled until
-    its browser handler is ready. Calculator inputs and comparison quotes remain in page memory.
+    its browser handler is ready. Calculator inputs and comparison quotes remain in page memory. On
+    request, the calculator can copy or download a summary or create a share link containing bounded
+    numeric assumptions in its URL fragment. Anyone receiving that link can read those assumptions.
+    The calculator does not store them in localStorage or submit them to Tagrivo.
   </p>
   <p>
     Closing or refreshing a tool normally resets its inputs. New links from the home page pass the
@@ -68,14 +71,15 @@ import { legalPolicy } from '../config/legal';
       <p>
         Google Analytics loads only after you choose Allow analytics. Declining leaves the tools and
         affiliate links available without this measurement. It records page visits and identified
-        product-link clicks, completion of the Printer Finder and use of comparison and calculator
-        controls. Tool-use events carry no answers, budgets, order counts, quotes or selected-model
-        lists. Events omit URL query strings, fragments, tool answers, email content and customer
-        information. For traffic-source reporting, it can send only the origin of an external HTTPS
-        referring site, without its path, search terms or query. The published Pinterest and
-        short-video campaigns use a fixed allowlist of public campaign labels; arbitrary URL
-        campaign text is not forwarded. Referrers can be suppressed by browsers, so source reporting
-        is incomplete. Search Console supplies search reports separately.
+        product-link clicks, completion of the Printer Finder, use of calculator profiles, setup
+        comparisons, share/copy/download actions, internal comparison links and use of comparison
+        and calculator controls. Tool-use events carry no answers, budgets, order counts, quotes or
+        selected-model lists. Events omit URL query strings, fragments, tool answers, email content
+        and customer information. For traffic-source reporting, it can send only the origin of an
+        external HTTPS referring site, without its path, search terms or query. The published
+        Pinterest and short-video campaigns use a fixed allowlist of public campaign labels;
+        arbitrary URL campaign text is not forwarded. Referrers can be suppressed by browsers, so
+        source reporting is incomplete. Search Console supplies search reports separately.
       </p>
       <p>
         Google receives technical connection information and can set analytics cookies after

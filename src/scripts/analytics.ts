@@ -7,6 +7,7 @@ import {
   analyticsAcquisition,
   productClickPayload,
   type AnalyticsConsent,
+  toolEventNames,
 } from '../lib/analytics';
 
 declare global {
@@ -158,7 +159,7 @@ export function initAnalytics() {
         payload,
       );
   });
-  for (const name of ['printer_finder_complete', 'comparison_used', 'cost_calculator_used']) {
+  for (const name of toolEventNames) {
     document.addEventListener(`tagrivo:${name}`, () => {
       // No replay after consent: actions before acceptance are deliberately not retained.
       // Count meaningful tool use once per document, rather than every comparison control change.

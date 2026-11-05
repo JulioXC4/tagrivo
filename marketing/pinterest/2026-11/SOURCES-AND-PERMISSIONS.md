@@ -1,0 +1,24 @@
+# Visual sources and permissions · 2026-11-05
+
+Eight final PNGs are original Tagrivo editorial layouts, 1000 × 1500 px, typeset independently from editable HTML artboards. `build_pins.py` produces the eight artboards and publication metadata; capture each with a browser at that viewport after fonts load. No Pin has been uploaded to Pinterest.
+
+## Assets actually used
+
+- **Pin 01 — Brother QL-1110NWB:** authentic original from the [Brother Canada Marketing Library](https://www.brother.ca/en/media-room), exact [source asset](https://cdn-tp1.mozu.com/21830-33325/cms/33325/files/888c89fa-7927-435c-af6b-dd9dfa8c65e5). [Library guidelines](https://www.brother.ca/cms/files/Brother_Canada_Logo_Guidelines_EN.pdf), checked November 5, permit materials to promote Brother products, programs or promotions and prohibit changes. The whole photograph is displayed proportionally, without retouching, cropping, extracted logos or claimed endorsement. Its local source bytes remain unchanged: SHA-256 `835cdb871c7046739f7d997e9c2463e99983cedde5f369cfbf3c01b66bae6d64`. The Pin identifies the actual model and promotes its consideration. This is a purpose-limited grant, not an unrestricted stock license. Standalone Brother corporate logo use would require separate approval; none is used.
+- **Pin 02:** original typographic comparison, not photographs or generated replicas. Rollo Wireless X1040: USB + Wi-Fi, 203 dpi; MUNBYN ITPP941 USB variant: USB, 203 dpi. [Rollo specifications](https://www.rollo.com/product/rollo-wireless-printer/), [Rollo setup requirements](https://support.rollo.com/support/solutions/articles/29000039959), [MUNBYN model-specific table](https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/). No manufacturer image is used or assumed licensed. The model-specific rows, rather than the combined 941 family headline, govern the comparison.
+- **Pin 05:** new original Image Generator category scene, `assets/editorial-packing-desk.png`. Exact generation prompt in `generation-prompt.txt`; no reference photograph supplied. Generic laptop, shipping supplies and fictional label, not a documented Etsy workspace, actual customer shipment or named printer. Generation provenance is documented; no claim of a photographed real operation, exclusive copyright or trademark clearance is made.
+- **Pins 07 and 08:** approved original Tagrivo category scenes reused from the independent Short project: `printed-label.webp` and `packing.webp`. Their original generation records remain in that project's `resources/originals-v3/manifest.json`. Generic fulfillment only; printed names, sample addresses and barcode patterns are fictional and not valid postage. No manufacturer photograph was used to generate those backgrounds.
+- **Pins 03, 04 and 06:** original type, arithmetic, lists and connection-route typography. No downloaded icon set, stock photography, proprietary software screen or manufacturer product imitation.
+- **All Pins:** original Tagrivo wordmark and existing corner-mark paths, reproduced from the website. DM Sans and DM Serif Display use SIL Open Font License; license texts copied to `assets/`. No standalone manufacturer logo or platform logo added.
+
+## Claims and numeric examples
+
+Pin 04 is a worked example, not a typical price: 1,000 usable labels / (1 − 0.20 waste) = 1,250 consumed. A hypothetical $20 / 500-label pack gives $50 monthly consumption. A hypothetical $240 printer / 24-month allocation adds $10 monthly, yielding $60 / 1,000 = $0.06 per usable label. No optional costs or postage. Pin 08 uses the same explicit waste assumption, not a measured industry waste rate. Pin 07's unit conversion is exact: 4 × 6 inches = 101.6 × 152.4 mm; support still depends on source PDF, app, media and printer.
+
+No fabricated physical tests, ratings, savings, manufacturer endorsements or universal compatibility. Use the descriptions in `PINTEREST-PUBLISH.md`, including relevant affiliate/illustration disclosures; review Pinterest's native synthetic-content disclosure options for realistic illustrative scenes. No mandatory third-party attribution or watermark was removed.
+
+## Tracking and reuse
+
+The eight new campaign labels are `calc_v2_01` through `calc_v2_08`, avoiding collisions with previous `pin_01`–`pin_06` assets. Destination URLs use the existing `organic_2026_11` / `social` campaign. GA4 receives only these fixed campaign labels after consent; calculator numbers and shared URL fragments are omitted. Public visitors retain the existing choice to decline analytics.
+
+`asset-manifest.json` records actual output dimensions and hashes. Source photograph hashes are checked before delivery. The final Pins include embedded layout/source provenance; original commercial-photo bytes are preserved separately with provenance recorded here rather than modified metadata.

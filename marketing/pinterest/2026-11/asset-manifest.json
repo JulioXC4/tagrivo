@@ -1,0 +1,94 @@
+{
+  "pins": [
+    {
+      "file": "01-best-thermal-label-printers-small-business.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "f0bcb915ae9ba926a477a7c5c06f1cd5d32acded34148a0e0d602182e3e002dd",
+      "destination": "https://tagrivo.pages.dev/guides/choose-label-printer/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_01",
+      "native_layout_source": "sources/pin-01.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "02-rollo-wireless-x1040-vs-munbyn-itpp941-usb.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "85e5d7e4f2d6b49e81fc11af997791e113fe2cdad858cb180653be53328c9c71",
+      "destination": "https://tagrivo.pages.dev/guides/rollo-wireless-vs-munbyn-itpp941-usb/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_02",
+      "native_layout_source": "sources/pin-02.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "03-usb-bluetooth-wifi-label-printer-connections.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "bb802919ba55c0966d5bc95b95f60e7c44b602cf12cc8b1ccbef59c3e7cf5da0",
+      "destination": "https://tagrivo.pages.dev/guides/usb-wifi-bluetooth/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_03",
+      "native_layout_source": "sources/pin-03.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "04-shipping-label-printing-cost-calculator.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "39e0e557c8bbf848512511bb0ee425e2a9b5090c8340078344683db1ba868d66",
+      "destination": "https://tagrivo.pages.dev/cost-calculator/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_04",
+      "native_layout_source": "sources/pin-04.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "05-etsy-seller-shipping-label-printer-setup.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "1ddf3b283892a6f2667b3b117e32b66b79380e8f9071b0ee594fa2c2a5da3d7e",
+      "destination": "https://tagrivo.pages.dev/guides/etsy-shopify-ebay/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_05",
+      "native_layout_source": "sources/pin-05.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "06-thermal-label-printer-buying-checklist.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "bc1b9d1cde1eb70286a64173c53264a5a100b9092eafd1c6d0f5bde82832609f",
+      "destination": "https://tagrivo.pages.dev/guides/choose-label-printer/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_06",
+      "native_layout_source": "sources/pin-06.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "07-4x6-shipping-label-size-explained.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "f53c944e5f342e13f41bbc200adb4d50a47e0713b4c241e42bbf8365edeff240",
+      "destination": "https://tagrivo.pages.dev/guides/etsy-4x6-label-size/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_07",
+      "native_layout_source": "sources/pin-07.html",
+      "reviewed": "2026-11-05"
+    },
+    {
+      "file": "08-shipping-label-waste-real-printing-costs.png",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "sha256": "619d99b082b19bab2ae3ced7afde0154e1fcc80071d5c3a3f580786d487261c5",
+      "destination": "https://tagrivo.pages.dev/guides/printing-costs/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_08",
+      "native_layout_source": "sources/pin-08.html",
+      "reviewed": "2026-11-05"
+    }
+  ],
+  "commercial_photo_original_bytes_unchanged": true,
+  "pins_automatically_published": false
+}

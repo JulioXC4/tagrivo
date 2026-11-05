@@ -11,11 +11,19 @@ export const CONSENT_KEY = 'tagrivo-analytics-consent';
 export const CONSENT_LIFETIME = 30 * 24 * 60 * 60 * 1000;
 
 /** Signals carry an event name only, never tool answers, URLs or quote values. */
-export function announceToolUse(
-  name: 'printer_finder_complete' | 'comparison_used' | 'cost_calculator_used',
-) {
-  if (!['printer_finder_complete', 'comparison_used', 'cost_calculator_used'].includes(name))
-    return;
+export const toolEventNames = [
+  'printer_finder_complete',
+  'comparison_used',
+  'cost_calculator_used',
+  'cost_calculator_preset_used',
+  'cost_calculator_compare_used',
+  'cost_calculator_shared',
+  'cost_calculator_summary_copied',
+  'cost_calculator_downloaded',
+  'cost_calculator_comparison_click',
+] as const;
+export function announceToolUse(name: (typeof toolEventNames)[number]) {
+  if (!(toolEventNames as readonly string[]).includes(name)) return;
   if (typeof document !== 'undefined') document.dispatchEvent(new Event(`tagrivo:${name}`));
 }
 
@@ -83,7 +91,16 @@ export function analyticsPageLocation(href: string): string {
 }
 
 /** Coarse acquisition only: no referring paths, search terms or arbitrary campaign text. */
-export function analyticsAcquisition(href: string, referrer: string) {
+export function analyticsAcquisition(
+  href: string,
+  referrer: string,
+): {
+  page_referrer: string;
+  campaign_source?: string;
+  campaign_medium?: string;
+  campaign_name?: string;
+  campaign_content?: string;
+} {
   const page = new URL(href);
   let page_referrer = '';
   try {
@@ -103,7 +120,7 @@ export function analyticsAcquisition(href: string, referrer: string) {
   const content = page.searchParams.get('utm_content');
   const validContent =
     source === 'pinterest'
-      ? /^(pin_0[1-6]|short_0[1-3])$/.test(content || '')
+      ? /^(pin_0[1-6]|short_0[1-3]|calc_v2_0[1-8])$/.test(content || '')
       : source === 'youtube' && /^short_0[1-3]$/.test(content || '');
   if (
     validContent &&

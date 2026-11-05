@@ -9,6 +9,7 @@ import {
   productClickPayload,
   CONSENT_LIFETIME,
   announceToolUse,
+  toolEventNames,
 } from '../src/lib/analytics.ts';
 
 // Synthetic unit-test ID only; it is never supplied to a build or sent to a provider.
@@ -35,6 +36,42 @@ test('analytics defaults to off and cannot be enabled without destination and po
     /privacy policy/,
   );
   assert.throws(() => resolveAnalyticsConfig({ PUBLIC_ANALYTICS_ENABLED: 'yes' }), /true or false/);
+});
+
+test('calculator action events are allowlisted and carry no input values', () => {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, 'document');
+  const target = new EventTarget(),
+    seen: Event[] = [];
+  for (const name of toolEventNames)
+    target.addEventListener(`tagrivo:${name}`, (e) => seen.push(e));
+  Object.defineProperty(globalThis, 'document', { value: target, configurable: true });
+  try {
+    for (const name of toolEventNames.filter((n) => n.startsWith('cost_calculator')))
+      announceToolUse(name);
+    assert.equal(seen.length, 7);
+    assert.ok(seen.every((e) => !('detail' in e)));
+  } finally {
+    if (previous) Object.defineProperty(globalThis, 'document', previous);
+    else Reflect.deleteProperty(globalThis, 'document');
+  }
+});
+test('eight new Pinterest campaign labels are accepted without arbitrary calculator parameters', () => {
+  for (let id = 1; id <= 8; id++) {
+    const a = analyticsAcquisition(
+      `https://tagrivo.pages.dev/cost-calculator/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_0${id}&quote=private#calc=hidden`,
+      '',
+    );
+    assert.equal(a.campaign_content, `calc_v2_0${id}`);
+    assert.equal(JSON.stringify(a).includes('private'), false);
+    assert.equal(JSON.stringify(a).includes('hidden'), false);
+  }
+  assert.equal(
+    analyticsAcquisition(
+      'https://tagrivo.pages.dev/?utm_source=pinterest&utm_medium=social&utm_campaign=organic_2026_11&utm_content=calc_v2_09',
+      '',
+    ).campaign_content,
+    undefined,
+  );
 });
 
 test('permission is required and rejection, expiry, DNT and GPC prevent measurement', () => {

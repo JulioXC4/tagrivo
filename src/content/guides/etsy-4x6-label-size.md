@@ -4,7 +4,7 @@ seoTitle: 'Etsy 4x6 Labels Too Small or Cut Off? Check PDF & Scale'
 description: Fix the workflow behind an Etsy label that prints too small or gets cut off. Check USPS format, the original PDF, paper size and scaling before buying hardware.
 category: Shipping problems
 date: 2026-10-29
-updated: 2026-11-03
+updated: 2026-11-05
 readingTime: 4
 ---
 
@@ -61,3 +61,7 @@ Only reconsider the printer when you identify a real incompatibility, such as ne
 ## Sources and scope
 
 Etsy and Rollo sources were reviewed October 29, 2026. We did not log into Etsy or physically print its labels. For broader platform differences read the [Etsy, Shopify and eBay workflow guide](/guides/etsy-shopify-ebay/). Specific formats, app behavior and channel availability should be rechecked when you use them.
+
+## Budget for compatible stock
+
+Once you confirm the actual 4 × 6 format and media, use the [interactive printing cost calculator](/cost-calculator/) with your own pack quote, daily usable labels and estimated waste. Compare two setups using the same volume; the result excludes postage and does not prove compatibility.

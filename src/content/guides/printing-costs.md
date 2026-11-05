@@ -3,7 +3,7 @@ title: 'Thermal label printer costs: what one shipping label costs'
 description: Estimate thermal label printing cost per shipped order using hardware, compatible stock and waste. Separate printing from postage and whole-pack purchases.
 category: Costs explained
 date: 2026-10-28
-updated: 2026-11-03
+updated: 2026-11-05
 seoTitle: 'Thermal Label Printer Cost per Label: Stock & Waste'
 readingTime: 4
 ---
@@ -36,7 +36,7 @@ A straightforward ownership estimate is:
 
 For multiple years, the hardware purchase occurs once. The average cost per order therefore falls as more orders share that initial purchase, even if label stock stays at the same unit price.
 
-Our [cost calculator](/cost-calculator/) uses 52 weeks per year, one shipping label per order, and your selected period. It values consumed labels proportionally; the checkout total for buying whole packs can be higher.
+Our [cost calculator](/cost-calculator/) uses daily usable labels and operating days per month. It separates proportional stock consumption, optional monthly costs and printer allocation over your own estimated useful life. Its scenario comparison adds the printer purchase once plus operating costs, without counting allocation again. Whole-pack checkout totals can be higher than consumption costs.
 
 ## Separate consumption from the cash you need
 
@@ -54,7 +54,7 @@ Direct-thermal printing avoids ink cartridges and toner, but it is not “free p
 
 ## Know what the estimate leaves out
 
-Our calculator excludes postage, taxes, electricity, repairs, financing, subscription services, and staff time. Those exclusions keep the comparison understandable, but they can matter to your business. Include delivery in a media quote if you want it represented; the tool does not add delivery automatically.
+The calculator excludes postage, taxes, financing, staff time and automatic replacement. Optional maintenance, electricity and other monthly costs start at zero. Use measured monthly kWh or a documented estimate and your actual tariff; rated power alone is not energy consumption. Include delivery in a media quote if you want it represented; the tool does not add delivery automatically.
 
 If a label workflow saves packing time, measure that in your own operation rather than adopting a claimed universal saving. A larger business may care more about handling interruptions than a few cents of media cost.
 
@@ -76,4 +76,4 @@ Our [Rollo Wireless versus MUNBYN USB comparison](/guides/rollo-wireless-vs-munb
 
 ## Sources and verification
 
-The arithmetic and examples above are Tagrivo's explicitly stated planning model, reviewed October 29, 2026 against the calculator implementation. Media-format facts use [Rollo](https://www.rollo.com/product/rollo-wireless-printer/), [MUNBYN](https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/), and [Brother](https://www.brother-usa.com/p/desktop-label-printers/QL1110NWB). No live consumable prices are represented.
+The arithmetic and examples above are Tagrivo's explicitly stated planning model, reviewed November 5, 2026 against the calculator implementation. Media-format facts use [Rollo](https://www.rollo.com/product/rollo-wireless-printer/), [MUNBYN](https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/), and [Brother](https://www.brother-usa.com/p/desktop-label-printers/QL1110NWB). No live consumable prices are represented.

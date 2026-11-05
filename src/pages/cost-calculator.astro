@@ -4,8 +4,8 @@ import Calculator from '../components/Calculator';
 ---
 
 <Base
-  title="Label Printing Cost Calculator: Stock & Waste"
-  description="Calculate shipping label printing costs from your hardware quote, label-pack price, order volume and waste. Planning estimates exclude postage and taxes."
+  title="Shipping Label Printing Cost Calculator & Setup Comparison"
+  description="Estimate thermal label cost per usable label, monthly and annual costs, waste and printer allocation. Compare two setups with your own quotes. Postage excluded."
 >
   <div class="wrap">
     <header class="page-heading">
@@ -15,13 +15,14 @@ import Calculator from '../components/Calculator';
         <span>Printing cost calculator</span>
       </nav>
       <h1>
-        Look beyond <em>the price tag.</em>
+        Shipping label costs.
+        <br />
+        <em>Beyond the price tag.</em>
       </h1>
       <p>
-        Estimate label printing costs with your order volume and actual hardware and label quotes.
-        Read{' '}
-        <a href="/guides/printing-costs/">how the formula treats waste, whole packs and postage</a>,
-        then change the assumptions below.
+        How much will printing shipping labels actually cost your business? Explore volume,
+        compatible stock and printer investment, then compare two setups with your own quotes.
+        Printing costs only. Postage is separate.
       </p>
     </header>
     <Calculator client:load />
@@ -31,5 +32,109 @@ import Calculator from '../components/Calculator';
         <a href="/guides/printing-costs/">printing cost guide</a> explains the formula.
       </p>
     </noscript>
+    <section class="cost-explainer" aria-label="Formulas and frequently asked questions">
+      <div>
+        <h2>Know what is in your estimate.</h2>
+        <p>
+          This browser-based tool models a representative month in USD. Profiles are editable
+          arithmetic examples, not measured business averages or current product offers.
+        </p>
+        <ol>
+          <li>
+            <strong>Usable labels:</strong> daily usable labels × operating days. One usable label
+            per parcel.
+          </li>
+          <li>
+            <strong>Consumed stock:</strong> round up usable labels ÷ (1 − waste % ÷ 100). Waste is
+            a share of consumed stock, not a markup on orders.
+          </li>
+          <li>
+            <strong>Consumables:</strong> consumed labels × (pack price ÷ labels per pack). Waste
+            cost is already included, never added twice.
+          </li>
+          <li>
+            <strong>Monthly estimate:</strong> consumables + optional monthly costs + purchase price
+            ÷ estimated useful life in months.
+          </li>
+          <li>
+            <strong>Annualized estimate:</strong> monthly estimate × 12. This allocation view
+            differs from the comparison table’s upfront purchase + operating costs.
+          </li>
+        </ol>
+        <h3>A worked example</h3>
+        <p>
+          Illustrative inputs: 50 usable labels per day, 20 days, 20% waste, a $20 pack of 500, and
+          a $240 printer allocated over 24 months. You consume 1,250 labels: $50 of stock, including
+          $10 of waste. With no optional costs, the monthly estimate is $60, or $0.06 per usable
+          label. Annualized: $720. Buying three whole packs needs $60 of stock cash, with labels
+          left over; consumption cost is a different figure.
+        </p>
+        <p>
+          Calculations retain precision until display; label counts round upward. Taxes, postage,
+          financing, staff time and automatic printer replacement are excluded. Optional costs start
+          at zero. Prices, volume and waste are assumed constant.
+        </p>
+      </div>
+      <div>
+        <h2>Before you compare.</h2>
+        <details>
+          <summary>Does this include shipping postage?</summary>
+          <p>
+            No. This estimates the cost to print a label, not the carrier’s charge to transport a
+            package. Use carrier or platform quotes for postage.
+          </p>
+        </details>
+        <details>
+          <summary>Why divide by the labels that are not wasted?</summary>
+          <p>
+            If 20% of consumed labels are lost, only 80% become usable. To produce 1,000 usable
+            labels, you need 1,000 ÷ 0.8 = 1,250 consumed labels. Waste is already part of that
+            stock cost.
+          </p>
+        </details>
+        <details>
+          <summary>Is annualized cost my first-year cash expense?</summary>
+          <p>
+            No. The main estimate allocates hardware over your estimated useful life. The scenario
+            table shows the purchase once plus operating costs. Whole-pack purchases can need more
+            cash than proportional consumption. Neither view automatically replaces a printer.
+          </p>
+        </details>
+        <details>
+          <summary>How should I estimate electricity?</summary>
+          <p>
+            Use measured monthly kWh or a documented estimate and your actual tariff. Rated power
+            alone is not monthly consumption. Leave both fields at zero when you lack sufficient
+            data.
+          </p>
+        </details>
+        <details>
+          <summary>Can all printers use the same label quote?</summary>
+          <p>
+            No. Our Rollo Wireless and MUNBYN ITPP941 USB entries use generic direct-thermal stock;
+            Brother QL-1110NWB uses DK-format media. Verify dimensions, media and printer
+            requirements. See the <a href="/guides/printing-costs/">sourced cost guide</a> and{' '}
+            <a href="/guides/etsy-4x6-label-size/">4 × 6 label guide</a>.
+          </p>
+        </details>
+        <details>
+          <summary>Are shared estimates private?</summary>
+          <p>
+            The calculator submits nothing to a Tagrivo server. A share link contains numeric
+            assumptions in its URL fragment; anyone receiving it can read those numbers. Our
+            analytics events omit calculator answers and quotes. Clipboard and download actions
+            require your click.
+          </p>
+        </details>
+        <details>
+          <summary>Does the cheapest estimate identify the best printer?</summary>
+          <p>
+            No. The model does not measure compatibility, support, durability, speed or reliability.
+            Use the <a href="/printer-finder/">Printer Finder</a> and{' '}
+            <a href="/compare/">specification comparison</a> before purchasing.
+          </p>
+        </details>
+      </div>
+    </section>
   </div>
 </Base>
