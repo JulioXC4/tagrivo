@@ -259,7 +259,8 @@ export default function Calculator() {
     allValid = !!r && (!comparing || !!comparison);
   useEffect(() => {
     setReady(true);
-    if (location.hash.startsWith('#calc=')) {
+    function loadSharedEstimate() {
+      if (!location.hash.startsWith('#calc=')) return;
       const s = parseCostState(location.hash);
       if (s) {
         setA(s.a);
@@ -269,9 +270,12 @@ export default function Calculator() {
         setStatus('Shared estimate loaded. All assumptions are editable.');
       } else
         setStatus(
-          'This shared estimate is invalid or unsupported. Start with the editable example below.',
+          'This shared estimate is invalid or unsupported. Your current editable assumptions have been kept.',
         );
     }
+    loadSharedEstimate();
+    window.addEventListener('hashchange', loadSharedEstimate);
+    return () => window.removeEventListener('hashchange', loadSharedEstimate);
   }, []);
   useEffect(() => {
     const timer = setTimeout(
