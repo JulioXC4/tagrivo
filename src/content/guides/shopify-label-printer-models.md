@@ -10,7 +10,7 @@ readingTime: 4
 
 “Works with Shopify” can describe different things: a model in Shopify's support table, a particular app workflow, or a computer printing an original shipping-label PDF. Those statements are useful only when the model and route are clear.
 
-This guide focuses on what that distinction means for the three printers in Tagrivo's catalog. It does not claim that we have fulfilled Shopify orders or tested Shopify hardware integrations.
+This guide focuses on what that distinction means for the models in Tagrivo's catalog. It does not claim that we have fulfilled Shopify orders or tested Shopify hardware integrations.
 
 ## Start with Shopify's exact supported list
 

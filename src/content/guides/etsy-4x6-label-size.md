@@ -22,7 +22,9 @@ For an eBay order with a similar symptom, check the platform-specific steps in o
 
 Download the original label PDF. Examine its page dimensions rather than estimating the size from how it fills a phone screen. A label positioned on an 8.5 × 11 page is different from a PDF page that is itself 4 × 6.
 
-Etsy names specific officially supported printers in its help. Other hardware printing a correctly sized PDF is a separate compatibility question; the three printers in Tagrivo's catalog should not be described as Etsy-certified on that basis.
+Etsy names specific officially supported printers in its help. Other hardware printing a correctly sized PDF is a separate compatibility question; the models in Tagrivo's catalog should not be described as Etsy-certified on that basis.
+
+Use the [interactive label preview](/tools/label-preview/) to see why 100 × 150 mm differs from true 4 × 6 inches and how scale can cause clipping. For a device-specific checklist, open the [troubleshooter](/tools/printer-troubleshooter/). Neither tool creates valid postage.
 
 ## Match three dimensions
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+<title id="title">Shipping label format illustration</title><desc id="desc">A sample 4 by 6 label diagram, not a photograph of a printer or a valid shipping label.</desc>
+<rect width="800" height="600" fill="#f3f6f1"/><path d="M240 70H560V530H240Z" fill="#fff" stroke="#185642" stroke-width="2"/>
+<g fill="#185642" font-family="Arial,sans-serif"><text x="270" y="118" font-size="16" letter-spacing="2">TAGRIVO / LABEL FORMAT</text><text x="270" y="195" font-size="56">4 × 6</text><text x="270" y="228" font-size="19">101.6 × 152.4 mm</text><text x="270" y="288" font-size="16">SAMPLE · NOT VALID FOR POSTAGE</text></g>
+<g stroke="#185642" stroke-width="2"><path d="M270 318H530M270 347H472M270 375H499"/><path d="M270 412V467M280 412V467M296 412V467M307 412V467M325 412V467M334 412V467M350 412V467M367 412V467M378 412V467M394 412V467M410 412V467M420 412V467M439 412V467M448 412V467M464 412V467M479 412V467M492 412V467M507 412V467M523 412V467"/></g>
+<text x="400" y="505" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#59635e">ILLUSTRATIVE BARS · NO TRACKING DATA</text></svg>

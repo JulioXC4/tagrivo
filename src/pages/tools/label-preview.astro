@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import LabelPreview from '../../components/LabelPreview';
+import '../../styles/catalog-tools.css';
+---
+
+<Base
+  title="4×6 Shipping Label Preview: Size, Scale & Clipping"
+  description="Preview a fictitious 4×6 shipping label. Adjust millimeters, orientation, margins and scale to understand possible clipping. No postage or personal data."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/tools/">Tools</a>
+      </nav>
+      <h1>4×6 Shipping Label Preview</h1>
+      <p>
+        A 4 × 6 inch label is 101.6 × 152.4 mm. A 100 × 150 mm label is slightly smaller. See why
+        matching the source document and stock matters before printing.
+      </p>
+    </header>
+    <LabelPreview client:load />
+    <noscript>
+      <p class="helper">
+        Enable JavaScript to use this browser-only tool. Read{' '}
+        <a href="/guides/common-thermal-printer-setup-problems/">the setup checklist</a> for
+        equivalent starting checks.
+      </p>
+    </noscript>
+    <div class="workbench-links">
+      <a class="text-link" href="/guides/etsy-4x6-label-size/">
+        Understand label size
+      </a>
+      <a class="text-link" href="/guides/choose-compatible-thermal-labels/">
+        Choose compatible media
+      </a>
+      <a class="text-link" href="/printer-finder/">
+        Find a printer
+      </a>
+    </div>
+  </div>
+</Base>

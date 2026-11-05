@@ -98,14 +98,14 @@ const readingTimes = Object.fromEntries(
         each printer does well—and where it asks you to compromise.
       </p>
       <div class="product-grid">
-        {printers.map((printer) => (
+        {printers.slice(0, 3).map((printer) => (
           <ProductCard printer={printer} />
         ))}
       </div>
       <p class="small-note catalog-note">
         Selected from manufacturer documentation, not hands-on testing. Specifications checked
-        {catalogCheckedLabel}. AI-generated editorial renders based on manufacturer references.{' '}
-        <a href="/methodology/">See our selection criteria.</a>
+        {catalogCheckedLabel}. Official photographs and labeled category illustrations; source
+        permissions documented. <a href="/methodology/">See our selection criteria.</a>
       </p>
     </section>
   </div>
@@ -124,8 +124,8 @@ const readingTimes = Object.fromEntries(
             aria-label="Read: How to choose a 4 × 6 label printer"
           >
             <img
-              src="/images/products/editorial-munbyn-itpp941-render.webp"
-              alt="AI-generated editorial render of MUNBYN ITPP941 based on manufacturer references; details may vary."
+              src="/images/products/authorized/brother-ql1110nwb.jpg"
+              alt="Official Brother QL-1110NWB product photograph from the Brother Canada Marketing Library."
               width="1000"
               height="1000"
               class="guide-photo"
@@ -137,7 +137,7 @@ const readingTimes = Object.fromEntries(
             <a href="/guides/choose-label-printer/">How to choose a 4 × 6 label printer</a>
           </h3>
           <p class="small-note editorial-image-caption">
-            Editorial render based on manufacturer references.
+            Official Brother product photograph · Marketing Library terms.
           </p>
           <p>
             A practical guide to the features that affect your setup, running costs, and day-to-day

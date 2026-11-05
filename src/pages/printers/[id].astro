@@ -1,4 +1,6 @@
 ---
+import { imageCaption, printingRoutes } from '../../data/workflows';
+import '../../styles/catalog-tools.css';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import {
@@ -17,18 +19,17 @@ export function getStaticPaths() {
 const { printer: p } = Astro.props;
 const affiliate = amazonLinkFor(p.id, amazonAssociateTag);
 const comparisonGuide =
-  p.id === 'brother-ql1110nwb'
-    ? { href: '/guides/rollo-vs-brother/', label: 'Rollo X1040 versus Brother QL-1110NWB' }
-    : {
-        href: '/guides/rollo-wireless-vs-munbyn-itpp941-usb/',
-        label: 'Rollo X1040 versus MUNBYN ITPP941 USB',
-      };
-const pageTitle =
-  p.id === 'rollo-wireless'
-    ? 'Rollo Wireless X1040: Compatibility & Trade-offs'
-    : p.id === 'munbyn-itpp941'
-      ? 'MUNBYN ITPP941 USB (203 dpi): Compatibility & Trade-offs'
-      : 'Brother QL-1110NWB: DK Media, Compatibility & Trade-offs';
+  p.brand === 'Brother'
+    ? { href: '/guides/brother-ql1100-vs-ql1110nwb/', label: 'Brother QL-1100 vs QL-1110NWB' }
+    : p.brand === 'Rollo'
+      ? { href: '/guides/rollo-usb-vs-wireless/', label: 'Rollo USB vs Wireless' }
+      : p.brand === 'MUNBYN'
+        ? { href: '/guides/munbyn-itpp941-vs-itpp941b/', label: 'MUNBYN USB vs Bluetooth' }
+        : {
+            href: '/guides/phomemo-pm241bt-compatibility/',
+            label: 'Phomemo PM241-BT compatibility',
+          };
+const pageTitle = `${p.name}: Compatibility, Media & Trade-offs`;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -47,8 +48,12 @@ const schema = {
 <Base
   title={pageTitle}
   description={p.description}
-  image={p.image}
-  imageAlt={p.imageAlt}
+  image={p.brand === 'Brother' ? p.image : '/images/editorial-hero.webp'}
+  imageAlt={
+    p.brand === 'Brother'
+      ? p.imageAlt
+      : 'Original Tagrivo shipping artwork; not a product photograph.'
+  }
   schema={schema}
 >
   <div class="wrap">
@@ -65,9 +70,7 @@ const schema = {
           <img src={p.image} alt={p.imageAlt} width="680" height="680" fetchpriority="high" />
         </div>
         <p class="small-note" style="margin-top:12px">
-          AI-generated editorial render based on manufacturer reference imagery. Not an exact
-          reproduction; physical details may vary. Specifications are checked separately against
-          official sources.
+          {imageCaption(p)}
           <br />
           <a class="text-link" href={p.sources[0].url} target="_blank" rel="noopener noreferrer">
             {p.id === 'munbyn-itpp941'
@@ -160,7 +163,30 @@ const schema = {
     <section class="detail-sections">
       <div>
         <h2>Your setup, checked.</h2>
-        <p style="color:var(--muted);font-size:14px">{p.setup}</p>
+        <p>{p.setup}</p>
+        <dl class="route-list">
+          {Object.entries(printingRoutes[p.id] || {}).map(([os, routes]) => (
+            <div>
+              <dt>{systemNames[os as keyof typeof systemNames]}</dt>
+              <dd>
+                {routes
+                  ?.map((r) =>
+                    r === 'wifi'
+                      ? 'Wi-Fi / network app'
+                      : r === 'bluetooth'
+                        ? 'Bluetooth (supported app / driver)'
+                        : 'USB (driver / extension)',
+                  )
+                  .join(' · ')}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <p>
+          <a href="/tools/printer-troubleshooter/">Diagnose setup problems</a> ·{' '}
+          <a href="/labels-accessories/">Choose compatible media</a> ·{' '}
+          <a href="/tools/label-preview/">Check label layout</a>
+        </p>
         <p class="small-note">
           Documented workflows: {p.systems.map((s) => systemNames[s]).join(', ')}. Support depends
           on your exact OS version, CPU and application. Confirm your carrier's available format

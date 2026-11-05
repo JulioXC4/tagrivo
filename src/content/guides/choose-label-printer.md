@@ -23,7 +23,7 @@ For labels that must remain readable during prolonged heat or light exposure, in
 
 ## Start with the shipping-label file
 
-**For Etsy, Shopify and eBay sellers:** choose around the device that prints, not just the marketplace you sell on. A supported desktop with USB can suit one fixed station; a phone-first setup needs a documented app and wireless route. Begin with the [platform workflow checks](/guides/etsy-shopify-ebay/), then use the [Finder](/printer-finder/) to narrow the three-model shortlist.
+**For Etsy, Shopify and eBay sellers:** choose around the device that prints, not just the marketplace you sell on. A supported desktop with USB can suit one fixed station; a phone-first setup needs a documented app and wireless route. Begin with the [platform workflow checks](/guides/etsy-shopify-ebay/), then use the [Finder](/printer-finder/) to narrow the documented shortlist.
 
 Before choosing hardware, open a label from your selling or shipping platform. Check whether it can be downloaded as a **4 × 6 PDF**, rather than a full Letter-size page. The paper setting, PDF page dimensions, and driver label size need to agree.
 

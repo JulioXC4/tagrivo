@@ -1,12 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import { printers } from '../../data/printers';
+import { printers, systemNames } from '../../data/printers';
+import '../../styles/catalog-tools.css';
 ---
 
 <Base
-  title="Thermal Label Printer Shortlist: Rollo, MUNBYN & Brother"
-  description="Explore three direct thermal shipping label printers: Rollo X1040, MUNBYN ITPP941 USB and Brother QL-1110NWB. Check variants, media and limitations."
+  title="Thermal Label Printers: Compare 7 Exact Models & Workflows"
+  description="Filter seven thermal label printers by device, connection, resolution and media. Compare exact Rollo, MUNBYN, Brother and Phomemo models with documented trade-offs."
 >
   <div class="wrap">
     <header class="page-heading">
@@ -19,21 +20,194 @@ import { printers } from '../../data/printers';
         A considered <em>shortlist.</em>
       </h1>
       <p>
-        Three direct thermal shipping label printers for different workspaces. Explore exact
-        variants, sourced specifications and practical limitations. For buying criteria, read{' '}
-        <a href="/guides/choose-label-printer/">how to choose a printer</a>; for a decision between
-        models, use the <a href="/guides/rollo-wireless-vs-munbyn-itpp941-usb/">Rollo–MUNBYN</a> or{' '}
-        <a href="/guides/rollo-vs-brother/">Rollo–Brother comparison</a>.
+        Seven exact models. Choose a printing route, then compare the trade-offs. No ratings or paid
+        placement. <a href="/printer-finder/">Prefer guided help? Use the Finder.</a>
       </p>
     </header>
-    <div class="product-grid" style="margin-top:0;padding-bottom:50px">
+    <form id="catalog-filters" class="catalog-filters" role="search" aria-label="Filter printers">
+      <fieldset disabled data-catalog-controls style="display:contents">
+        <legend class="sr-only">Printer catalog filters</legend>
+        <label class="field catalog-search">
+          Search brand or model
+          <input name="query" type="search" placeholder="For example, QL-1100" autocomplete="off" />
+        </label>
+        <label class="field">
+          Connection
+          <select name="connection">
+            <option value="any">Any connection</option>
+            <option value="usb">USB</option>
+            <option value="wifi">Wi-Fi</option>
+            <option value="bluetooth">Bluetooth printing</option>
+          </select>
+        </label>
+        <label class="field">
+          Operating system
+          <select name="os">
+            <option value="">Any system</option>
+            {Object.entries(systemNames).map(([value, label]) => (
+              <option value={value}>{label}</option>
+            ))}
+          </select>
+        </label>
+        <label class="field">
+          Resolution
+          <select name="dpi">
+            <option value="">Any resolution</option>
+            <option value="203">203 dpi</option>
+            <option value="300">300 dpi</option>
+          </select>
+        </label>
+        <label class="field">
+          Label format
+          <select name="format">
+            <option value="">Any documented format</option>
+            <option value="4x6">4 × 6 shipping</option>
+            <option value="continuous-dk">Continuous DK (cut to length)</option>
+          </select>
+        </label>
+        <label class="field">
+          Use case
+          <select name="use">
+            <option value="">Any workspace</option>
+            <option value="desktop-shipping">Dedicated USB shipping desk</option>
+            <option value="flexible-shipping">Flexible shipping connections</option>
+            <option value="mixed-labels">Shipping + cut-to-length DK labels</option>
+          </select>
+        </label>
+        <label class="field">
+          Sort by
+          <select name="sort">
+            <option value="editorial">Editorial order</option>
+            <option value="name">Model name A–Z</option>
+            <option value="resolution">Resolution, highest first</option>
+            <option value="speed">Rated speed, highest first</option>
+          </select>
+        </label>
+        <button type="reset" class="plain-button">
+          Clear filters
+        </button>
+        <button type="submit" hidden disabled tabindex="-1">
+          Apply filters
+        </button>
+      </fieldset>
+    </form>
+    <noscript>
+      <p class="helper">
+        All seven models are available below. Enable JavaScript for filters and comparison
+        selection; individual comparison links work without it.
+      </p>
+    </noscript>
+    <div class="catalog-summary">
+      <p id="catalog-count" role="status" aria-live="polite">
+        7 printers
+      </p>
+      <p class="small-note">
+        Combining device and connection filters checks a documented printing route. Speed is a
+        manufacturer rating, not a test result.
+      </p>
+    </div>
+    <section id="catalog-empty" class="helper" hidden>
+      <h2>No documented match.</h2>
+      <p>
+        Try a different connection or clear the filters. We don’t substitute unsupported device
+        combinations.
+      </p>
+      <button class="plain-button" id="catalog-empty-reset">
+        Clear filters
+      </button>
+    </section>
+    <div class="product-grid catalog-results" id="catalog-results">
       {printers.map((printer) => (
-        <ProductCard printer={printer} />
+        <ProductCard printer={printer} selectable />
       ))}
     </div>
-    <p class="small-note" style="padding-bottom:35px">
-      Research-based selection, not hands-on testing. No paid placement.{' '}
-      <a href="/methodology/">Read our methodology.</a>
+    <aside class="compare-tray" id="compare-tray" hidden aria-label="Selected printers">
+      <div>
+        <strong id="compare-count">0 of 3 selected</strong>
+        <p id="compare-names"></p>
+        <p id="compare-notice" role="status"></p>
+      </div>
+      <a id="compare-selected" class="button" href="/compare/">
+        Compare selected printers
+      </a>
+      <button class="plain-button" id="clear-selection">
+        Clear selection
+      </button>
+    </aside>
+    <p class="small-note section">
+      Research-based selection, not hands-on testing. Photo permissions and source limitations are{' '}
+      <a href="/image-sources/">documented here</a>. <a href="/methodology/">Our methodology</a>.
     </p>
   </div>
 </Base>
+<script>
+  import { filterCatalog, toggleComparison, type CatalogFilters } from '../../lib/catalog';
+  import { printers } from '../../data/printers';
+  import { announceToolUse } from '../../lib/analytics';
+  const form = document.querySelector<HTMLFormElement>('#catalog-filters')!;
+  const container = document.querySelector<HTMLElement>('#catalog-results')!;
+  const cards = [...container.querySelectorAll<HTMLElement>('[data-printer]')];
+  let selected: string[] = [];
+  const selection = () => {
+    const tray = document.querySelector<HTMLElement>('#compare-tray')!;
+    tray.hidden = !selected.length;
+    document.querySelector('#compare-count')!.textContent = `${selected.length} of 3 selected`;
+    document.querySelector('#compare-names')!.textContent = selected
+      .map((id) => printers.find((p) => p.id === id)!.name)
+      .join(' · ');
+    const link = document.querySelector<HTMLAnchorElement>('#compare-selected')!;
+    link.href = `/compare/?printers=${selected.join(',')}`;
+    link.hidden = selected.length < 2;
+    document.querySelector('#compare-notice')!.textContent =
+      selected.length < 2
+        ? 'Choose at least two models to compare.'
+        : selected.length === 3
+          ? 'Three selected. Remove a model to choose another.'
+          : '';
+    container.querySelectorAll<HTMLInputElement>('[data-compare-select]').forEach((input) => {
+      input.checked = selected.includes(input.dataset.compareSelect!);
+      input.disabled = selected.length === 3 && !input.checked;
+    });
+  };
+  const refresh = () => {
+    const filters = Object.fromEntries(new FormData(form)) as unknown as CatalogFilters;
+    const matches = filterCatalog(filters);
+    const ids = new Set(matches.map((p) => p.id));
+    cards.forEach((card) => {
+      card.hidden = !ids.has(card.dataset.printer!);
+    });
+    matches.forEach((p) => container.append(cards.find((c) => c.dataset.printer === p.id)!));
+    document.querySelector('#catalog-count')!.textContent =
+      `${matches.length} ${matches.length === 1 ? 'printer' : 'printers'}`;
+    document.querySelector<HTMLElement>('#catalog-empty')!.hidden = !!matches.length;
+  };
+  form.addEventListener('submit', (e) => e.preventDefault());
+  form.addEventListener('input', (e) => {
+    refresh();
+    announceToolUse(
+      (e.target as HTMLInputElement).name === 'query'
+        ? 'catalog_search_used'
+        : 'catalog_filter_used',
+    );
+  });
+  form.addEventListener('reset', () => setTimeout(refresh, 0));
+  document.querySelector('#catalog-empty-reset')?.addEventListener('click', () => {
+    form.reset();
+    form.querySelector('input')?.focus();
+  });
+  container.addEventListener('change', (e) => {
+    const input = e.target as HTMLInputElement;
+    if (!input.dataset.compareSelect) return;
+    selected = toggleComparison(selected, input.dataset.compareSelect);
+    selection();
+    announceToolUse('catalog_comparison_selected');
+  });
+  document.querySelector('#clear-selection')?.addEventListener('click', () => {
+    selected = [];
+    selection();
+    container.querySelector('input')?.focus();
+  });
+  form.querySelector<HTMLFieldSetElement>('[data-catalog-controls]')!.disabled = false;
+  selection();
+  refresh();
+</script>

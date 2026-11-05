@@ -1,0 +1,244 @@
+.catalog-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding: 28px 0;
+  border-block: 1px solid var(--line);
+}
+.catalog-filters .field {
+  margin: 0;
+  min-width: 0;
+}
+.catalog-search {
+  grid-column: span 2;
+}
+.catalog-filters input,
+.catalog-filters select,
+.workbench input,
+.workbench select {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--control-border);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 12px;
+  border-radius: 0;
+}
+.catalog-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+.catalog-summary .small-note {
+  max-width: 65ch;
+}
+.catalog-results {
+  margin-top: 0;
+  gap: 54px 36px;
+}
+[hidden] {
+  display: none !important;
+}
+.catalog-select {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  cursor: pointer;
+  min-height: 44px;
+}
+.catalog-select input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--green);
+  flex-shrink: 0;
+}
+.compare-tray {
+  position: sticky;
+  bottom: 12px;
+  z-index: 5;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 24px 0;
+}
+.compare-tray p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+.compare-tray > div {
+  flex: 1;
+}
+.compare-tray .button {
+  flex-shrink: 0;
+}
+.route-list > div {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+}
+.route-list dt {
+  font-weight: 600;
+}
+.route-list dd {
+  margin: 0;
+  font-size: 15px;
+}
+.tool-directory {
+  border-top: 1px solid var(--line);
+  padding-bottom: 60px;
+}
+.tool-directory article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid var(--line);
+  padding: 38px 0;
+}
+.tool-directory h2 {
+  margin: 0 0 14px;
+}
+.tool-directory p {
+  max-width: 65ch;
+  color: var(--muted);
+}
+.workbench {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.75fr) minmax(0, 1.25fr);
+  gap: 60px;
+  margin: 24px 0 70px;
+  align-items: start;
+}
+.workbench-controls {
+  display: grid;
+  gap: 22px;
+}
+.workbench .field {
+  margin: 0;
+}
+.workbench-output {
+  background: var(--soft);
+  padding: 28px;
+  min-width: 0;
+}
+.workbench-output h2 {
+  font-size: 30px;
+}
+.workbench-output p {
+  overflow-wrap: anywhere;
+}
+.workbench-output li {
+  margin-bottom: 14px;
+}
+.workbench-output svg {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-height: 620px;
+  height: auto;
+}
+.workbench .error {
+  margin: 0;
+}
+.workbench-summary {
+  font-variant-numeric: tabular-nums;
+}
+.workbench-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin: 25px 0;
+}
+.media-table {
+  overflow-x: auto;
+  margin: 30px 0;
+}
+.media-table table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 580px;
+}
+.media-table th,
+.media-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 18px;
+  text-align: left;
+  vertical-align: top;
+}
+@media (max-width: 1000px) {
+  .catalog-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .workbench {
+    gap: 30px;
+  }
+  .compare-tray {
+    flex-wrap: wrap;
+  }
+  .compare-tray > div {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 650px) {
+  .catalog-filters {
+    gap: 18px 14px;
+  }
+  .catalog-filters .field {
+    font-size: 14px;
+  }
+  .catalog-search {
+    grid-column: 1/-1;
+  }
+  .catalog-summary {
+    display: block;
+  }
+  .compare-tray {
+    bottom: 0;
+    padding: 16px;
+    gap: 12px;
+  }
+  .compare-tray .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .workbench {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .workbench-output {
+    padding: 20px;
+  }
+  .tool-directory article {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .tool-directory article p {
+    margin-top: 0;
+  }
+  .route-list > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (min-width: 651px) and (max-width: 1100px) {
+  .catalog-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.workbench-output a {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

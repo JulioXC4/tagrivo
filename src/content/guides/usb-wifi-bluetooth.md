@@ -3,7 +3,7 @@ title: USB vs Wi-Fi vs Bluetooth shipping label printers
 description: Choose a shipping label printer connection for your packing desk. Compare USB, shared Wi-Fi and app-dependent Bluetooth without confusing setup with printing.
 category: Compatibility
 date: 2026-10-28
-updated: 2026-11-03
+updated: 2026-11-05
 seoTitle: 'USB vs Wi-Fi vs Bluetooth Shipping Label Printers'
 readingTime: 3
 ---
@@ -42,6 +42,10 @@ Look beyond “Bluetooth compatible.” Ask four questions:
 Brother documents Bluetooth on the QL-1110NWB, but explains that its AirPrint connection protocol requires a wired or wireless network, not Bluetooth. Some macOS versions also have specific Bluetooth limitations. A checkbox in a comparison table cannot replace those details.
 
 Tagrivo's Finder takes a conservative approach: it does not recommend direct Bluetooth shipping-label printing for mobile or Mac combinations we have not sufficiently verified.
+
+## Two documented Bluetooth app routes
+
+[MUNBYN ITPP941B](/printers/munbyn-itpp941b/) documents mobile printing through Munbyn Print; [Phomemo PM241-BT](/printers/phomemo-pm241bt/) uses Labelife. These are separate from direct printing in a marketplace app. The 941B Windows Bluetooth driver excludes ARM PCs, while its Mac driver route uses USB. Read the [USB 941 versus 941B comparison](/guides/munbyn-itpp941-vs-itpp941b/) or the [Phomemo compatibility guide](/guides/phomemo-pm241bt-compatibility/) before buying. For an existing connection failure, use the [troubleshooter](/tools/printer-troubleshooter/).
 
 ## A simple decision rule
 

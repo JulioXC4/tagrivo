@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import Troubleshooter from '../../components/Troubleshooter';
+import '../../styles/catalog-tools.css';
+---
+
+<Base
+  title="Thermal Printer Troubleshooter: Device, Driver & Label Setup"
+  description="Diagnose thermal label printing problems with device-specific route checks and official support links. Covers detection, small labels, clipping, wireless and drivers."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/tools/">Tools</a>
+      </nav>
+      <h1>Thermal Printer Troubleshooter</h1>
+      <p>
+        Find the next useful check, from the connection to the document. This is a guided checklist
+        based on manufacturer documentation, not a remote hardware test.
+      </p>
+    </header>
+    <Troubleshooter client:load />
+    <noscript>
+      <p class="helper">
+        Enable JavaScript to use this browser-only tool. Read{' '}
+        <a href="/guides/common-thermal-printer-setup-problems/">the setup checklist</a> for
+        equivalent starting checks.
+      </p>
+    </noscript>
+    <div class="workbench-links">
+      <a class="text-link" href="/guides/etsy-4x6-label-size/">
+        Understand label size
+      </a>
+      <a class="text-link" href="/guides/choose-compatible-thermal-labels/">
+        Choose compatible media
+      </a>
+      <a class="text-link" href="/printer-finder/">
+        Find a printer
+      </a>
+    </div>
+  </div>
+</Base>

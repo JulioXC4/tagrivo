@@ -55,9 +55,10 @@ if (googleVerification && !/^[A-Za-z0-9_-]{10,200}$/.test(googleVerification))
   );
 const navigation = [
   ['Printer Finder', '/printer-finder/'],
+  ['Printers', '/printers/'],
   ['Compare', '/compare/'],
   ['Buying Guides', '/guides/'],
-  ['Cost Calculator', '/cost-calculator/'],
+  ['Tools', '/tools/'],
 ];
 ---
 
@@ -194,6 +195,9 @@ const navigation = [
           <a href="/affiliate-disclosure/">How affiliate links support Tagrivo</a>
         </p>
         <nav aria-label="Footer">
+          <a href="/tools/">Free printing tools</a>
+          <a href="/labels-accessories/">Labels &amp; accessories</a>
+          <a href="/image-sources/">Image credits</a>
           <a href="/about/">About</a>
           <a href="/contact/">Contact</a>
           <a href="/methodology/">Editorial methodology</a>
@@ -212,6 +216,11 @@ const navigation = [
     </footer>
     {analytics.enabled && <AnalyticsConsent />}
     <script>
+      import { announceToolUse } from '../lib/analytics';
+      document.addEventListener('click', (event) => {
+        if (event.target instanceof Element && event.target.closest('a[href^="/printers/"]'))
+          announceToolUse('product_navigation_used');
+      });
       const themeButtons = document.querySelectorAll<HTMLButtonElement>('.theme-toggle');
       function updateThemeLabels() {
         themeButtons.forEach((button) =>

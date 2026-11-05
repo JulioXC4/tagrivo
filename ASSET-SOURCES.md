@@ -1,5 +1,9 @@
 # Asset provenance
 
+## Current website assets — November 5, 2026
+
+The product-render section below is historical. V3 retires those model-like renders, uses two unchanged authorized Brother photos and an honestly labeled original category diagram for the five entries without photo rights. See [current model/source/hash/permission audit](docs/TAGRIVO-V3-SOURCES.md) and the public `/image-sources/` page. Original generated marketing/video archives remain unchanged.
+
 ## Approved visual authority
 
 The user selected the first green Editorial Premium concept in the original design review. The original reference is retained locally and is not part of the public site or repository.
@@ -8,7 +12,7 @@ The user selected the first green Editorial Premium concept in the original desi
 
 `public/images/editorial-hero.webp` was generated with the built-in Image Generator from the selected reference. It is a generic editorial still life, not a commercial printer. The generation prompt and original raster remain in the local, Git-ignored `design-assets/` folder. Only the optimized WebP is published.
 
-## Current product studio renders — October 29, 2026
+## Historical product studio renders — October 29, 2026 (retired from website)
 
 The owner rejected the abstract series and requested much closer product recognition. The current three visuals are AI-generated editorial studio renders made with the built-in Image Generator, each using its corresponding manufacturer photograph as a visual reference. They preserve the general silhouette, proportions, material contrast and front paper path, with fresh front-left perspective, studio lighting, blank paper and no manufacturer lettering. They are generated interpretations, not official photographs or exact hardware documentation.
 

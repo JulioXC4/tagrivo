@@ -1,3 +1,4 @@
+import { imageCaption } from '../data/workflows';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRightIcon as ArrowRight } from '@phosphor-icons/react/dist/csr/ArrowRight';
 import { ArrowLeftIcon as ArrowLeft } from '@phosphor-icons/react/dist/csr/ArrowLeft';
@@ -177,9 +178,7 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
             <article className="result" key={p.id}>
               <div>
                 <img src={p.image} alt={p.imageAlt} width="220" height="220" />
-                <p className="small-note editorial-image-caption">
-                  Editorial render based on manufacturer references.
-                </p>
+                <p className="small-note editorial-image-caption">{imageCaption(p)}</p>
               </div>
               <div>
                 <p className="product-fit">
@@ -334,6 +333,16 @@ export default function Finder({ compact = false }: { compact?: boolean }) {
               aria-invalid={!!error}
               aria-describedby={error ? 'finder-error' : undefined}
             />
+          </label>
+          <label className="field number-question">
+            Label format
+            <select
+              value={answers.format || '4x6'}
+              onChange={(e) => update('format', e.currentTarget.value as '4x6' | 'continuous-dk')}
+            >
+              <option value="4x6">4 × 6 shipping label</option>
+              <option value="continuous-dk">Continuous Brother DK labels (automatic cut)</option>
+            </select>
           </label>
           <div className="helper">
             We exclude models whose dated verified price exceeds your cap. Models without a verified

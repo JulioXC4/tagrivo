@@ -31,7 +31,8 @@ const secrets = [
   /https?:\/\/[^\s/:]+:[^\s/@]+@/,
 ];
 for (const file of new Set(files)) {
-  if (file === '.env.example') continue;
+  // Tracked files deleted in the working tree are not release payloads.
+  if (file === '.env.example' || !existsSync(file)) continue;
   if (
     sensitiveName.test(file) ||
     /^(?:node_modules|dist|\.astro|\.wrangler|release-artifacts|\.impeccable\/review)\//.test(file)

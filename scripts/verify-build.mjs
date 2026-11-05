@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+import { printers } from '../src/data/printers.ts';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { deployment } from './deployment-env.mjs';
@@ -30,22 +32,20 @@ async function files(dir) {
   ).flat();
 }
 const all = await files(root);
-const expectedProductArt = [
-  'editorial-rollo-wireless-render.webp',
-  'editorial-munbyn-itpp941-render.webp',
-  'editorial-brother-ql1110nwb-render.webp',
-];
 const verificationName = 'google7bb345f95d638147.html';
 const verificationFile = path.join(root, verificationName);
 // Google's ownership file is an exact payload, not an editorial HTML route.
 const htmlFiles = all.filter((f) => f.endsWith('.html') && f !== verificationFile);
 const failures = [];
-const productArt = await readdir(path.join(root, 'images/products'));
-if (
-  productArt.length !== expectedProductArt.length ||
-  productArt.some((file) => !expectedProductArt.includes(file))
-)
-  failures.push('Product assets must contain only the three current editorial studio renders');
+const licensedPhotos = {
+  'brother-ql1100.png': '3c3c403bcd52811893dff32fad280e91765021113b50a7a57644f0cc3c351687',
+  'brother-ql1110nwb.jpg': '835cdb871c7046739f7d997e9c2463e99983cedde5f369cfbf3c01b66bae6d64',
+};
+for (const [file, hash] of Object.entries(licensedPhotos)) {
+  const bytes = await readFile(path.join(root, 'images/products/authorized', file));
+  if (createHash('sha256').update(bytes).digest('hex') !== hash)
+    failures.push(`${file}: licensed original must remain unchanged`);
+}
 const originalVerification = await readFile(path.resolve('public', verificationName));
 const deployedVerification = await readFile(verificationFile);
 if (!originalVerification.equals(deployedVerification))
@@ -54,12 +54,12 @@ if (originalVerification.toString('utf8') !== `google-site-verification: ${verif
   failures.push('Google verification file has an unexpected payload');
 const redirects = await readFile(path.join(root, '_redirects'), 'utf8');
 const retiredPhotoRedirects = [
-  '/images/products/rollo-wireless.webp /images/products/editorial-rollo-wireless-render.webp 302',
-  '/images/products/munbyn-itpp941.jpg /images/products/editorial-munbyn-itpp941-render.webp 302',
-  '/images/products/brother-ql1110nwb.webp /images/products/editorial-brother-ql1110nwb-render.webp 302',
-  '/images/products/editorial-wireless-workspace.webp /images/products/editorial-rollo-wireless-render.webp 302',
-  '/images/products/editorial-wired-workspace.webp /images/products/editorial-munbyn-itpp941-render.webp 302',
-  '/images/products/editorial-network-workspace.webp /images/products/editorial-brother-ql1110nwb-render.webp 302',
+  '/images/products/rollo-wireless.webp /images/products/category-shipping-label.svg 302',
+  '/images/products/munbyn-itpp941.jpg /images/products/category-shipping-label.svg 302',
+  '/images/products/brother-ql1110nwb.webp /images/products/authorized/brother-ql1110nwb.jpg 302',
+  '/images/products/editorial-wireless-workspace.webp /images/products/category-shipping-label.svg 302',
+  '/images/products/editorial-wired-workspace.webp /images/products/category-shipping-label.svg 302',
+  '/images/products/editorial-network-workspace.webp /images/products/authorized/brother-ql1110nwb.jpg 302',
 ];
 if (retiredPhotoRedirects.some((rule) => !redirects.split(/\r?\n/).includes(rule)))
   failures.push(
@@ -88,15 +88,17 @@ for (const file of htmlFiles) {
   const guideId = relativePage.match(/^guides\/([^/]+)\/index\.html$/)?.[1];
   const productId = relativePage.match(/^printers\/([^/]+)\/index\.html$/)?.[1];
   const placementIds =
-    relativePage === 'index.html' || relativePage === 'printers/index.html'
-      ? Object.keys(amazonListings)
-      : productId
-        ? [productId]
-        : relativePage === 'compare/index.html'
-          ? ['rollo-wireless', 'munbyn-itpp941']
-          : guideId
-            ? guideAmazonProducts[guideId] || []
-            : [];
+    relativePage === 'index.html'
+      ? printers.slice(0, 3).map((p) => p.id)
+      : relativePage === 'printers/index.html'
+        ? Object.keys(amazonListings)
+        : productId
+          ? [productId]
+          : relativePage === 'compare/index.html'
+            ? ['rollo-wireless', 'munbyn-itpp941']
+            : guideId
+              ? guideAmazonProducts[guideId] || []
+              : [];
   const expectedPaidLinks = placementIds.filter((id) => amazonLinkFor(id, amazonTag)).length;
   if ([...html.matchAll(/<a\b[^>]*data-link-kind="affiliate"/g)].length !== expectedPaidLinks)
     failures.push(`${relativePage}: missing or unexpected commercial placement`);
@@ -109,23 +111,16 @@ for (const file of htmlFiles) {
   if (/images\/products\/editorial-(?:wireless|wired|network)-workspace\.webp/.test(html))
     failures.push(`${file}: superseded abstract illustration referenced`);
   const productVisuals = [...html.matchAll(/<img\b[^>]*src="\/images\/products\/[^>]*>/g)];
-  if (
-    productVisuals.some(([tag]) => !/alt="[^"]*AI-generated editorial render[^"]*"/i.test(tag)) ||
-    (productVisuals.length && !/Editorial render/i.test(html))
-  )
-    failures.push(
-      `${file}: editorial product imagery needs honest alt text and a visible disclosure`,
-    );
-  if (
-    file.includes(`${path.sep}printers${path.sep}`) &&
-    path.basename(path.dirname(file)) !== 'printers'
-  ) {
-    if (
-      !/property="og:image" content="[^"]*\/images\/products\/editorial-/.test(html) ||
-      !/property="og:image:alt" content="[^"]*AI-generated editorial render/i.test(html)
-    )
-      failures.push(`${file}: product Open Graph must identify original editorial art`);
+  for (const [tag] of productVisuals) {
+    if (/editorial-.*render\.webp/.test(tag))
+      failures.push(`${file}: superseded model render referenced`);
+    if (!/alt="[^"]*(?:Official Brother|Illustrative shipping-label)/i.test(tag))
+      failures.push(`${file}: product visual needs source-appropriate alt text`);
   }
+  if (productId && !/Official Brother product photograph|Category illustration/.test(html))
+    failures.push(`${file}: image provenance disclosure missing`);
+  if (productId && /property="og:image" content="[^"]*category-shipping-label/.test(html))
+    failures.push(`${file}: generic category diagram must not impersonate a product social photo`);
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
   const description = html.match(/name="description"\s+content="([^"]*)"/)?.[1];
   const canonical = html.match(/rel="canonical"\s+href="([^"]*)"/)?.[1];

@@ -1,15 +1,17 @@
 ---
+import { imageCaption } from '../data/workflows';
 import { printers, getConnectionLabels, type Printer } from '../data/printers';
 import Icon from './Icon.astro';
 import AmazonCTA from './AmazonCTA';
 interface Props {
   printer: Printer;
+  selectable?: boolean;
 }
-const { printer: p } = Astro.props;
+const { printer: p, selectable = false } = Astro.props;
 const alternative = printers.find((printer) => printer.id !== p.id)!;
 ---
 
-<article class="product-card">
+<article class="product-card" data-printer={p.id}>
   <a
     href={`/printers/${p.id}/`}
     class="product-image"
@@ -19,9 +21,23 @@ const alternative = printers.find((printer) => printer.id !== p.id)!;
     <img src={p.image} alt={p.imageAlt} width="600" height="600" loading="lazy" decoding="async" />
   </a>
   <p class="small-note editorial-image-caption">
-    Editorial render based on manufacturer references.
+    {imageCaption(p)}{' '}
+    <a
+      href={p.sources[0].url}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-link-kind="manufacturer"
+      data-printer-id={p.id}
+    >
+      Official photos
+    </a>
   </p>
   <div class="product-copy">
+    {selectable && (
+      <label class="catalog-select">
+        <input type="checkbox" disabled data-compare-select={p.id} /> Select {p.name} for comparison
+      </label>
+    )}
     <p class="product-fit">{p.fit}</p>
     <h3>
       <a href={`/printers/${p.id}/`}>{p.name}</a>

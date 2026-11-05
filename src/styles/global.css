@@ -2273,3 +2273,7 @@ input::placeholder {
     font-size: 13px;
   }
 }
+
+/* Licensed product photos retain their original colors and proportions. */
+.product-image:has(img[src*="/authorized/"]) { background:#fff; }
+.product-image img[src*="/authorized/"], .detail-photo img[src*="/authorized/"] { mix-blend-mode:normal; }

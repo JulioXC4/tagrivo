@@ -11,12 +11,14 @@ import { printers } from '../src/data/printers.ts';
 
 test('each published product links directly to its documented child ASIN with the real US tag', () => {
   const identities = {
+    'rollo-usb-x1038': 'B01MA3EYC5',
+    'brother-ql1100': 'B079G51QTB',
     'rollo-wireless': 'B09VF4Z2WQ',
     'munbyn-itpp941': 'B07S48NHYS',
     'brother-ql1110nwb': 'B079G51QT9',
   };
   assert.equal(amazonStoreId, 'tagrivo-20');
-  for (const p of printers) {
+  for (const p of printers.filter((p) => amazonListings[p.id])) {
     const url = new URL(amazonLinkFor(p.id, amazonStoreId)!);
     assert.equal(url.origin, 'https://www.amazon.com');
     assert.equal(url.pathname, `/dp/${identities[p.id as keyof typeof identities]}`);
@@ -69,4 +71,9 @@ test('a stale environment variable cannot silently credit a different Amazon acc
   assert.equal(resolveAmazonStoreId(''), 'tagrivo-20');
   assert.equal(resolveAmazonStoreId(' tagrivo-20 '), 'tagrivo-20');
   assert.throws(() => resolveAmazonStoreId('another-account-20'));
+});
+
+test('unverified new variants stay informational', () => {
+  for (const id of ['munbyn-itpp941b', 'phomemo-pm241bt'])
+    assert.equal(amazonLinkFor(id, amazonStoreId), null);
 });

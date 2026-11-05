@@ -12,6 +12,12 @@ export const CONSENT_LIFETIME = 30 * 24 * 60 * 60 * 1000;
 
 /** Signals carry an event name only, never tool answers, URLs or quote values. */
 export const toolEventNames = [
+  'catalog_search_used',
+  'catalog_filter_used',
+  'catalog_comparison_selected',
+  'product_navigation_used',
+  'label_preview_used',
+  'printer_troubleshooter_used',
   'printer_finder_complete',
   'comparison_used',
   'cost_calculator_used',

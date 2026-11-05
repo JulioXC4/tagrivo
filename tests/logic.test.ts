@@ -19,13 +19,18 @@ test('Rollo setup Bluetooth is never mistaken for Bluetooth printing', () => {
   const result = recommend({ ...baseline, connection: 'bluetooth' });
   assert.deepEqual(
     result.matches.map((m) => m.printer.id),
-    ['brother-ql1110nwb'],
+    ['brother-ql1110nwb', 'munbyn-itpp941b'],
   );
 });
-test('unknown mobile/Mac Bluetooth app combinations are excluded', () => {
-  for (const os of ['ios', 'android', 'mac'] as const)
-    assert.equal(recommend({ ...baseline, os, connection: 'bluetooth' }).matches.length, 0);
+test('mobile Bluetooth uses verified app routes while unverified Mac routes remain excluded', () => {
+  for (const os of ['ios', 'android'] as const)
+    assert.deepEqual(
+      recommend({ ...baseline, os, connection: 'bluetooth' }).matches.map((m) => m.printer.id),
+      ['munbyn-itpp941b', 'phomemo-pm241bt'],
+    );
+  assert.equal(recommend({ ...baseline, os: 'mac', connection: 'bluetooth' }).matches.length, 0);
 });
+
 test('known price above cap excluded; unknown prices carry explicit caveat', () => {
   const result = recommend({ ...baseline, budget: 150 });
   assert.ok(!result.matches.some((m) => m.printer.id === 'brother-ql1110nwb'));

@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/catalog-tools.css';
+const tools = [
+  {
+    title: 'Printing Cost Calculator',
+    href: '/cost-calculator/',
+    body: 'Estimate the cost of labels, waste and hardware using your own quotes. Compare scenarios, find a break-even point and export a summary.',
+    link: 'Work out your costs',
+  },
+  {
+    title: '4×6 Shipping Label Preview',
+    href: '/tools/label-preview/',
+    body: 'See how source size, orientation, margins and scale interact. Compare true 4 × 6 stock with 100 × 150 mm and spot possible clipping.',
+    link: 'Inspect a label layout',
+  },
+  {
+    title: 'Thermal Printer Troubleshooter',
+    href: '/tools/printer-troubleshooter/',
+    body: 'Work through detection, sizing, wireless, barcode and driver problems. Start with the exact device and printing route, then read the official support instructions.',
+    link: 'Diagnose a setup problem',
+  },
+];
+---
+
+<Base
+  title="Free Thermal Label Printer Tools: Costs, Layout & Setup"
+  description="Plan thermal printing costs, inspect a fictitious shipping label layout and diagnose setup problems. Free browser tools without accounts, uploads or email forms."
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Tools</span>
+      </nav>
+      <h1>
+        A better prepared <em>packing desk.</em>
+      </h1>
+      <p>
+        Three focused tools for the decisions around a printer. No account or personal details
+        required. Calculations and diagnostic choices stay in your browser.
+      </p>
+    </header>
+    <section class="tool-directory" aria-label="Free printing tools">
+      {tools.map((tool) => (
+        <article>
+          <div>
+            <h2>
+              <a href={tool.href}>{tool.title}</a>
+            </h2>
+            <a class="text-link" href={tool.href}>
+              {tool.link}
+            </a>
+          </div>
+          <p>{tool.body}</p>
+        </article>
+      ))}
+    </section>
+    <p class="small-note section">
+      Buying a printer? <a href="/printer-finder/">Check your setup in the Finder</a> or{' '}
+      <a href="/printers/">filter the catalog</a>.
+    </p>
+  </div>
+</Base>
