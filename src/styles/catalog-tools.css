@@ -242,3 +242,34 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+
+.product-gallery {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.product-gallery summary {
+  cursor: pointer;
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding-block: 8px;
+}
+.product-gallery figure {
+  margin: 22px 0 0;
+}
+.product-gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+}
+.product-gallery figcaption {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.product-image img[src*='/studio/'],
+.detail-photo img[src*='/studio/'] {
+  mix-blend-mode: normal;
+}

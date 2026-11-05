@@ -40,8 +40,10 @@ export function supportsRoute(
 }
 export function imageCaption(printer: Printer): string {
   return printer.brand === 'Brother'
-    ? 'Official Brother product photograph · used under Marketing Library terms.'
-    : 'Category illustration, not a product photograph. See the official model photos.';
+    ? 'Official Brother product photograph · Marketing Library.'
+    : printer.id === 'phomemo-pm241bt'
+      ? 'Original manufacturer product image · white/lavender finish.'
+      : 'Manufacturer product image · studio composition by Tagrivo.';
 }
 export type LabelFormat = '4x6' | 'continuous-dk';
 export function supportsFormat(printer: Printer, format: LabelFormat): boolean {

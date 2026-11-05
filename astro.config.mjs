@@ -3,6 +3,9 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { deployment } from './scripts/deployment-env.mjs';
+import { checkPhotoPublication } from './scripts/photo-publication.mjs';
+
+checkPhotoPublication();
 
 export default defineConfig({
   site: deployment.site,

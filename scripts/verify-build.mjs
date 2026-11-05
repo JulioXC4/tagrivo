@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { productPhotography } from '../src/data/product-photography.ts';
 import { printers } from '../src/data/printers.ts';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -54,16 +55,16 @@ if (originalVerification.toString('utf8') !== `google-site-verification: ${verif
   failures.push('Google verification file has an unexpected payload');
 const redirects = await readFile(path.join(root, '_redirects'), 'utf8');
 const retiredPhotoRedirects = [
-  '/images/products/rollo-wireless.webp /images/products/category-shipping-label.svg 302',
-  '/images/products/munbyn-itpp941.jpg /images/products/category-shipping-label.svg 302',
+  '/images/products/rollo-wireless.webp /images/products/studio/rollo-x1040-hero.webp 302',
+  '/images/products/munbyn-itpp941.jpg /images/products/studio/munbyn-itpp941-usb-hero.webp 302',
   '/images/products/brother-ql1110nwb.webp /images/products/authorized/brother-ql1110nwb.jpg 302',
-  '/images/products/editorial-wireless-workspace.webp /images/products/category-shipping-label.svg 302',
-  '/images/products/editorial-wired-workspace.webp /images/products/category-shipping-label.svg 302',
+  '/images/products/editorial-wireless-workspace.webp /images/products/studio/rollo-x1040-hero.webp 302',
+  '/images/products/editorial-wired-workspace.webp /images/products/studio/munbyn-itpp941-usb-hero.webp 302',
   '/images/products/editorial-network-workspace.webp /images/products/authorized/brother-ql1110nwb.jpg 302',
 ];
 if (retiredPhotoRedirects.some((rule) => !redirects.split(/\r?\n/).includes(rule)))
   failures.push(
-    'Retired photo URLs must redirect to editorial art to override Pages asset retention',
+    'Retired product URLs must redirect to current model imagery to override Pages asset retention',
   );
 if (
   !redirects.split(/\r?\n/).includes(`/${verificationName} /${verificationName.slice(0, -5)} 200`)
@@ -114,13 +115,31 @@ for (const file of htmlFiles) {
   for (const [tag] of productVisuals) {
     if (/editorial-.*render\.webp/.test(tag))
       failures.push(`${file}: superseded model render referenced`);
-    if (!/alt="[^"]*(?:Official Brother|Illustrative shipping-label)/i.test(tag))
+    if (
+      !/alt="[^"]*(?:Official Brother|[Rr]ollo|[Mm][Uu][Nn][Bb][Yy][Nn]|[Pp]homemo|Original front view|Separate original|Crop of the original|Original white)/i.test(
+        tag,
+      )
+    )
       failures.push(`${file}: product visual needs source-appropriate alt text`);
   }
-  if (productId && !/Official Brother product photograph|Category illustration/.test(html))
+  if (productId && !/Official Brother product photograph|[Mm]anufacturer product image/.test(html))
     failures.push(`${file}: image provenance disclosure missing`);
   if (productId && /property="og:image" content="[^"]*category-shipping-label/.test(html))
     failures.push(`${file}: generic category diagram must not impersonate a product social photo`);
+  if (html.includes('/images/products/category-shipping-label.svg'))
+    failures.push(`${file}: rejected label diagram must not replace a printer`);
+  if (productId) {
+    const expected = printers.find((p) => p.id === productId);
+    if (
+      expected &&
+      (!html.includes(`src="${expected.image}"`) ||
+        !html.includes(`property="og:image" content="${deployment.site}${expected.image}"`))
+    )
+      failures.push(`${file}: product hero and social image must use its exact catalog source`);
+    for (const photo of productPhotography[productId]?.extra || [])
+      if (!html.includes(`src="${photo.src}"`))
+        failures.push(`${file}: missing documented gallery view`);
+  }
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
   const description = html.match(/name="description"\s+content="([^"]*)"/)?.[1];
   const canonical = html.match(/rel="canonical"\s+href="([^"]*)"/)?.[1];

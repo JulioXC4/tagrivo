@@ -334,8 +334,8 @@ export default function Compare() {
       <p className="small-note" style={{ marginTop: 24 }}>
         Resolution and rated speeds describe manufacturer specifications, not a quality score.
         Actual speed depends on settings, media, and print data. OS support is version-dependent.
-        Official photographs and clearly labeled category illustrations are distinguished next to
-        each visual. Specifications are sourced separately.
+        Product imagery uses original manufacturer views. Studio compositions change the
+        surroundings, not the hardware. Specifications are sourced separately.
       </p>
     </section>
   );

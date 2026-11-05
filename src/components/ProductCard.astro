@@ -1,4 +1,5 @@
 ---
+import { productPhotography } from '../data/product-photography';
 import { imageCaption } from '../data/workflows';
 import { printers, getConnectionLabels, type Printer } from '../data/printers';
 import Icon from './Icon.astro';
@@ -23,7 +24,7 @@ const alternative = printers.find((printer) => printer.id !== p.id)!;
   <p class="small-note editorial-image-caption">
     {imageCaption(p)}{' '}
     <a
-      href={p.sources[0].url}
+      href={productPhotography[p.id]?.source || p.sources[0].url}
       target="_blank"
       rel="noopener noreferrer"
       data-link-kind="manufacturer"

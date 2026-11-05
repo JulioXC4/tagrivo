@@ -1,3 +1,4 @@
+import { productPhotography } from './product-photography.ts';
 export type OperatingSystem = 'windows' | 'mac' | 'ios' | 'android' | 'chrome';
 export type Connection = 'usb' | 'wifi' | 'bluetooth' | 'any';
 export interface Printer {
@@ -33,8 +34,8 @@ export const printers: Printer[] = [
     brand: 'Rollo',
     name: 'Rollo Wireless',
     model: 'X1040',
-    image: '/images/products/category-shipping-label.svg',
-    imageAlt: 'Illustrative shipping-label format diagram, not a photograph of this printer.',
+    image: '/images/products/studio/rollo-x1040-hero.webp',
+    imageAlt: productPhotography['rollo-wireless'].alt,
     fit: 'For a flexible, wireless workspace',
     description:
       'A compact Wi-Fi option for sellers who switch between a computer and a phone. Standard direct-thermal media keeps your label choices open.',
@@ -79,8 +80,8 @@ export const printers: Printer[] = [
     brand: 'MUNBYN',
     name: 'MUNBYN ITPP941',
     model: 'USB · 203 dpi version',
-    image: '/images/products/category-shipping-label.svg',
-    imageAlt: 'Illustrative shipping-label format diagram, not a photograph of this printer.',
+    image: '/images/products/studio/munbyn-itpp941-usb-hero.webp',
+    imageAlt: productPhotography['munbyn-itpp941'].alt,
     fit: 'For a dedicated desktop setup',
     description:
       'A straightforward USB model for a fixed packing desk. Choose this exact wired variant if you want a computer connection without wireless setup.',
@@ -184,8 +185,8 @@ export const printers: Printer[] = [
     checked: '2026-10-29',
   },
   {
-    image: '/images/products/category-shipping-label.svg',
-    imageAlt: 'Illustrative shipping-label format diagram, not a photograph of this printer.',
+    image: '/images/products/studio/rollo-x1038-hero.webp',
+    imageAlt: productPhotography['rollo-usb-x1038'].alt,
     dpi: 203,
     speed: 150,
     ethernet: false,
@@ -233,8 +234,8 @@ export const printers: Printer[] = [
     ],
   },
   {
-    image: '/images/products/category-shipping-label.svg',
-    imageAlt: 'Illustrative shipping-label format diagram, not a photograph of this printer.',
+    image: '/images/products/studio/munbyn-itpp941b-hero.webp',
+    imageAlt: productPhotography['munbyn-itpp941b'].alt,
     dpi: 203,
     speed: 150,
     ethernet: false,
@@ -290,8 +291,8 @@ export const printers: Printer[] = [
     ],
   },
   {
-    image: '/images/products/category-shipping-label.svg',
-    imageAlt: 'Illustrative shipping-label format diagram, not a photograph of this printer.',
+    image: '/images/products/studio/phomemo-pm241bt-hero.webp',
+    imageAlt: productPhotography['phomemo-pm241bt'].alt,
     dpi: 203,
     speed: 150,
     ethernet: false,

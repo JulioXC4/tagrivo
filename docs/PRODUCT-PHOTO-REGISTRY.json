@@ -1,0 +1,73 @@
+[
+  {
+    "model": "rollo-wireless",
+    "page": "https://www.rollo.com/product/rollo-wireless-printer/",
+    "file": "rollo-x1040-three-quarter.png",
+    "asset": "https://rollo-main.b-cdn.net/wp-content/uploads/2025/07/Image-4.png",
+    "hero": "rollo-x1040-hero.webp",
+    "identity": "X1040 product page directly links this actual three-quarter view. Original alpha cutout retained; no generated product pixels.",
+    "reviewed": "2026-11-05",
+    "source_sha256": "a6a8592c406fbfce705bd4b3eb07ea644e28b825fdd2aeadffa1e39e928ad60a",
+    "output": "/images/products/studio/rollo-x1040-hero.webp",
+    "output_sha256": "599ce96eb820f0807b53cfb48ce4862e73381fe781b8ec1b8eb88a9025380bc4",
+    "reuse_authorization": "not_established",
+    "local_preview_only_until_rights_resolved": true
+  },
+  {
+    "model": "munbyn-itpp941",
+    "page": "https://pos.munbyn.com/munbyn-itpp941-series-thermal-label-printer/",
+    "file": "munbyn-itpp941-usb.jpg",
+    "asset": "https://pos.munbyn.com/wp-content/uploads/2024/02/ITPP941-1.jpg",
+    "hero": "munbyn-itpp941-usb-hero.webp",
+    "identity": "Manufacturer image is named ITPP941-1 and labeled ITPP941 on the page whose USB parameter tab identifies ITPP941203. The separate941B source is not substituted. A photograph alone cannot establish an invisible interface.",
+    "reviewed": "2026-11-05",
+    "source_sha256": "4252d74d13a51678ae0b752180b4ba69ea0c2e2402e76b50b87bbb3da0957fc8",
+    "output": "/images/products/studio/munbyn-itpp941-usb-hero.webp",
+    "output_sha256": "e9ebba0e04d8f947f73057ae28c138b457e910b5ee69dc5e8c29e5fcee7a599e",
+    "reuse_authorization": "not_established",
+    "local_preview_only_until_rights_resolved": true
+  },
+  {
+    "model": "rollo-usb-x1038",
+    "page": "https://www.rollo.com/product/rollo-printer/",
+    "file": "rollo-x1038.webp",
+    "asset": "https://rollo-main.b-cdn.net/wp-content/uploads/2016/09/rollo-usb-label-printer-product-image-1-min-1.webp",
+    "hero": "rollo-x1038-hero.webp",
+    "identity": "Official exact-model X1038 page front image. No logo is added where the original front view does not show one.",
+    "reviewed": "2026-11-05",
+    "source_sha256": "e3afa3cb2c6d903dc1308c1362c759833eafd6a98e6c1504392cd4dcccbbd68b",
+    "output": "/images/products/studio/rollo-x1038-hero.webp",
+    "output_sha256": "f51bd8c1d8af25978ce9d05042725f48003400763c68dd027d30ea90f6c473e8",
+    "reuse_authorization": "not_established",
+    "local_preview_only_until_rights_resolved": true
+  },
+  {
+    "model": "munbyn-itpp941b",
+    "page": "https://munbyn.com/products/bluetooth-thermal-label-printer-941b",
+    "file": "munbyn-itpp941b-white.jpg",
+    "asset": "https://munbyn.com/cdn/shop/files/ITPP941B-WH-US.jpg?v=1770880718&width=1500",
+    "hero": "munbyn-itpp941b-hero.webp",
+    "identity": "Exact manufacturer filename ITPP941B-WH-US; white variant. Distinct lid/indicator marking retained.",
+    "reviewed": "2026-11-05",
+    "source_sha256": "f1f9810e2ff1657ba7db596331f1101c0829882da4ada8b9b9b219653df25663",
+    "output": "/images/products/studio/munbyn-itpp941b-hero.webp",
+    "output_sha256": "a59d495858a55b989f8cd9588df9f6d365efc433dc2ca6f1699720ef75bed251",
+    "reuse_authorization": "not_established",
+    "local_preview_only_until_rights_resolved": true
+  },
+  {
+    "model": "phomemo-pm241bt",
+    "page": "https://phomemo.com/products/pm-241bt",
+    "file": "phomemo-pm241bt.jpg",
+    "asset": "https://phomemo.com/cdn/shop/files/flash-sale-phomemo-pm241-bt-bluetooth-shipping-label-printer-416401.jpg?v=1758190875&width=1500",
+    "hero": "phomemo-pm241bt-hero.webp",
+    "identity": "Manufacturer PM241-BT color-variation image; white body/lavender lid. Not the pink Amazon candidate. Original view shows no front logo, so none is synthesized.",
+    "reviewed": "2026-11-05",
+    "source_sha256": "c974932b2da140d65f0d15dbc72d48d6cd7face07539c396a8b3cbcbb7d20359",
+    "output": "/images/products/studio/phomemo-pm241bt-hero.webp",
+    "output_sha256": "dca9481cb87d9b99327bfa7aa43e2e2168cd630496f1338ed15a933124e932cb",
+    "reuse_authorization": "not_established",
+    "local_preview_only_until_rights_resolved": true,
+    "treatment": "Intact original manufacturer packshot; only surrounding whitespace cropped and proportionally resized. Original white background/shadow preserved to avoid a false cutout edge."
+  }
+]
