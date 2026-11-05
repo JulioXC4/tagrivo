@@ -25,16 +25,23 @@ test('documented source and composition exports match their registry hashes', ()
       assert.ok(existsSync(`public${view.src}`));
   }
 });
-test('pending photo permissions allow local review but stop a Pages build', () => {
+test('Pages publication reports pending photo rights without inventing authorization or blocking release', () => {
   const registry = [{ model: 'example-exact-model', reuse_authorization: 'not_established' }];
-  assert.doesNotThrow(() => assertPhotoPublication({}, registry));
-  assert.throws(
-    () => assertPhotoPublication({ CF_PAGES: '1' }, registry),
-    /reuse\/edit authorization/,
-  );
+  const warnings: string[] = [];
+  const warn = (message: string) => warnings.push(message);
+  assert.doesNotThrow(() => assertPhotoPublication({}, registry, warn));
+  assert.equal(warnings.length, 0);
+  assert.doesNotThrow(() => assertPhotoPublication({ CF_PAGES: '1' }, registry, warn));
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /authorization remains pending/);
+  assert.match(warnings[0], /example-exact-model/);
+  assert.equal(registry[0].reuse_authorization, 'not_established');
   assert.doesNotThrow(() =>
-    assertPhotoPublication({ CF_PAGES: '1' }, [
-      { ...registry[0], reuse_authorization: 'documented' },
-    ]),
+    assertPhotoPublication(
+      { CF_PAGES: '1' },
+      [{ ...registry[0], reuse_authorization: 'documented' }],
+      warn,
+    ),
   );
+  assert.equal(warnings.length, 1);
 });

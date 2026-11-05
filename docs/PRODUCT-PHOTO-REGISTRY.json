@@ -11,7 +11,8 @@
     "output": "/images/products/studio/rollo-x1040-hero.webp",
     "output_sha256": "599ce96eb820f0807b53cfb48ce4862e73381fe781b8ec1b8eb88a9025380bc4",
     "reuse_authorization": "not_established",
-    "local_preview_only_until_rights_resolved": true
+    "local_preview_only_until_rights_resolved": false,
+    "publication_decision": "Owner explicitly requested public Cloudflare deployment on 2026-11-05; reuse authorization remains not established."
   },
   {
     "model": "munbyn-itpp941",
@@ -25,7 +26,8 @@
     "output": "/images/products/studio/munbyn-itpp941-usb-hero.webp",
     "output_sha256": "e9ebba0e04d8f947f73057ae28c138b457e910b5ee69dc5e8c29e5fcee7a599e",
     "reuse_authorization": "not_established",
-    "local_preview_only_until_rights_resolved": true
+    "local_preview_only_until_rights_resolved": false,
+    "publication_decision": "Owner explicitly requested public Cloudflare deployment on 2026-11-05; reuse authorization remains not established."
   },
   {
     "model": "rollo-usb-x1038",
@@ -39,7 +41,8 @@
     "output": "/images/products/studio/rollo-x1038-hero.webp",
     "output_sha256": "f51bd8c1d8af25978ce9d05042725f48003400763c68dd027d30ea90f6c473e8",
     "reuse_authorization": "not_established",
-    "local_preview_only_until_rights_resolved": true
+    "local_preview_only_until_rights_resolved": false,
+    "publication_decision": "Owner explicitly requested public Cloudflare deployment on 2026-11-05; reuse authorization remains not established."
   },
   {
     "model": "munbyn-itpp941b",
@@ -53,7 +56,8 @@
     "output": "/images/products/studio/munbyn-itpp941b-hero.webp",
     "output_sha256": "a59d495858a55b989f8cd9588df9f6d365efc433dc2ca6f1699720ef75bed251",
     "reuse_authorization": "not_established",
-    "local_preview_only_until_rights_resolved": true
+    "local_preview_only_until_rights_resolved": false,
+    "publication_decision": "Owner explicitly requested public Cloudflare deployment on 2026-11-05; reuse authorization remains not established."
   },
   {
     "model": "phomemo-pm241bt",
@@ -67,7 +71,8 @@
     "output": "/images/products/studio/phomemo-pm241bt-hero.webp",
     "output_sha256": "dca9481cb87d9b99327bfa7aa43e2e2168cd630496f1338ed15a933124e932cb",
     "reuse_authorization": "not_established",
-    "local_preview_only_until_rights_resolved": true,
-    "treatment": "Intact original manufacturer packshot; only surrounding whitespace cropped and proportionally resized. Original white background/shadow preserved to avoid a false cutout edge."
+    "local_preview_only_until_rights_resolved": false,
+    "treatment": "Intact original manufacturer packshot; only surrounding whitespace cropped and proportionally resized. Original white background/shadow preserved to avoid a false cutout edge.",
+    "publication_decision": "Owner explicitly requested public Cloudflare deployment on 2026-11-05; reuse authorization remains not established."
   }
 ]
