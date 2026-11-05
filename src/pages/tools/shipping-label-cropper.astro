@@ -1,0 +1,152 @@
+---
+import Base from '../../layouts/Base.astro';
+import PdfCropper from '../../components/PdfCropper';
+import '../../styles/pdf-cropper.css';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Tagrivo Shipping Label PDF Cropper',
+  url: new URL('/tools/shipping-label-cropper/', Astro.site).href,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Modern web browser',
+  description:
+    'Select an area of an existing shipping PDF and export the selected page as a proportional 4 by 6 inch PDF. Local browser processing; no postage generation.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+---
+
+<Base
+  title="Free Shipping Label PDF Cropper & 4×6 Converter"
+  description="Crop a label from a Letter or A4 PDF and export a proportional 4×6 PDF. Visual selection, rotation and local processing. No upload, account or postage generation."
+  schema={schema}
+>
+  <div class="wrap">
+    <header class="page-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/tools/">Tools</a>
+      </nav>
+      <h1>
+        Shipping label
+        <br />
+        <em>PDF cropper.</em>
+      </h1>
+      <p>
+        Select the label on your Letter or A4 PDF, then save a true 4 × 6 inch page. Your file stays
+        in this browser tab.
+      </p>
+    </header>
+    <PdfCropper client:load />
+    <noscript>
+      <p class="helper">
+        Enable JavaScript for local PDF processing. You can also select your shipping platform’s
+        thermal PDF format or follow{' '}
+        <a href="https://support.rollo.com/support/solutions/articles/29000000799-cropping-a-full-size-8-5-x-11-page-to-a-4-x-6-label">
+          Rollo’s documented cropping workflow
+        </a>
+        .
+      </p>
+    </noscript>
+    <article class="prose crop-explainer">
+      <h2>When a shipping label needs cropping</h2>
+      <p>
+        A label printed inside a Letter or A4 sheet is different from a label-sized PDF. Shrinking
+        the entire sheet onto thermal stock can make the barcode and address too small. This
+        converter lets you choose the label area first, then fits that area proportionally on a 4 ×
+        6 inch PDF.
+      </p>
+      <p>
+        <strong>Use the provider’s original thermal format first.</strong> Shopify lets you change
+        the label format before reprinting. eBay’s documented Rollo workflow offers 4 × 6 PDF. If
+        you can obtain a properly sized source, conversion is usually unnecessary. Carrier and
+        marketplace options vary; see our{' '}
+        <a href="/guides/etsy-shopify-ebay/">Etsy, Shopify and eBay workflow guide</a>.
+      </p>
+      <h2>Crop, inspect, then print</h2>
+      <ol>
+        <li>
+          Choose an existing, unprotected PDF. Select the correct page if the file has several.
+        </li>
+        <li>
+          Drag around the complete label or enter the crop percentages. Keep all address lines,
+          routing marks and barcode quiet zones. Presets are starting regions, not carrier
+          detection.
+        </li>
+        <li>
+          Rotate if necessary. Check the output preview: the tool preserves proportions and may
+          leave white space rather than stretch the label.
+        </li>
+        <li>
+          Download the selected page. Set the driver to your actual stock and inspect the print
+          preview. For true 4 × 6 stock, start with actual size / 100% and verify that required
+          content fits the printer’s printable area.
+        </li>
+      </ol>
+      <h2>What this tool preserves—and what it cannot fix</h2>
+      <p>
+        The export embeds the source PDF’s text and vector content. It does not rasterize a vector
+        barcode or stretch one axis independently. A barcode that was already a low-resolution image
+        remains one: conversion cannot recover missing detail or certify scan quality. Always
+        inspect a physical sample; this is not a barcode verifier or carrier approval service.
+      </p>
+      <p>
+        The MVP exports one selected page at a time, supports files up to 20 MB and 50 pages, and
+        rejects protected PDFs and pages with annotations or form fields. Use a flattened PDF from
+        your provider for those files. It does not auto-detect carriers, create shipping labels,
+        purchase postage, or combine a batch of cropped pages.
+      </p>
+      <h2>Does the PDF leave my device?</h2>
+      <p>
+        No upload endpoint is used. PDF parsing, previewing and export run locally; the PDF and crop
+        coordinates are not sent to Tagrivo or Analytics. The decoding worker and resources are
+        served from this site. The site’s existing consent-based analytics still apply to page
+        visits; read <a href="/privacy/">Privacy</a>. Removing the PDF clears the tool’s reference
+        to it; a downloaded file remains on your device.
+      </p>
+      <p>
+        <strong>Cropping is not redaction.</strong> Hidden source content can remain embedded in the
+        exported PDF. Do not use this tool to remove private addresses or confidential information
+        before sharing a file. Use a dedicated redaction workflow instead.
+      </p>
+      <h2>Is 100 × 150 mm the same as 4 × 6 inches?</h2>
+      <p>
+        No. This tool exports exactly 101.6 × 152.4 mm (288 × 432 PDF points). A 100 × 150 mm stock
+        is smaller. Match your driver and actual roll; use{' '}
+        <a href="/tools/label-preview/">Label Preview</a> to understand size, margins and clipping
+        before consuming stock.
+      </p>
+      <h2>Sources and related checks</h2>
+      <p>
+        Reviewed November 5, 2026. Workflow references:{' '}
+        <a href="https://support.rollo.com/support/solutions/articles/29000000799-cropping-a-full-size-8-5-x-11-page-to-a-4-x-6-label">
+          Rollo: cropping a full-size sheet
+        </a>
+        ,{' '}
+        <a href="https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/shipping-labels/buying-labels/troubleshooting-labels">
+          Shopify: label format and printing
+        </a>
+        , and{' '}
+        <a href="https://support.rollo.com/support/solutions/articles/29000000801-ebay-setup-for-rollo">
+          eBay format settings documented by Rollo
+        </a>
+        . These references do not imply endorsement of Tagrivo.
+      </p>
+      <p>
+        Still printing too small? Read the{' '}
+        <a href="/guides/etsy-4x6-label-size/">label-size checklist</a> or use the{' '}
+        <a href="/tools/printer-troubleshooter/">Printer Troubleshooter</a>. Choosing hardware?
+        Start with the <a href="/printer-finder/">Printer Finder</a>,{' '}
+        <a href="/compare/">compare printers</a>, or calculate{' '}
+        <a href="/cost-calculator/">printing costs</a>.
+      </p>
+      <p class="small-note">
+        PDF processing uses <a href="https://mozilla.github.io/pdf.js/">PDF.js</a> (Apache-2.0) and{' '}
+        <a href="https://pdf-lib.js.org/">pdf-lib</a> (MIT).{' '}
+        <a href="/pdfjs/LICENSE">PDF.js license</a> ·{' '}
+        <a href="/pdfjs/PDF-LIB-LICENSE.md">pdf-lib license</a>. Font and decoder notices are
+        retained with their self-hosted resources.
+      </p>
+    </article>
+  </div>
+</Base>

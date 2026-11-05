@@ -19,6 +19,7 @@ coverage/
 *.inspect.ndjson
 release-artifacts/
 /design-assets/
+/public/pdfjs/
 /design-qa.md
 public/images/*.png
 marketing/shorts/

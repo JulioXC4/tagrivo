@@ -16,6 +16,8 @@ This is a document-based diagnostic checklist. It is not a repair tested on a cu
 
 **Quick check:** download the original PDF and inspect its page size. A 4 × 6 label drawn inside a Letter-size page is not a 4 × 6 PDF. Next, match the PDF dimensions, print-dialog paper size and loaded stock before changing scaling or buying another printer.
 
+If the provider cannot supply a thermal-sized copy, use Tagrivo’s [Shipping Label PDF Cropper](/tools/shipping-label-cropper/) to select the complete label and export a proportional 4 × 6 PDF locally. Keep barcode quiet zones and required carrier marks; this does not validate postage or barcode quality.
+
 For an eBay order with a similar symptom, check the platform-specific steps in our [Etsy, Shopify and eBay workflow guide](/guides/etsy-shopify-ebay/); Etsy's carrier-specific format guidance should not be transferred to another marketplace.
 
 [Etsy's current help page](https://help.etsy.com/hc/en-us/articles/360001968348-How-to-Download-and-Print-a-Shipping-Label) describes 4 × 6 formatting for USPS shipping labels. Do not assume every carrier, service or document in an Etsy order offers the same format. Confirm the options for the actual label you are printing, including any additional international paperwork.

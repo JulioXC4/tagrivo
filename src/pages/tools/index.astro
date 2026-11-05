@@ -3,6 +3,12 @@ import Base from '../../layouts/Base.astro';
 import '../../styles/catalog-tools.css';
 const tools = [
   {
+    title: 'Shipping Label PDF Cropper',
+    href: '/tools/shipping-label-cropper/',
+    body: 'Select a real label inside a Letter or A4 PDF and export a proportional 4 × 6 PDF. Visual crop, rotation and local processing; one page per export.',
+    link: 'Crop a shipping PDF',
+  },
+  {
     title: 'Printing Cost Calculator',
     href: '/cost-calculator/',
     body: 'Estimate the cost of labels, waste and hardware using your own quotes. Compare scenarios, find a break-even point and export a summary.',
@@ -24,8 +30,8 @@ const tools = [
 ---
 
 <Base
-  title="Free Thermal Label Printer Tools: Costs, Layout & Setup"
-  description="Plan thermal printing costs, inspect a fictitious shipping label layout and diagnose setup problems. Free browser tools without accounts, uploads or email forms."
+  title="Free Thermal Label Printer Tools: PDF Crop, Costs & Setup"
+  description="Crop shipping PDFs to 4×6, plan label costs, preview layouts and diagnose printer setup. Free browser tools without accounts, PDF uploads or email forms."
 >
   <div class="wrap">
     <header class="page-heading">
@@ -38,7 +44,7 @@ const tools = [
         A better prepared <em>packing desk.</em>
       </h1>
       <p>
-        Three focused tools for the decisions around a printer. No account or personal details
+        Four focused tools for the decisions around a printer. No account or personal details
         required. Calculations and diagnostic choices stay in your browser.
       </p>
     </header>
